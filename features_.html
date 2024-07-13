@@ -97,7 +97,7 @@
   }
 
   .hero {
-    background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+    background-image: url('https://images.unsplash.com/photo-1567807951157-98eff23dfab3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
     background-size: cover;
     background-position: center;
     height: 60vh;
@@ -140,12 +140,17 @@
     padding: 4rem 0;
   }
 
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
   .feature-card {
-    display: flex;
     background-color: var(--card-bg);
     border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 2rem;
+    padding: 2rem;
+    text-align: center;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
   }
@@ -153,21 +158,6 @@
   .feature-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-  }
-
-  .feature-image {
-    flex: 1;
-    min-height: 300px;
-    background-size: cover;
-    background-position: center;
-  }
-
-  .feature-content {
-    flex: 1;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
   }
 
   .feature-icon {
@@ -195,7 +185,6 @@
     text-decoration: none;
     font-weight: bold;
     transition: all 0.3s ease;
-    align-self: flex-start;
   }
 
   .feature-link:hover {
@@ -275,12 +264,6 @@
     .hero h1 {
       font-size: 2.5rem;
     }
-    .feature-card {
-      flex-direction: column;
-    }
-    .feature-image {
-      min-height: 200px;
-    }
   }
 </style>
 </head>
@@ -319,61 +302,101 @@
     
     <section class="features-section">
       <div class="container">
-        <div class="feature-card">
-          <div class="feature-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
-          <div class="feature-content">
+        <div class="features-grid">
+          <div class="feature-card">
             <div class="feature-icon">🧠</div>
             <h2 class="feature-title">AI-Powered Pricing</h2>
             <p class="feature-description">Our advanced AI algorithm analyzes market trends, demand patterns, and competitor pricing in real-time to optimize your rental rates for maximum profitability.</p>
             <a href="https://radhil.com/features/ai-pricing" class="feature-link">Learn More</a>
           </div>
-        </div>
-        
-        <div class="feature-card">
-          <div class="feature-content">
+          <div class="feature-card">
             <div class="feature-icon">🌐</div>
             <h2 class="feature-title">Multi-Channel Management</h2>
             <p class="feature-description">Effortlessly manage your listings across multiple platforms, synchronize calendars, and streamline bookings from a single, intuitive dashboard.</p>
             <a href="https://radhil.com/features/channel-management" class="feature-link">Explore</a>
           </div>
-          <div class="feature-image" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
-        </div>
-        
-        <div class="feature-card">
-          <div class="feature-image" style="background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
-          <div class="feature-content">
+          <div class="feature-card">
             <div class="feature-icon">💬</div>
             <h2 class="feature-title">Automated Guest Communication</h2>
             <p class="feature-description">Engage guests with personalized, automated messages throughout their journey, from booking confirmation to post-stay follow-ups, enhancing their experience.</p>
             <a href="https://radhil.com/features/guest-communication" class="feature-link">Discover</a>
           </div>
-        </div>
-        
-        <div class="feature-card">
-          <div class="feature-content">
+          <div class="feature-card">
             <div class="feature-icon">📊</div>
             <h2 class="feature-title">Advanced Analytics</h2>
             <p class="feature-description">Gain deep insights into your property performance with comprehensive analytics, custom reports, and predictive forecasting to make data-driven decisions.</p>
             <a href="https://radhil.com/features/analytics" class="feature-link">See Details</a>
           </div>
-          <div class="feature-image" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80');"></div>
-        </div>
-        
-        <div class="feature-card">
-          <div class="feature-image" style="background-image: url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
-          <div class="feature-content">
+          <div class="feature-card">
             <div class="feature-icon">🏠</div>
             <h2 class="feature-title">Smart Property Management</h2>
             <p class="feature-description">Streamline operations with automated task management, maintenance scheduling, and smart home integration for a seamless guest experience.</p>
             <a href="https://radhil.com/features/property-management" class="feature-link">Find Out More</a>
           </div>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-content">
+          <div class="feature-card">
             <div class="feature-icon">💼</div>
             <h2 class="feature-title">Financial Management</h2>
             <p class="feature-description">Simplify your finances with automated payments, expense tracking, and detailed financial reporting tailored for luxury rentals.</p>
             <a href="https://radhil.com/features/financial-management" class="feature-link">Learn More</a>
           </div>
-          <div class="feature-image" style="background-image: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit
+          <div class="feature-card">
+            <div class="feature-icon">📱</div>
+            <h2 class="feature-title">Mobile App</h2>
+            <p class="feature-description">Manage your properties on-the-go with our powerful mobile app, providing real-time updates and control at your fingertips.</p>
+            <a href="https://radhil.com/features/mobile-app" class="feature-link">Explore App</a>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🔒</div>
+            <h2 class="feature-title">Advanced Security</h2>
+            <p class="feature-description">Protect your business with state-of-the-art security features, including fraud detection, secure payments, and data encryption.</p>
+            <a href="https://radhil.com/features/security" class="feature-link">Learn More</a>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🌟</div>
+            <h2 class="feature-title">Customization & Branding</h2>
+            <p class="feature-description">Tailor the RadHIL experience to match your brand with customizable interfaces, white-label options, and personalized guest portals.</p>
+            <a href="https://radhil.com/features/customization" class="feature-link">Discover Options</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2023 RadHIL. All rights reserved.</p>
+      <p>
+        <a href="https://radhil.com/privacy">Privacy Policy</a> | 
+        <a href="https://radhil.com/terms">Terms of Service</a> |
+        <a href="https://radhil.com/contact">Contact Us</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+    const currentTheme = localStorage.getItem('theme');
+
+    if (currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme);
+      
+        if (currentTheme === 'dark') {
+            toggleSwitch.checked = true;
+        }
+    }
+
+    function switchTheme(e) {
+        if (e.target.checked) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        }
+        else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+        }    
+    }
+
+    toggleSwitch.addEventListener('change', switchTheme, false);
+  </script>
+</body>
+</html>
