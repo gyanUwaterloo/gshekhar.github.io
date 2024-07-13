@@ -1,0 +1,443 @@
+<html><head><base href="https://radhil.com/tutorials/setup-first-property"><title>RadHIL Tutorial: Setting Up Your First Property</title>
+<style>
+  :root {
+    --primary-color: #C9A050;
+    --secondary-color: #1E2A3B;
+    --accent-color: #E0C38C;
+    --text-color: #333333;
+    --bg-color: #FFFFFF;
+    --card-bg: #F8F8F8;
+    --nav-bg: #1E2A3B;
+    --footer-bg: #1E2A3B;
+    --footer-text: #FFFFFF;
+  }
+  
+  [data-theme="dark"] {
+    --primary-color: #E0C38C;
+    --secondary-color: #2C3E50;
+    --accent-color: #C9A050;
+    --text-color: #E6E6FA;
+    --bg-color: #1A1A2E;
+    --card-bg: #2D2D44;
+    --nav-bg: #2C3E50;
+    --footer-bg: #2C3E50;
+    --footer-text: #E6E6FA;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .header {
+    background-color: var(--nav-bg);
+    color: #FFFFFF;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .nav a:hover, .nav a.active {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+  }
+
+  .tutorial-content {
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .video-container {
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 2rem;
+  }
+
+  .video-placeholder {
+    background-color: var(--card-bg);
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .video-placeholder::after {
+    content: '▶️';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 5rem;
+    color: var(--primary-color);
+  }
+
+  .tutorial-steps {
+    width: 100%;
+    max-width: 800px;
+  }
+
+  .step {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .step h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+  }
+
+  .step-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .step-image {
+    width: 200px;
+    height: 150px;
+    background-color: var(--accent-color);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: var(--secondary-color);
+  }
+
+  .footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 4rem;
+  }
+
+  .footer a {
+    color: var(--footer-text);
+    text-decoration: none;
+    margin: 0 0.5rem;
+  }
+
+  .theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+  }
+
+  .theme-switch input {
+    display: none;
+  }
+
+  .slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+  }
+
+  .slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+    border-radius: 50%;
+  }
+
+  input:checked + .slider {
+    background-color: var(--primary-color);
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+  @media (max-width: 768px) {
+    .header-content {
+      flex-direction: column;
+      text-align: center;
+    }
+    .nav {
+      margin-top: 1rem;
+    }
+    .step-content {
+      flex-direction: column;
+    }
+    .step-image {
+      width: 100%;
+      height: 200px;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-container">
+          <div class="logo-icon">🏆</div>
+          <div class="logo-text">RadHIL</div>
+        </div>
+        <nav class="nav">
+          <a href="https://radhil.com">Home</a>
+          <a href="https://radhil.com/features">Features</a>
+          <a href="https://radhil.com/pricing">Pricing</a>
+          <a href="https://radhil.com/request-demo">Demo</a>
+          <a href="https://radhil.com/support" class="active">Support</a>
+        </nav>
+        <div class="theme-switch-wrapper">
+          <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider"></div>
+          </label>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="tutorial-content container">
+    <h1>Setting Up Your First Property</h1>
+    <p>Follow this step-by-step guide to add and configure your first property in RadHIL.</p>
+    
+    <div class="video-container">
+      <div class="video-placeholder"></div>
+    </div>
+    
+    <div class="tutorial-steps">
+      <div class="step">
+        <h3>Step 1: Access the Property Dashboard</h3>
+        <div class="step-content">
+          <div class="step-image">🏠</div>
+          <div>
+            <p>Log in to your RadHIL account and navigate to the "Properties" section in the main dashboard. Click on the "Add New Property" button to begin the setup process.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="step">
+        <h3>Step 2: Enter Basic Property Information</h3>
+        <div class="step-content">
+          <div class="step-image">📝</div>
+          <div>
+            <p>Fill in the basic details of your property, including:</p>
+            <ul>
+              <li>Property name</li>
+              <li>Address</li>
+              <li>Property type (e.g., apartment, house, villa)</li>
+              <li>Number of bedrooms and bathrooms</li>
+              <li>Maximum occupancy</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="step">
+        <h3>Step 3: Upload Property Photos</h3>
+        <div class="step-content">
+          <div class="step-image">🖼️</div>
+          <div>
+            <p>Upload high-quality photos of your property. Make sure to include:</p>
+            <ul>
+              <li>Exterior shots</li>
+              <li>Living areas</li>
+              <li>Bedrooms</li>
+              <li>Bathrooms</li>
+              <li>Kitchen</li>
+              <li>Any unique features or amenities</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="step">
+        <h3>Step 4: Set Up Pricing</h3>
+        <div class="step-content">
+          <div class="step-image">💰</div>
+          <div>
+            <p>Configure your pricing settings:</p>
+            <ul>
+              <li>Base nightly rate</li>
+              <li>Seasonal adjustments</li>
+              <li>Weekend/weekday differentiation</li>
+              <li>Special event pricing</li>
+              <li>Minimum stay requirements</li>
+            </ul>
+            <p>Remember, you can always fine-tune these later with our AI pricing optimization tool.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="step">
+        <h3>Step 5: Configure Availability Calendar</h3>
+        <div class="step-content">
+          <div class="step-image">📅</div>
+          <div>
+            <p>Set up your property's availability:</p>
+            <ul>
+              <li>Mark any dates the property is unavailable</li>
+              <li>Set check-in and check-out days if applicable</li>
+              <li>Configure advance booking window</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="step">
+        <h3>Step 6: Add Property Amenities and House Rules</h3>
+        <div class="step-content">
+          <div class="step-image">📋</div>
+          <div>
+            <p>List all amenities your property offers and set house rules:</p>
+            <ul>
+              <li>Wi-Fi, TV, kitchen appliances, etc.</li>
+              <li>Smoking policy</li>
+              <li>Pet policy</li>
+              <li>Quiet hours</li>
+              <li>Check-in and check-out procedures</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="step">
+        <h3>Step 7: Connect to Booking Channels</h3>
+        <div class="step-content">
+          <div class="step-image">🔗</div>
+          <div>
+            <p>Link your property to various booking platforms:</p>
+            <ul>
+              <li>Airbnb</li>
+              <li>Booking.com</li>
+              <li>Vrbo</li>
+              <li>And more...</li>
+            </ul>
+            <p>RadHIL will automatically sync your calendar and pricing across all connected platforms.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="step">
+        <h3>Step 8: Review and Activate</h3>
+        <div class="step-content">
+          <div class="step-image">✅</div>
+          <div>
+            <p>Review all the information you've entered for accuracy. Once you're satisfied, click the "Activate Property" button to make your listing live.</p>
+            <p>Congratulations! Your property is now set up and ready to receive bookings through RadHIL.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2023 RadHIL. All rights reserved.</p>
+      <p>
+        <a href="https://radhil.com/privacy">Privacy Policy</a> | 
+        <a href="https://radhil.com/terms">Terms of Service</a> |
+        <a href="https://radhil.com/contact">Contact Us</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+    const currentTheme = localStorage.getItem('theme');
+
+    if (currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme);
+      
+        if (currentTheme === 'dark') {
+            toggleSwitch.checked = true;
+        }
+    }
+
+    function switchTheme(e) {
+        if (e.target.checked) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        }
+        else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+        }    
+    }
+
+    toggleSwitch.addEventListener('change', switchTheme, false);
+  </script>
+</body>
+</html>
