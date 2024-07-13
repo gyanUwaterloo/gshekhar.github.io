@@ -1,4 +1,4 @@
-<html><head><base href="https://radhil.com"><title>RadHIL - Luxury Vacation Rental Management</title>
+<html><head><base href="https://radhil.com/pricing"><title>RadHIL - Luxury Vacation Rental Management Pricing</title>
 <style>
   :root {
     --primary-color: #C9A050;
@@ -100,7 +100,7 @@
     background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    height: 50vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -130,15 +130,77 @@
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
   }
 
-  .hero p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+  .pricing-section {
+    padding: 6rem 0;
+    background-color: var(--card-bg);
   }
 
-  .cta-button {
+  .pricing-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--primary-color);
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .pricing-card {
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pricing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  .pricing-card-title {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+  }
+
+  .pricing-card-price {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+
+  .pricing-card-description {
+    margin-bottom: 2rem;
+  }
+
+  .pricing-card-features {
+    list-style-type: none;
+    margin-bottom: 2rem;
+    flex-grow: 1;
+  }
+
+  .pricing-card-features li {
+    margin-bottom: 0.5rem;
+    position: relative;
+    padding-left: 1.5rem;
+  }
+
+  .pricing-card-features li::before {
+    content: '✓';
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+  }
+
+  .pricing-card-cta {
     display: inline-block;
     background-color: var(--primary-color);
     color: var(--secondary-color);
@@ -151,131 +213,28 @@
     letter-spacing: 1px;
   }
 
-  .cta-button:hover {
+  .pricing-card-cta:hover {
     background-color: var(--accent-color);
     transform: translateY(-3px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   }
 
-  .features {
-    padding: 6rem 0;
-    background-color: var(--card-bg);
-  }
-
-  .features-title {
+  .custom-plan {
     text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-    color: var(--primary-color);
+    margin-top: 4rem;
   }
 
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 3rem;
-  }
-
-  .feature-card {
-    background-color: var(--bg-color);
-    border-radius: 12px;
-    padding: 2.5rem;
-    text-align: center;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .feature-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-  }
-
-  .feature-icon {
-    font-size: 4rem;
-    margin-bottom: 1.5rem;
-    color: var(--primary-color);
-  }
-
-  .feature-title {
-    font-size: 1.5rem;
+  .custom-plan-title {
+    font-size: 2rem;
     margin-bottom: 1rem;
     color: var(--secondary-color);
   }
 
-  .feature-description {
-    margin-bottom: 1.5rem;
-  }
-
-  .feature-list {
-    text-align: left;
-    list-style-type: none;
-  }
-
-  .feature-list li {
-    margin-bottom: 0.5rem;
-    position: relative;
-    padding-left: 1.5rem;
-  }
-
-  .feature-list li::before {
-    content: '✓';
-    color: var(--primary-color);
-    position: absolute;
-    left: 0;
-  }
-
-  .testimonials {
-    margin-top: 4rem;
-    text-align: center;
-    padding: 4rem 0;
-    background-image: url('https://images.unsplash.com/photo-1572120360610-d971b9d7767c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    position: relative;
-  }
-
-  .testimonials::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.7);
-  }
-
-  .testimonials-content {
-    position: relative;
-    z-index: 1;
-  }
-
-  .testimonials h2 {
-    color: #FFFFFF;
+  .custom-plan-description {
     margin-bottom: 2rem;
-  }
-
-  .testimonial-card {
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 8px;
-    padding: 2rem;
-    margin-top: 2rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
+    max-width: 600px;
     margin-left: auto;
     margin-right: auto;
-  }
-
-  .testimonial-content {
-    font-style: italic;
-    margin-bottom: 1rem;
-  }
-
-  .testimonial-author {
-    font-weight: bold;
-    color: var(--primary-color);
   }
 
   .footer {
@@ -283,7 +242,6 @@
     color: var(--footer-text);
     text-align: center;
     padding: 2rem 0;
-    margin-top: 4rem;
   }
 
   .footer a {
@@ -351,10 +309,7 @@
     .hero h1 {
       font-size: 2.5rem;
     }
-    .hero p {
-      font-size: 1rem;
-    }
-    .features-grid {
+    .pricing-grid {
       grid-template-columns: 1fr;
     }
   }
@@ -369,9 +324,9 @@
           <div class="logo-text">RadHIL</div>
         </div>
         <nav class="nav">
-          <a href="https://radhil.com" class="active">Home</a>
+          <a href="https://radhil.com">Home</a>
           <a href="https://radhil.com/features">Features</a>
-          <a href="https://radhil.com/pricing">Pricing</a>
+          <a href="https://radhil.com/pricing" class="active">Pricing</a>
           <a href="https://radhil.com/request-demo">Demo</a>
           <a href="https://radhil.com/support">Support</a>
         </nav>
@@ -388,74 +343,63 @@
   <main>
     <section class="hero">
       <div class="hero-content">
-        <h1>Elevate Your Vacation Rental Experience</h1>
-        <p>RadHIL combines AI-powered pricing, seamless channel management, and intuitive guest communication to maximize your rental property's potential.</p>
-        <a href="https://radhil.com/request-demo" class="cta-button">Experience Luxury</a>
+        <h1>Tailored Pricing for Your Luxury Rentals</h1>
       </div>
     </section>
     
-    <section class="features">
+    <section class="pricing-section">
       <div class="container">
-        <h2 class="features-title">Unparalleled Features for Exceptional Results</h2>
-        <div class="features-grid">
-          <div class="feature-card">
-            <div class="feature-icon">💎</div>
-            <h3 class="feature-title">AI-Driven Dynamic Pricing</h3>
-            <p class="feature-description">Maximize your revenue with our cutting-edge pricing algorithm.</p>
-            <ul class="feature-list">
-              <li>Real-time market analysis</li>
-              <li>Seasonal and event-based adjustments</li>
-              <li>Competitor price monitoring</li>
-              <li>Customizable pricing rules</li>
+        <h2 class="pricing-title">Choose Your RadHIL Experience</h2>
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <h3 class="pricing-card-title">Essentials</h3>
+            <p class="pricing-card-price">$99/month</p>
+            <p class="pricing-card-description">Perfect for those just starting with luxury rentals</p>
+            <ul class="pricing-card-features">
+              <li>AI-Driven Dynamic Pricing</li>
+              <li>Channel Management (up to 3 platforms)</li>
+              <li>Basic Guest Communication Tools</li>
+              <li>Standard Analytics Dashboard</li>
+              <li>Email Support</li>
             </ul>
+            <a href="https://radhil.com/signup?plan=essentials" class="pricing-card-cta">Get Started</a>
           </div>
-          <div class="feature-card">
-            <div class="feature-icon">🌐</div>
-            <h3 class="feature-title">Seamless Channel Management</h3>
-            <p class="feature-description">Expand your reach across multiple platforms effortlessly.</p>
-            <ul class="feature-list">
-              <li>Sync with 50+ booking platforms</li>
-              <li>Automatic calendar updates</li>
-              <li>Centralized reservation management</li>
-              <li>Unified inbox for all platforms</li>
+          
+          <div class="pricing-card">
+            <h3 class="pricing-card-title">Professional</h3>
+            <p class="pricing-card-price">$299/month</p>
+            <p class="pricing-card-description">Ideal for established luxury rental businesses</p>
+            <ul class="pricing-card-features">
+              <li>Advanced AI Pricing Strategies</li>
+              <li>Unlimited Channel Management</li>
+              <li>Intelligent Guest Communication Suite</li>
+              <li>Advanced Analytics with Forecasting</li>
+              <li>Priority Email and Phone Support</li>
+              <li>Dedicated Account Manager</li>
             </ul>
+            <a href="https://radhil.com/signup?plan=professional" class="pricing-card-cta">Upgrade Now</a>
           </div>
-          <div class="feature-card">
-            <div class="feature-icon">💬</div>
-            <h3 class="feature-title">Intelligent Guest Communication</h3>
-            <p class="feature-description">Elevate guest experiences with automated, personalized interactions.</p>
-            <ul class="feature-list">
-              <li>AI-powered chatbot assistance</li>
-              <li>Customizable message templates</li>
-              <li>Multi-language support</li>
-              <li>Automated review requests</li>
+          
+          <div class="pricing-card">
+            <h3 class="pricing-card-title">Enterprise</h3>
+            <p class="pricing-card-price">Custom Pricing</p>
+            <p class="pricing-card-description">Tailored solutions for large-scale operations</p>
+            <ul class="pricing-card-features">
+              <li>Custom AI Models and Integrations</li>
+              <li>White-Label Options</li>
+              <li>Advanced API Access</li>
+              <li>Dedicated DevOps Support</li>
+              <li>24/7 Premium Support</li>
+              <li>Quarterly Business Reviews</li>
             </ul>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">📊</div>
-            <h3 class="feature-title">Comprehensive Analytics Dashboard</h3>
-            <p class="feature-description">Make data-driven decisions with in-depth insights.</p>
-            <ul class="feature-list">
-              <li>Real-time performance metrics</li>
-              <li>Occupancy and revenue forecasts</li>
-              <li>Guest behavior analysis</li>
-              <li>Customizable reports and exports</li>
-            </ul>
+            <a href="https://radhil.com/contact-sales" class="pricing-card-cta">Contact Sales</a>
           </div>
         </div>
-      </div>
-    </section>
-    
-    <section class="testimonials">
-      <div class="testimonials-content">
-        <h2>What Our Esteemed Clients Say</h2>
-        <div class="testimonial-card">
-          <p class="testimonial-content">"RadHIL has transformed the way we manage our luxury vacation rentals. The AI-powered pricing alone has increased our revenue by 30% in just three months!"</p>
-          <p class="testimonial-author">- Sarah Johnson, Luxury Property Manager</p>
-        </div>
-        <div class="testimonial-card">
-          <p class="testimonial-content">"The channel management feature is a game-changer. We've expanded our reach across multiple platforms without any extra effort, attracting high-end clients from around the world."</p>
-""<p class="testimonial-author">- Michael Chen, Elite Vacation Rental Owner</p>
+        
+        <div class="custom-plan">
+          <h3 class="custom-plan-title">Need a Custom Solution?</h3>
+          <p class="custom-plan-description">We understand that every luxury rental business is unique. Our team is ready to create a tailored plan that perfectly fits your specific needs and goals.</p>
+          <a href="https://radhil.com/custom-quote" class="pricing-card-cta">Get Custom Quote</a>
         </div>
       </div>
     </section>

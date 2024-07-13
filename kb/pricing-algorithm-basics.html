@@ -1,0 +1,443 @@
+<html><head><base href="https://radhil.com/kb/pricing-algorithm-basics"><title>RadHIL - Pricing Algorithm Basics</title>
+<style>
+  :root {
+    --primary-color: #C9A050;
+    --secondary-color: #1E2A3B;
+    --accent-color: #E0C38C;
+    --text-color: #333333;
+    --bg-color: #FFFFFF;
+    --card-bg: #F8F8F8;
+    --nav-bg: #1E2A3B;
+    --footer-bg: #1E2A3B;
+    --footer-text: #FFFFFF;
+  }
+  
+  [data-theme="dark"] {
+    --primary-color: #E0C38C;
+    --secondary-color: #2C3E50;
+    --accent-color: #C9A050;
+    --text-color: #E6E6FA;
+    --bg-color: #1A1A2E;
+    --card-bg: #2D2D44;
+    --nav-bg: #2C3E50;
+    --footer-bg: #2C3E50;
+    --footer-text: #E6E6FA;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .header {
+    background-color: var(--nav-bg);
+    color: #FFFFFF;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .nav a:hover, .nav a.active {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+  }
+
+  .main-content {
+    padding-top: 80px;
+    display: flex;
+    gap: 2rem;
+  }
+
+  .sidebar {
+    width: 250px;
+    padding: 2rem;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    position: sticky;
+    top: 100px;
+    height: calc(100vh - 100px);
+    overflow-y: auto;
+  }
+
+  .sidebar h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+
+  .sidebar ul {
+    list-style-type: none;
+  }
+
+  .sidebar li {
+    margin-bottom: 0.5rem;
+  }
+
+  .sidebar a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .sidebar a:hover, .sidebar a.active {
+    color: var(--primary-color);
+  }
+
+  .article {
+    flex-grow: 1;
+    padding: 2rem;
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .article h1 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+  }
+
+  .article h2 {
+    color: var(--secondary-color);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .article p {
+    margin-bottom: 1rem;
+  }
+
+  .article ul, .article ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+  }
+
+  .article li {
+    margin-bottom: 0.5rem;
+  }
+
+  .article img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin: 1rem 0;
+  }
+
+  .footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+  }
+
+  .footer a {
+    color: var(--footer-text);
+    text-decoration: none;
+    margin: 0 0.5rem;
+  }
+
+  .theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+  }
+
+  .theme-switch input {
+    display: none;
+  }
+
+  .slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+  }
+
+  .slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+    border-radius: 50%;
+  }
+
+  input:checked + .slider {
+    background-color: var(--primary-color);
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+  @media (max-width: 768px) {
+    .header-content {
+      flex-direction: column;
+      text-align: center;
+    }
+    .nav {
+      margin-top: 1rem;
+    }
+    .main-content {
+      flex-direction: column;
+    }
+    .sidebar {
+      width: 100%;
+      position: static;
+      height: auto;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-container">
+          <div class="logo-icon">🏆</div>
+          <div class="logo-text">RadHIL</div>
+        </div>
+        <nav class="nav">
+          <a href="https://radhil.com">Home</a>
+          <a href="https://radhil.com/features">Features</a>
+          <a href="https://radhil.com/pricing">Pricing</a>
+          <a href="https://radhil.com/request-demo">Demo</a>
+          <a href="https://radhil.com/support">Support</a>
+        </nav>
+        <div class="theme-switch-wrapper">
+          <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider"></div>
+          </label>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <div class="container main-content">
+    <aside class="sidebar">
+      <h3>AI-Driven Pricing</h3>
+      <ul>
+        <li><a href="#introduction" class="active">Introduction</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#key-factors">Key Factors</a></li>
+        <li><a href="#benefits">Benefits</a></li>
+        <li><a href="#getting-started">Getting Started</a></li>
+        <li><a href="#advanced-features">Advanced Features</a></li>
+        <li><a href="#faqs">FAQs</a></li>
+      </ul>
+    </aside>
+    
+    <main class="article">
+      <h1>Pricing Algorithm Basics</h1>
+      
+      <section id="introduction">
+        <h2>Introduction</h2>
+        <p>RadHIL's AI-driven pricing algorithm is at the heart of our revolutionary vacation rental management platform. This sophisticated system uses machine learning and real-time data analysis to optimize your property's pricing, ensuring maximum occupancy and revenue.</p>
+      </section>
+      
+      <section id="how-it-works">
+        <h2>How It Works</h2>
+        <p>Our pricing algorithm continuously analyzes vast amounts of data, including:</p>
+        <ul>
+          <li>Historical booking patterns</li>
+          <li>Real-time market demand</li>
+          <li>Competitor pricing</li>
+          <li>Local events and seasonality</li>
+          <li>Property-specific features and amenities</li>
+        </ul>
+        <p>Using this data, the algorithm generates dynamic pricing recommendations that automatically adjust to market conditions, helping you stay competitive and maximize your revenue.</p>
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Graph showing dynamic pricing over time" width="600" height="400">
+      </section>
+      
+      <section id="key-factors">
+        <h2>Key Factors Influencing Pricing</h2>
+        <p>The RadHIL pricing algorithm takes into account numerous factors, including:</p>
+        <ul>
+          <li>Day of the week</li>
+          <li>Seasonality</li>
+          <li>Lead time</li>
+          <li>Local events and holidays</li>
+          <li>Competitor pricing and availability</li>
+          <li>Historical occupancy rates</li>
+          <li>Property attributes and amenities</li>
+          <li>Guest reviews and ratings</li>
+        </ul>
+      </section>
+      
+      <section id="benefits">
+        <h2>Benefits of AI-Driven Pricing</h2>
+        <ul>
+          <li>Increased Revenue: Optimize pricing to capture maximum value from each booking.</li>
+          <li>Higher Occupancy Rates: Stay competitive and attract more bookings during both peak and off-peak periods.</li>
+          <li>Time Savings: Automate pricing decisions, freeing up your time for other aspects of property management.</li>
+          <li>Market Responsiveness: Quickly adapt to changing market conditions and demand fluctuations.</li>
+          <li>Data-Driven Decisions: Make informed pricing choices based on comprehensive market analysis.</li>
+        </ul>
+      </section>
+      
+      <section id="getting-started">
+        <h2>Getting Started with RadHIL's Pricing Algorithm</h2>
+        <ol>
+          <li>Set your base price and minimum acceptable rate.</li>
+          <li>Define your pricing goals (e.g., maximize revenue, increase occupancy).</li>
+          <li>Input property details and unique selling points.</li>
+          <li>Connect your property to relevant booking channels.</li>
+          <li>Review and approve initial pricing recommendations.</li>
+          <li>Monitor performance and adjust settings as needed.</li>
+        </ol>
+      </section>
+      
+      <section id="advanced-features">
+        <h2>Advanced Features</h2>
+        <ul>
+          <li>Custom Pricing Rules: Set specific rules for holidays, events, or special dates.</li>
+          <li>Competitor Set Analysis: Compare your pricing and performance against similar properties.</li>
+          <li>Demand Forecasting: Predict future demand and adjust prices accordingly.</li>
+          <li>Multi-Unit Management: Optimize pricing across multiple properties or units.</li>
+          <li>Yield Management: Balance occupancy and average daily rate to maximize overall revenue.</li>
+        </ul>
+      </section>
+      
+      <section id="faqs">
+        <h2>Frequently Asked Questions</h2>
+        <h3>Q: How often does the algorithm update prices?</h3>
+        <p>A: The algorithm updates prices in real-time, ensuring your rates always reflect current market conditions.</p>
+        
+        <h3>Q: Can I override the algorithm's recommendations?</h3>
+        <p>A: Yes, you have full control to review, adjust, or override any pricing recommendations.</p>
+        
+        <h3>Q: How does the algorithm handle special events or holidays?</h3>
+        <p>A: The algorithm automatically factors in local events and holidays. You can also set custom rules for specific dates.</p>
+        
+        <h3>Q: Is the algorithm customized for my specific property?</h3>
+        <p>A: Yes, the algorithm takes into account your property's unique features, location, and historical performance to provide tailored pricing recommendations.</p>
+      </section>
+    </main>
+  </div>
+  
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2023 RadHIL. All rights reserved.</p>
+      <p>
+        <a href="https://radhil.com/privacy">Privacy Policy</a> | 
+        <a href="https://radhil.com/terms">Terms of Service</a> |
+        <a href="https://radhil.com/contact">Contact Us</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+    const currentTheme = localStorage.getItem('theme');
+
+    if (currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme);
+      
+        if (currentTheme === 'dark') {
+            toggleSwitch.checked = true;
+        }
+    }
+
+    function switchTheme(e) {
+        if (e.target.checked) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        }
+        else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+        }    
+    }
+
+    toggleSwitch.addEventListener('change', switchTheme, false);
+
+    // Scroll effect for header
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('.header');
+      if (window.scrollY > 50) {
+        header.style.backgroundColor = 'rgba(30, 42, 59, 0.9)';
+        header.style.boxShadow = '0 2px 4px rgba(0,0,0,.1)';
+      } else {
+        header.style.backgroundColor = 'var(--nav-bg)';
+        header.style.boxShadow = 'none';
+      }
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>

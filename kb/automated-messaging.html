@@ -1,0 +1,430 @@
+<html><head><base href="https://radhil.com/kb/automated-messaging"><title>RadHIL - Automated Messaging Setup</title>
+<style>
+  :root {
+    --primary-color: #C9A050;
+    --secondary-color: #1E2A3B;
+    --accent-color: #E0C38C;
+    --text-color: #333333;
+    --bg-color: #FFFFFF;
+    --card-bg: #F8F8F8;
+    --nav-bg: #1E2A3B;
+    --footer-bg: #1E2A3B;
+    --footer-text: #FFFFFF;
+  }
+  
+  [data-theme="dark"] {
+    --primary-color: #E0C38C;
+    --secondary-color: #2C3E50;
+    --accent-color: #C9A050;
+    --text-color: #E6E6FA;
+    --bg-color: #1A1A2E;
+    --card-bg: #2D2D44;
+    --nav-bg: #2C3E50;
+    --footer-bg: #2C3E50;
+    --footer-text: #E6E6FA;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .header {
+    background-color: var(--nav-bg);
+    color: #FFFFFF;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .nav a:hover, .nav a.active {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+  }
+
+  .main-content {
+    padding-top: 80px;
+    display: flex;
+    gap: 2rem;
+  }
+
+  .sidebar {
+    width: 250px;
+    padding: 2rem;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    position: sticky;
+    top: 100px;
+    height: calc(100vh - 100px);
+    overflow-y: auto;
+  }
+
+  .sidebar h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+
+  .sidebar ul {
+    list-style-type: none;
+  }
+
+  .sidebar li {
+    margin-bottom: 0.5rem;
+  }
+
+  .sidebar a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .sidebar a:hover, .sidebar a.active {
+    color: var(--primary-color);
+  }
+
+  .article {
+    flex-grow: 1;
+    padding: 2rem;
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .article h1 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+  }
+
+  .article h2 {
+    color: var(--secondary-color);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .article p {
+    margin-bottom: 1rem;
+  }
+
+  .article ul, .article ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+  }
+
+  .article li {
+    margin-bottom: 0.5rem;
+  }
+
+  .article img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin: 1rem 0;
+  }
+
+  .footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+  }
+
+  .footer a {
+    color: var(--footer-text);
+    text-decoration: none;
+    margin: 0 0.5rem;
+  }
+
+  .theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+  }
+
+  .theme-switch input {
+    display: none;
+  }
+
+  .slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+  }
+
+  .slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+    border-radius: 50%;
+  }
+
+  input:checked + .slider {
+    background-color: var(--primary-color);
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+  @media (max-width: 768px) {
+    .main-content {
+      flex-direction: column;
+    }
+    .sidebar {
+      width: 100%;
+      position: static;
+      height: auto;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-container">
+          <div class="logo-icon">🏆</div>
+          <div class="logo-text">RadHIL</div>
+        </div>
+        <nav class="nav">
+          <a href="https://radhil.com">Home</a>
+          <a href="https://radhil.com/features">Features</a>
+          <a href="https://radhil.com/pricing">Pricing</a>
+          <a href="https://radhil.com/request-demo">Demo</a>
+          <a href="https://radhil.com/support">Support</a>
+        </nav>
+        <div class="theme-switch-wrapper">
+          <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider"></div>
+          </label>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container main-content">
+    <aside class="sidebar">
+      <h3>Guest Communication</h3>
+      <ul>
+        <li><a href="#introduction" class="active">Introduction</a></li>
+        <li><a href="#benefits">Benefits of Automation</a></li>
+        <li><a href="#setup">Setting Up Automated Messages</a></li>
+        <li><a href="#triggers">Message Triggers</a></li>
+        <li><a href="#personalization">Personalizing Messages</a></li>
+        <li><a href="#templates">Using Message Templates</a></li>
+        <li><a href="#scheduling">Scheduling Messages</a></li>
+        <li><a href="#multilingual">Multilingual Support</a></li>
+        <li><a href="#integration">Channel Integration</a></li>
+        <li><a href="#analytics">Message Analytics</a></li>
+        <li><a href="#best-practices">Best Practices</a></li>
+        <li><a href="#troubleshooting">Troubleshooting</a></li>
+      </ul>
+    </aside>
+
+    <main class="article">
+      <h1>Automated Messaging Setup</h1>
+
+      <section id="introduction">
+        <h2>Introduction to Automated Messaging</h2>
+        <p>RadHIL's automated messaging system is designed to streamline your communication with guests, ensuring timely and consistent interactions throughout their journey. This powerful tool allows you to set up pre-defined messages that are automatically sent based on specific triggers or events.</p>
+        <img src="https://images.unsplash.com/photo-1577563908411-5077b6dc7624?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Illustration of a smartphone with messaging app open, showing automated messages being sent to guests" width="600" height="400">
+      </section>
+
+      <section id="benefits">
+        <h2>Benefits of Automation</h2>
+        <ul>
+          <li>Time-saving: Reduce manual effort in sending routine messages</li>
+          <li>Consistency: Ensure all guests receive the same high-quality information</li>
+          <li>Improved guest experience: Provide timely and relevant information</li>
+          <li>Increased efficiency: Manage multiple properties and bookings with ease</li>
+          <li>Higher reviews: Proactive communication often leads to better guest satisfaction</li>
+        </ul>
+      </section>
+
+      <section id="setup">
+        <h2>Setting Up Automated Messages</h2>
+        <ol>
+          <li>Navigate to the "Guest Communication" section in your RadHIL dashboard</li>
+          <li>Click on "Automated Messages" in the submenu</li>
+          <li>Select "Create New Automated Message"</li>
+          <li>Choose a trigger event for the message (e.g., Booking Confirmation, Check-in Reminder)</li>
+          <li>Craft your message using the rich text editor</li>
+          <li>Set up any conditional logic or personalization</li>
+          <li>Save and activate your automated message</li>
+        </ol>
+      </section>
+
+      <section id="triggers">
+        <h2>Message Triggers</h2>
+        <p>RadHIL offers a variety of triggers for automated messages, including:</p>
+        <ul>
+          <li>Booking Confirmation</li>
+          <li>Payment Received</li>
+          <li>Check-in Instructions (X days before arrival)</li>
+          <li>Welcome Message (On arrival day)</li>
+          <li>Mid-stay Check-in</li>
+          <li>Check-out Reminder</li>
+          <li>Post-stay Thank You</li>
+          <li>Review Request</li>
+        </ul>
+      </section>
+
+      <section id="personalization">
+        <h2>Personalizing Messages</h2>
+        <p>Use dynamic fields to personalize your messages:</p>
+        <ul>
+          <li>{guest_name}: Inserts the guest's name</li>
+          <li>{property_name}: Inserts the booked property's name</li>
+          <li>{check_in_date}: Inserts the check-in date</li>
+          <li>{check_out_date}: Inserts the check-out date</li>
+          <li>{wifi_password}: Inserts the property's WiFi password</li>
+          <li>{house_manual_link}: Inserts a link to the property's house manual</li>
+        </ul>
+      </section>
+
+      <section id="templates">
+        <h2>Using Message Templates</h2>
+        <p>RadHIL provides a library of pre-written templates for common scenarios. To use a template:</p>
+        <ol>
+          <li>Go to "Message Templates" in the Guest Communication section</li>
+          <li>Browse or search for a suitable template</li>
+          <li>Click "Use Template" to apply it to your automated message</li>
+          <li>Customize the template as needed for your specific property and style</li>
+        </ol>
+      </section>
+
+      <section id="scheduling">
+        <h2>Scheduling Messages</h2>
+        <p>For time-sensitive messages, you can set specific scheduling rules:</p>
+        <ul>
+          <li>Set messages to send at a particular time of day</li>
+          <li>Schedule messages for a specific number of days before or after key events (e.g., 2 days before check-in)</li>
+          <li>Use conditional logic to send messages only under certain circumstances (e.g., for bookings longer than 7 days)</li>
+        </ul>
+      </section>
+
+      <section id="multilingual">
+        <h2>Multilingual Support</h2>
+        <p>RadHIL's automated messaging system supports multiple languages:</p>
+        <ul>
+          <li>Create message variants for different languages</li>
+          <li>Set up language detection to automatically send the appropriate version</li>
+          <li>Use built-in translation services for quick message localization</li>
+        </ul>
+      </section>
+
+      <section id="integration">
+        <h2>Channel Integration</h2>
+        <p>Automated messages can be sent through various channels:</p>
+        <ul>
+          <li>Email</li>
+          <li>SMS</li>
+          <li>WhatsApp</li>
+          <li>In-app messaging (for properties with custom apps)</li>
+          <li>Booking platform messaging systems (e.g., Airbnb, Booking.com)</li>
+        </ul>
+        <p>Configure your preferred channels in the "Channel Settings" section.</p>
+      </section>
+
+      <section id="analytics">
+        <h2>Message Analytics</h2>
+        <p>Track the performance of your automated messages:</p>
+        <ul>
+          <li>View open rates and click-through rates for email messages</li>
+          <li>Monitor delivery status for SMS and instant messages</li>
+          <li>Analyze guest response patterns</li>
+          <li>Identify most effective message types and timing</li>
+        </ul>
+      </section>
+
+      <section id="best-practices">
+        <h2>Best Practices</h2>
+        <ul>
+          <li>Keep messages concise and informative</li>
+          <li>Use a friendly, professional tone</li>
+          <li>Include only relevant information for each stage of the guest journey</li>
+          <li>regularly review and update your automated messages</li>
+          <li>A/B test different message variations to optimize effectiveness</li>
+          <li>Ensure all critical information is also available in the property guide or app</li>
+        </ul>
+      </section>
+
+      <section id="troubleshooting">
+        <h2>Troubleshooting</h2>
+        <p>If you encounter issues with automated messaging:</p>
+        <ul>
+          <li>Check your account's messaging credits and limits</li>
+          <li>Verify that the guest's contact information is correct</li>
+          <li>Ensure your account is properly connected to all messaging channels</li

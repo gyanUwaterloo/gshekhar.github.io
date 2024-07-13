@@ -1,0 +1,435 @@
+<html><head><base href="https://radhil.com/kb/integration-guides/booking-channels"><title>RadHIL Knowledge Base - Booking Channels Integration Guide</title>
+<style>
+  :root {
+    --primary-color: #C9A050;
+    --secondary-color: #1E2A3B;
+    --accent-color: #E0C38C;
+    --text-color: #333333;
+    --bg-color: #FFFFFF;
+    --card-bg: #F8F8F8;
+    --nav-bg: #1E2A3B;
+    --footer-bg: #1E2A3B;
+    --footer-text: #FFFFFF;
+    --code-bg: #f4f4f4;
+  }
+  
+  [data-theme="dark"] {
+    --primary-color: #E0C38C;
+    --secondary-color: #2C3E50;
+    --accent-color: #C9A050;
+    --text-color: #E6E6FA;
+    --bg-color: #1A1A2E;
+    --card-bg: #2D2D44;
+    --nav-bg: #2C3E50;
+    --footer-bg: #2C3E50;
+    --footer-text: #E6E6FA;
+    --code-bg: #2b2b2b;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .header {
+    background-color: var(--nav-bg);
+    color: #FFFFFF;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .nav a:hover, .nav a.active {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+  }
+
+  .main-content {
+    padding-top: 80px;
+    display: flex;
+    gap: 2rem;
+  }
+
+  .sidebar {
+    width: 250px;
+    padding: 2rem;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    position: sticky;
+    top: 100px;
+    height: calc(100vh - 100px);
+    overflow-y: auto;
+  }
+
+  .sidebar h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+
+  .sidebar ul {
+    list-style-type: none;
+  }
+
+  .sidebar li {
+    margin-bottom: 0.5rem;
+  }
+
+  .sidebar a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .sidebar a:hover, .sidebar a.active {
+    color: var(--primary-color);
+  }
+
+  .article {
+    flex-grow: 1;
+    padding: 2rem;
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .article h1 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+  }
+
+  .article h2 {
+    color: var(--secondary-color);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .article p {
+    margin-bottom: 1rem;
+  }
+
+  .article ul, .article ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+  }
+
+  .article li {
+    margin-bottom: 0.5rem;
+  }
+
+  .article img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin: 1rem 0;
+  }
+
+  .code-block {
+    background-color: var(--code-bg);
+    border-radius: 5px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    overflow-x: auto;
+  }
+
+  .code-block code {
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--text-color);
+  }
+
+  .note {
+    background-color: var(--accent-color);
+    color: var(--secondary-color);
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+  }
+
+  .footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+  }
+
+  .footer a {
+    color: var(--footer-text);
+    text-decoration: none;
+    margin: 0 0.5rem;
+  }
+
+  .theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+  }
+
+  .theme-switch input {
+    display: none;
+  }
+
+  .slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+  }
+
+  .slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+    border-radius: 50%;
+  }
+
+  input:checked + .slider {
+    background-color: var(--primary-color);
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+  @media (max-width: 768px) {
+    .main-content {
+      flex-direction: column;
+    }
+    .sidebar {
+      width: 100%;
+      position: static;
+      height: auto;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-container">
+          <div class="logo-icon">🏆</div>
+          <div class="logo-text">RadHIL</div>
+        </div>
+        <nav class="nav">
+          <a href="https://radhil.com">Home</a>
+          <a href="https://radhil.com/features">Features</a>
+          <a href="https://radhil.com/pricing">Pricing</a>
+          <a href="https://radhil.com/request-demo">Demo</a>
+          <a href="https://radhil.com/support">Support</a>
+        </nav>
+        <div class="theme-switch-wrapper">
+          <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider"></div>
+          </label>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container main-content">
+    <aside class="sidebar">
+      <h3>On This Page</h3>
+      <ul>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#supported-channels">Supported Channels</a></li>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#integration-steps">Integration Steps</a></li>
+        <li><a href="#airbnb-integration">Airbnb Integration</a></li>
+        <li><a href="#booking-com-integration">Booking.com Integration</a></li>
+        <li><a href="#vrbo-integration">VRBO Integration</a></li>
+        <li><a href="#troubleshooting">Troubleshooting</a></li>
+        <li><a href="#best-practices">Best Practices</a></li>
+      </ul>
+    </aside>
+
+    <main class="article">
+      <h1>Booking Channels Integration Guide</h1>
+
+      <section id="introduction">
+        <h2>Introduction</h2>
+        <p>Integrating RadHIL with various booking channels is crucial for maximizing your property's visibility and streamlining your rental management process. This guide will walk you through the steps to connect RadHIL with major booking platforms, ensuring seamless synchronization of availability, rates, and bookings.</p>
+      </section>
+
+      <section id="supported-channels">
+        <h2>Supported Booking Channels</h2>
+        <p>RadHIL currently supports integration with the following booking channels:</p>
+        <ul>
+          <li>Airbnb</li>
+          <li>Booking.com</li>
+          <li>VRBO (including HomeAway and Expedia)</li>
+          <li>TripAdvisor</li>
+          <li>Agoda</li>
+          <li>Ctrip</li>
+        </ul>
+      </section>
+
+      <section id="prerequisites">
+        <h2>Prerequisites</h2>
+        <p>Before you begin the integration process, ensure you have:</p>
+        <ul>
+          <li>An active RadHIL account with admin privileges</li>
+          <li>Active accounts on the booking channels you wish to integrate</li>
+          <li>API credentials for each booking channel (if required)</li>
+          <li>Your property details fully set up in RadHIL</li>
+        </ul>
+      </section>
+
+      <section id="integration-steps">
+        <h2>General Integration Steps</h2>
+        <ol>
+          <li>Log in to your RadHIL dashboard</li>
+          <li>Navigate to 'Integrations' &gt; 'Booking Channels'</li>
+          <li>Select the booking channel you want to integrate</li>
+          <li>Follow the channel-specific instructions (detailed below)</li>
+          <li>Authorize RadHIL to access your booking channel account</li>
+          <li>Map your RadHIL properties to the corresponding listings on the booking channel</li>
+          <li>Configure sync settings (rates, availability, bookings)</li>
+          <li>Test the integration</li>
+        </ol>
+      </section>
+
+      <section id="airbnb-integration">
+        <h2>Airbnb Integration</h2>
+        <p>To integrate RadHIL with Airbnb:</p>
+        <ol>
+          <li>In the RadHIL dashboard, go to 'Integrations' &gt; 'Booking Channels' &gt; 'Airbnb'</li>
+          <li>Click 'Connect to Airbnb'</li>
+          <li>You'll be redirected to Airbnb. Log in and authorize RadHIL</li>
+          <li>Once authorized, you'll be returned to RadHIL</li>
+          <li>Map your RadHIL properties to your Airbnb listings</li>
+          <li>Configure sync settings for calendar, rates, and instant booking</li>
+        </ol>
+        <div class="note">
+          <strong>Note:</strong> Airbnb requires a separate API key for professional hosts. If you're a professional host, you'll need to provide this key during the integration process.
+        </div>
+      </section>
+
+      <section id="booking-com-integration">
+        <h2>Booking.com Integration</h2>
+        <p>To integrate RadHIL with Booking.com:</p>
+        <ol>
+          <li>In the RadHIL dashboard, go to 'Integrations' &gt; 'Booking Channels' &gt; 'Booking.com'</li>
+          <li>Click 'Connect to Booking.com'</li>
+          <li>Enter your Booking.com credentials and API key</li>
+          <li>Map your RadHIL properties to your Booking.com listings</li>
+          <li>Configure sync settings for availability, rates, and restrictions</li>
+        </ol>
+        <div class="code-block">
+          <code>
+            // Example API call to update availability on Booking.com
+            PUT /bookings/v1/properties/{property_id}/rooms/{room_id}/availability
+            {
+              "date_range": {
+                "start_date": "2023-07-01",
+                "end_date": "2023-07-31"
+              },
+              "inventory_count": 1
+            }
+          </code>
+        </div>
+      </section>
+
+      <section id="vrbo-integration">
+        <h2>VRBO Integration</h2>
+        <p>To integrate RadHIL with VRBO (including HomeAway and Expedia):</p>
+        <ol>
+          <li>In the RadHIL dashboard, go to 'Integrations' &gt; 'Booking Channels' &gt; 'VRBO'</li>
+          <li>Click 'Connect to VRBO'</li>
+          <li>You'll be redirected to VRBO. Log in and authorize RadHIL</li>
+          <li>Once authorized, you'll be returned to RadHIL</li>
+          <li>Map your RadHIL properties to your VRBO listings</li>
+          <li>Configure sync settings for calendar, rates, and booking rules</li>
+        </ol>
+      </section>
+
+      <section id="troubleshooting">
+        <h2>Troubleshooting</h2>
+        <p>If you encounter issues during the integration process:</p>
+        <ul>
+          <li>Ensure all prerequisites are met</li>
+          <li>Check that your API credentials are correct and have not expired</li>
+          <li>Verify that your property details in RadHIL match those on the booking channel</li>
+          <li>Review the RadHIL error logs for specific error messages</li>
+          <li>For persistent issues, contact RadHIL support with the error details and steps to reproduce the problem</li>
+        </ul>
+      </section>
+
+      <section id="best-practices">
+        <h2>Best Practices</h2>
+        <ul>
+          <li>Regularly review and update your integration settings to ensure optimal performance</li>
+          <li>Use RadHIL's channel health monitoring tools to catch and address synchronization issues promptly</li>
+          <li>Keep your property details consistent across all platforms to avoid guest confusion</li>
+          <li>Utilize RadHIL's unified inbox feature to manage guest communications from all channels in one place</li>
+          <li>Take advantage of RadHIL

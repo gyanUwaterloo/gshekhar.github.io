@@ -1,0 +1,379 @@
+<html><head><base href="https://radhil.com/kb/message-templates"><title>RadHIL - Creating Message Templates</title>
+<style>
+  :root {
+    --primary-color: #C9A050;
+    --secondary-color: #1E2A3B;
+    --accent-color: #E0C38C;
+    --text-color: #333333;
+    --bg-color: #FFFFFF;
+    --card-bg: #F8F8F8;
+    --nav-bg: #1E2A3B;
+    --footer-bg: #1E2A3B;
+    --footer-text: #FFFFFF;
+    --code-bg: #F0F0F0;
+  }
+  
+  [data-theme="dark"] {
+    --primary-color: #E0C38C;
+    --secondary-color: #2C3E50;
+    --accent-color: #C9A050;
+    --text-color: #E6E6FA;
+    --bg-color: #1A1A2E;
+    --card-bg: #2D2D44;
+    --nav-bg: #2C3E50;
+    --footer-bg: #2C3E50;
+    --footer-text: #E6E6FA;
+    --code-bg: #2A2A3A;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .header {
+    background-color: var(--nav-bg);
+    color: #FFFFFF;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .nav a:hover, .nav a.active {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+  }
+
+  .main-content {
+    padding-top: 80px;
+    padding-bottom: 2rem;
+  }
+
+  .article {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 2rem;
+    margin-top: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .article h1 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+  }
+
+  .article h2 {
+    color: var(--secondary-color);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .article p {
+    margin-bottom: 1rem;
+  }
+
+  .article ul, .article ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+  }
+
+  .article li {
+    margin-bottom: 0.5rem;
+  }
+
+  .code-block {
+    background-color: var(--code-bg);
+    border-radius: 5px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    overflow-x: auto;
+  }
+
+  .code-block pre {
+    margin: 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .template-example {
+    border: 1px solid var(--accent-color);
+    border-radius: 5px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+  }
+
+  .footer a {
+    color: var(--footer-text);
+    text-decoration: none;
+    margin: 0 0.5rem;
+  }
+
+  .theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+  }
+
+  .theme-switch input {
+    display: none;
+  }
+
+  .slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+  }
+
+  .slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+    border-radius: 50%;
+  }
+
+  input:checked + .slider {
+    background-color: var(--primary-color);
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+  @media (max-width: 768px) {
+    .header-content {
+      flex-direction: column;
+      text-align: center;
+    }
+    .nav {
+      margin-top: 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-container">
+          <div class="logo-icon">🏆</div>
+          <div class="logo-text">RadHIL</div>
+        </div>
+        <nav class="nav">
+          <a href="https://radhil.com">Home</a>
+          <a href="https://radhil.com/features">Features</a>
+          <a href="https://radhil.com/pricing">Pricing</a>
+          <a href="https://radhil.com/request-demo">Demo</a>
+          <a href="https://radhil.com/support">Support</a>
+        </nav>
+        <div class="theme-switch-wrapper">
+          <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider"></div>
+          </label>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+      <article class="article">
+        <h1>Creating Message Templates</h1>
+        
+        <p>Message templates are a powerful feature in RadHIL that allow you to create standardized, personalized messages for various guest interactions. By using templates, you can ensure consistency in your communication while saving time and effort.</p>
+
+        <h2>Why Use Message Templates?</h2>
+        <ul>
+          <li>Consistency in communication across all properties</li>
+          <li>Time-saving for repetitive messages</li>
+          <li>Personalization through dynamic fields</li>
+          <li>Maintain a professional tone</li>
+          <li>Easy updates and modifications</li>
+        </ul>
+
+        <h2>Creating a New Template</h2>
+        <ol>
+          <li>Navigate to the "Communication" section in your RadHIL dashboard</li>
+          <li>Click on "Message Templates"</li>
+          <li>Select "Create New Template"</li>
+          <li>Choose a template type (e.g., Booking Confirmation, Check-in Instructions, etc.)</li>
+          <li>Give your template a name</li>
+          <li>Craft your message using the rich text editor</li>
+          <li>Add dynamic fields where needed</li>
+          <li>Save your template</li>
+        </ol>
+
+        <h2>Using Dynamic Fields</h2>
+        <p>Dynamic fields allow you to personalize your messages with guest-specific information. Here are some commonly used dynamic fields:</p>
+        
+        <div class="code-block">
+          <pre>
+{guest_name} - Inserts the guest's name
+{property_name} - Inserts the booked property's name
+{check_in_date} - Inserts the check-in date
+{check_out_date} - Inserts the check-out date
+{booking_code} - Inserts the unique booking code
+{wifi_password} - Inserts the property's WiFi password
+{house_manual_link} - Inserts a link to the property's house manual
+          </pre>
+        </div>
+
+        <h2>Template Example: Booking Confirmation</h2>
+        <div class="template-example">
+          <p>Dear {guest_name},</p>
+          <p>Thank you for booking your stay at {property_name}. We're excited to host you!</p>
+          <p>Your booking details:</p>
+          <ul>
+            <li>Check-in: {check_in_date}</li>
+            <li>Check-out: {check_out_date}</li>
+            <li>Booking code: {booking_code}</li>
+          </ul>
+          <p>For your convenience, you can find our house manual here: {house_manual_link}</p>
+          <p>If you have any questions before your stay, please don't hesitate to reach out.</p>
+          <p>We look forward to welcoming you!</p>
+          <p>Best regards,<br>The {property_name} Team</p>
+        </div>
+
+        <h2>Best Practices for Message Templates</h2>
+        <ul>
+          <li>Keep messages concise and informative</li>
+          <li>Use a friendly yet professional tone</li>
+          <li>Include all necessary information, but avoid overwhelming the guest</li>
+          <li>Use proper grammar and punctuation</li>
+          <li>Test your templates before activating them</li>
+          <li>Regularly review and update your templates</li>
+        </ul>
+
+        <h2>Advanced Template Features</h2>
+        <p>RadHIL offers advanced features for message templates, including:</p>
+        <ul>
+          <li>Conditional content based on booking details</li>
+          <li>Multi-language support</li>
+          <li>A/B testing for template optimization</li>
+          <li>Sentiment analysis to gauge guest reactions</li>
+        </ul>
+        <p>To learn more about these advanced features, check out our <a href="https://radhil.com/kb/advanced-message-templates">Advanced Message Templates</a> guide.</p>
+
+        <h2>Conclusion</h2>
+        <p>Creating effective message templates is crucial for maintaining high-quality guest communication while streamlining your operations. By utilizing RadHIL's powerful template features, you can ensure that every guest receives personalized, professional, and timely communication throughout their booking journey.</p>
+      </article>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2023 RadHIL. All rights reserved.</p>
+      <p>
+        <a href="https://radhil.com/privacy">Privacy Policy</a> | 
+        <a href="https://radhil.com/terms">Terms of Service</a> |
+        <a href="https://radhil.com/contact">Contact Us</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+    const currentTheme = localStorage.getItem('theme');
+
+    if (currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme);
+      
+        if (currentTheme === 'dark') {
+            toggleSwitch.checked = true;
+        }
+    }
+
+    function switchTheme(e) {
+        if (e.target.checked) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        }
+        else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+        }    
+    }
+
+    toggleSwitch.addEventListener('change', switchTheme, false);
+  </script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-<html><head><base href="https://radhil.com"><title>RadHIL - Luxury Vacation Rental Management</title>
+<html><head><base href="https://radhil.com/knowledge-base"><title>RadHIL - Knowledge Base</title>
 <style>
   :root {
     --primary-color: #C9A050;
@@ -100,7 +100,7 @@
     background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    height: 50vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -130,151 +130,78 @@
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
   }
 
-  .hero p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+  .search-container {
+    margin-top: 2rem;
   }
 
-  .cta-button {
-    display: inline-block;
+  .search-input {
+    padding: 0.8rem;
+    width: 60%;
+    border: none;
+    border-radius: 25px 0 0 25px;
+    font-size: 1rem;
+  }
+
+  .search-button {
+    padding: 0.8rem 1.5rem;
     background-color: var(--primary-color);
     color: var(--secondary-color);
-    padding: 0.8rem 2rem;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: bold;
+    border: none;
+    border-radius: 0 25px 25px 0;
+    font-size: 1rem;
+    cursor: pointer;
     transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 1px;
   }
 
-  .cta-button:hover {
+  .search-button:hover {
     background-color: var(--accent-color);
-    transform: translateY(-3px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   }
 
-  .features {
+  .kb-section {
     padding: 6rem 0;
     background-color: var(--card-bg);
   }
 
-  .features-title {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-    color: var(--primary-color);
-  }
-
-  .features-grid {
+  .kb-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 3rem;
+    gap: 2rem;
   }
 
-  .feature-card {
+  .kb-category {
     background-color: var(--bg-color);
-    border-radius: 12px;
-    padding: 2.5rem;
-    text-align: center;
+    border-radius: 10px;
+    padding: 2rem;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
 
-  .feature-card:hover {
+  .kb-category:hover {
     transform: translateY(-10px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
   }
 
-  .feature-icon {
-    font-size: 4rem;
-    margin-bottom: 1.5rem;
+  .kb-category-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
     color: var(--primary-color);
   }
 
-  .feature-title {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: var(--secondary-color);
-  }
-
-  .feature-description {
-    margin-bottom: 1.5rem;
-  }
-
-  .feature-list {
-    text-align: left;
+  .kb-category-list {
     list-style-type: none;
   }
 
-  .feature-list li {
+  .kb-category-list li {
     margin-bottom: 0.5rem;
-    position: relative;
-    padding-left: 1.5rem;
   }
 
-  .feature-list li::before {
-    content: '✓';
-    color: var(--primary-color);
-    position: absolute;
-    left: 0;
+  .kb-category-list a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
   }
 
-  .testimonials {
-    margin-top: 4rem;
-    text-align: center;
-    padding: 4rem 0;
-    background-image: url('https://images.unsplash.com/photo-1572120360610-d971b9d7767c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    position: relative;
-  }
-
-  .testimonials::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.7);
-  }
-
-  .testimonials-content {
-    position: relative;
-    z-index: 1;
-  }
-
-  .testimonials h2 {
-    color: #FFFFFF;
-    margin-bottom: 2rem;
-  }
-
-  .testimonial-card {
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 8px;
-    padding: 2rem;
-    margin-top: 2rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .testimonial-content {
-    font-style: italic;
-    margin-bottom: 1rem;
-  }
-
-  .testimonial-author {
-    font-weight: bold;
+  .kb-category-list a:hover {
     color: var(--primary-color);
   }
 
@@ -283,7 +210,6 @@
     color: var(--footer-text);
     text-align: center;
     padding: 2rem 0;
-    margin-top: 4rem;
   }
 
   .footer a {
@@ -351,11 +277,8 @@
     .hero h1 {
       font-size: 2.5rem;
     }
-    .hero p {
-      font-size: 1rem;
-    }
-    .features-grid {
-      grid-template-columns: 1fr;
+    .search-input {
+      width: 70%;
     }
   }
 </style>
@@ -369,7 +292,7 @@
           <div class="logo-text">RadHIL</div>
         </div>
         <nav class="nav">
-          <a href="https://radhil.com" class="active">Home</a>
+          <a href="https://radhil.com">Home</a>
           <a href="https://radhil.com/features">Features</a>
           <a href="https://radhil.com/pricing">Pricing</a>
           <a href="https://radhil.com/request-demo">Demo</a>
@@ -388,74 +311,71 @@
   <main>
     <section class="hero">
       <div class="hero-content">
-        <h1>Elevate Your Vacation Rental Experience</h1>
-        <p>RadHIL combines AI-powered pricing, seamless channel management, and intuitive guest communication to maximize your rental property's potential.</p>
-        <a href="https://radhil.com/request-demo" class="cta-button">Experience Luxury</a>
+        <h1>RadHIL Knowledge Base</h1>
+        <div class="search-container">
+          <input type="text" class="search-input" placeholder="Search for articles...">
+          <button class="search-button">Search</button>
+        </div>
       </div>
     </section>
     
-    <section class="features">
+    <section class="kb-section">
       <div class="container">
-        <h2 class="features-title">Unparalleled Features for Exceptional Results</h2>
-        <div class="features-grid">
-          <div class="feature-card">
-            <div class="feature-icon">💎</div>
-            <h3 class="feature-title">AI-Driven Dynamic Pricing</h3>
-            <p class="feature-description">Maximize your revenue with our cutting-edge pricing algorithm.</p>
-            <ul class="feature-list">
-              <li>Real-time market analysis</li>
-              <li>Seasonal and event-based adjustments</li>
-              <li>Competitor price monitoring</li>
-              <li>Customizable pricing rules</li>
+        <div class="kb-grid">
+          <div class="kb-category">
+            <h2 class="kb-category-title">Getting Started</h2>
+            <ul class="kb-category-list">
+              <li><a href="https://radhil.com/kb/quickstart-guide">QuickStart Guide</a></li>
+              <li><a href="https://radhil.com/kb/account-setup">Account Setup</a></li>
+              <li><a href="https://radhil.com/kb/property-onboarding">Property Onboarding</a></li>
+              <li><a href="https://radhil.com/kb/initial-configuration">Initial Configuration</a></li>
             </ul>
           </div>
-          <div class="feature-card">
-            <div class="feature-icon">🌐</div>
-            <h3 class="feature-title">Seamless Channel Management</h3>
-            <p class="feature-description">Expand your reach across multiple platforms effortlessly.</p>
-            <ul class="feature-list">
-              <li>Sync with 50+ booking platforms</li>
-              <li>Automatic calendar updates</li>
-              <li>Centralized reservation management</li>
-              <li>Unified inbox for all platforms</li>
+          <div class="kb-category">
+            <h2 class="kb-category-title">AI-Driven Pricing</h2>
+            <ul class="kb-category-list">
+              <li><a href="https://radhil.com/kb/pricing-algorithm-basics">Pricing Algorithm Basics</a></li>
+              <li><a href="https://radhil.com/kb/custom-pricing-rules">Setting Custom Pricing Rules</a></li>
+              <li><a href="https://radhil.com/kb/seasonal-pricing">Seasonal Pricing Strategies</a></li>
+              <li><a href="https://radhil.com/kb/pricing-optimization">Pricing Optimization Tips</a></li>
             </ul>
           </div>
-          <div class="feature-card">
-            <div class="feature-icon">💬</div>
-            <h3 class="feature-title">Intelligent Guest Communication</h3>
-            <p class="feature-description">Elevate guest experiences with automated, personalized interactions.</p>
-            <ul class="feature-list">
-              <li>AI-powered chatbot assistance</li>
-              <li>Customizable message templates</li>
-              <li>Multi-language support</li>
-              <li>Automated review requests</li>
+          <div class="kb-category">
+            <h2 class="kb-category-title">Channel Management</h2>
+            <ul class="kb-category-list">
+              <li><a href="https://radhil.com/kb/channel-integration">Channel Integration Guide</a></li>
+              <li><a href="https://radhil.com/kb/listing-optimization">Listing Optimization</a></li>
+              <li><a href="https://radhil.com/kb/calendar-sync">Calendar Synchronization</a></li>
+              <li><a href="https://radhil.com/kb/booking-management">Booking Management</a></li>
             </ul>
           </div>
-          <div class="feature-card">
-            <div class="feature-icon">📊</div>
-            <h3 class="feature-title">Comprehensive Analytics Dashboard</h3>
-            <p class="feature-description">Make data-driven decisions with in-depth insights.</p>
-            <ul class="feature-list">
-              <li>Real-time performance metrics</li>
-              <li>Occupancy and revenue forecasts</li>
-              <li>Guest behavior analysis</li>
-              <li>Customizable reports and exports</li>
+          <div class="kb-category">
+            <h2 class="kb-category-title">Guest Communication</h2>
+            <ul class="kb-category-list">
+              <li><a href="https://radhil.com/kb/automated-messaging">Automated Messaging Setup</a></li>
+              <li><a href="https://radhil.com/kb/message-templates">Creating Message Templates</a></li>
+              <li><a href="https://radhil.com/kb/guest-reviews">Managing Guest Reviews</a></li>
+              <li><a href="https://radhil.com/kb/chatbot-customization">Chatbot Customization</a></li>
             </ul>
           </div>
-        </div>
-      </div>
-    </section>
-    
-    <section class="testimonials">
-      <div class="testimonials-content">
-        <h2>What Our Esteemed Clients Say</h2>
-        <div class="testimonial-card">
-          <p class="testimonial-content">"RadHIL has transformed the way we manage our luxury vacation rentals. The AI-powered pricing alone has increased our revenue by 30% in just three months!"</p>
-          <p class="testimonial-author">- Sarah Johnson, Luxury Property Manager</p>
-        </div>
-        <div class="testimonial-card">
-          <p class="testimonial-content">"The channel management feature is a game-changer. We've expanded our reach across multiple platforms without any extra effort, attracting high-end clients from around the world."</p>
-""<p class="testimonial-author">- Michael Chen, Elite Vacation Rental Owner</p>
+          <div class="kb-category">
+            <h2 class="kb-category-title">Analytics & Reporting</h2>
+            <ul class="kb-category-list">
+              <li><a href="https://radhil.com/kb/dashboard-overview">Dashboard Overview</a></li>
+              <li><a href="https://radhil.com/kb/performance-metrics">Understanding Performance Metrics</a></li>
+              <li><a href="https://radhil.com/kb/custom-reports">Creating Custom Reports</a></li>
+              <li><a href="https://radhil.com/kb/data-export">Data Export and Integration</a></li>
+            </ul>
+          </div>
+          <div class="kb-category">
+            <h2 class="kb-category-title">Account Management</h2>
+            <ul class="kb-category-list">
+              <li><a href="https://radhil.com/kb/user-roles">User Roles and Permissions</a></li>
+              <li><a href="https://radhil.com/kb/billing-subscriptions">Billing and Subscriptions</a></li>
+              <li><a href="https://radhil.com/kb/security-settings">Security Settings</a></li>
+              <li><a href="https://radhil.com/kb/api-access">API Access and Integration</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -502,12 +422,4 @@
       const header = document.querySelector('.header');
       if (window.scrollY > 50) {
         header.style.backgroundColor = 'rgba(30, 42, 59, 0.9)';
-        header.style.boxShadow = '0 2px 4px rgba(0,0,0,.1)';
-      } else {
-        header.style.backgroundColor = 'var(--nav-bg)';
-        header.style.boxShadow = 'none';
-      }
-    });
-  </script>
-</body>
-</html>
+        header.style.boxShadow = '0 2px 4px rgba(0

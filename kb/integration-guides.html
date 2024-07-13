@@ -1,0 +1,423 @@
+<html><head><base href="https://radhil.com/kb/integration-guides"><title>RadHIL Knowledge Base - Integration Guides</title>
+<style>
+  :root {
+    --primary-color: #C9A050;
+    --secondary-color: #1E2A3B;
+    --accent-color: #E0C38C;
+    --text-color: #333333;
+    --bg-color: #FFFFFF;
+    --card-bg: #F8F8F8;
+    --nav-bg: #1E2A3B;
+    --footer-bg: #1E2A3B;
+    --footer-text: #FFFFFF;
+  }
+  
+  [data-theme="dark"] {
+    --primary-color: #E0C38C;
+    --secondary-color: #2C3E50;
+    --accent-color: #C9A050;
+    --text-color: #E6E6FA;
+    --bg-color: #1A1A2E;
+    --card-bg: #2D2D44;
+    --nav-bg: #2C3E50;
+    --footer-bg: #2C3E50;
+    --footer-text: #E6E6FA;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .header {
+    background-color: var(--nav-bg);
+    color: #FFFFFF;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .nav a:hover, .nav a.active {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+  }
+
+  .main-content {
+    padding-top: 80px;
+    display: flex;
+    gap: 2rem;
+  }
+
+  .sidebar {
+    width: 250px;
+    padding: 2rem;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    position: sticky;
+    top: 100px;
+    height: calc(100vh - 100px);
+    overflow-y: auto;
+  }
+
+  .sidebar h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+
+  .sidebar ul {
+    list-style-type: none;
+  }
+
+  .sidebar li {
+    margin-bottom: 0.5rem;
+  }
+
+  .sidebar a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .sidebar a:hover, .sidebar a.active {
+    color: var(--primary-color);
+  }
+
+  .article {
+    flex-grow: 1;
+    padding: 2rem;
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .article h1 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+  }
+
+  .article h2 {
+    color: var(--secondary-color);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .article p {
+    margin-bottom: 1rem;
+  }
+
+  .article ul, .article ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+  }
+
+  .article li {
+    margin-bottom: 0.5rem;
+  }
+
+  .article img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin: 1rem 0;
+  }
+
+  .integration-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .integration-card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .integration-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .integration-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .integration-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--secondary-color);
+  }
+
+  .integration-description {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .integration-link {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+  }
+
+  .integration-link:hover {
+    background-color: var(--accent-color);
+  }
+
+  .footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+  }
+
+  .footer a {
+    color: var(--footer-text);
+    text-decoration: none;
+    margin: 0 0.5rem;
+  }
+
+  .theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+  }
+
+  .theme-switch input {
+    display: none;
+  }
+
+  .slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+  }
+
+  .slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+    border-radius: 50%;
+  }
+
+  input:checked + .slider {
+    background-color: var(--primary-color);
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+  @media (max-width: 768px) {
+    .main-content {
+      flex-direction: column;
+    }
+    .sidebar {
+      width: 100%;
+      position: static;
+      height: auto;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-container">
+          <div class="logo-icon">🏆</div>
+          <div class="logo-text">RadHIL</div>
+        </div>
+        <nav class="nav">
+          <a href="https://radhil.com">Home</a>
+          <a href="https://radhil.com/features">Features</a>
+          <a href="https://radhil.com/pricing">Pricing</a>
+          <a href="https://radhil.com/request-demo">Demo</a>
+          <a href="https://radhil.com/support">Support</a>
+        </nav>
+        <div class="theme-switch-wrapper">
+          <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider"></div>
+          </label>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container main-content">
+    <aside class="sidebar">
+      <h3>Integration Guides</h3>
+      <ul>
+        <li><a href="#booking-channels">Booking Channels</a></li>
+        <li><a href="#payment-gateways">Payment Gateways</a></li>
+        <li><a href="#accounting-software">Accounting Software</a></li>
+        <li><a href="#smart-home">Smart Home Devices</a></li>
+        <li><a href="#crm-systems">CRM Systems</a></li>
+        <li><a href="#cleaning-services">Cleaning Services</a></li>
+        <li><a href="#calendar-sync">Calendar Sync</a></li>
+        <li><a href="#custom-integrations">Custom Integrations</a></li>
+      </ul>
+    </aside>
+
+    <main class="article">
+      <h1>Integration Guides</h1>
+
+      <p>Welcome to RadHIL's comprehensive integration guides. Here you'll find detailed instructions on how to connect RadHIL with various third-party services and platforms to create a seamless luxury property management ecosystem. Each guide provides step-by-step instructions, best practices, and troubleshooting tips.</p>
+
+      <div class="integration-grid">
+        <div class="integration-card" id="booking-channels">
+          <div class="integration-icon">🏠</div>
+          <h3 class="integration-title">Booking Channels</h3>
+          <p class="integration-description">Connect RadHIL with major booking platforms like Airbnb, Booking.com, and VRBO.</p>
+          <a href="https://radhil.com/kb/integration-guides/booking-channels" class="integration-link">Learn More</a>
+        </div>
+
+        <div class="integration-card" id="payment-gateways">
+          <div class="integration-icon">💳</div>
+          <h3 class="integration-title">Payment Gateways</h3>
+          <p class="integration-description">Set up secure payment processing with Stripe, PayPal, and other providers.</p>
+          <a href="https://radhil.com/kb/integration-guides/payment-gateways" class="integration-link">Learn More</a>
+        </div>
+
+        <div class="integration-card" id="accounting-software">
+          <div class="integration-icon">📊</div>
+          <h3 class="integration-title">Accounting Software</h3>
+          <p class="integration-description">Sync financial data with QuickBooks, Xero, and other accounting platforms.</p>
+          <a href="https://radhil.com/kb/integration-guides/accounting-software" class="integration-link">Learn More</a>
+        </div>
+
+        <div class="integration-card" id="smart-home">
+          <div class="integration-icon">🏡</div>
+          <h3 class="integration-title">Smart Home Devices</h3>
+          <p class="integration-description">Integrate smart locks, thermostats, and other IoT devices with RadHIL.</p>
+          <a href="https://radhil.com/kb/integration-guides/smart-home-devices" class="integration-link">Learn More</a>
+        </div>
+
+        <div class="integration-card" id="crm-systems">
+          <div class="integration-icon">📱</div>
+          <h3 class="integration-title">CRM Systems</h3>
+          <p class="integration-description">Connect guest data with Salesforce, HubSpot, and other CRM platforms.</p>
+          <a href="https://radhil.com/kb/integration-guides/crm-systems" class="integration-link">Learn More</a>
+        </div>
+
+        <div class="integration-card" id="cleaning-services">
+          <div class="integration-icon">🧹</div>
+          <h3 class="integration-title">Cleaning Services</h3>
+          <p class="integration-description">Streamline cleaning management with TurnoverBnB, Properly, and more.</p>
+          <a href="https://radhil.com/kb/integration-guides/cleaning-services" class="integration-link">Learn More</a>
+        </div>
+
+        <div class="integration-card" id="calendar-sync">
+          <div class="integration-icon">📅</div>
+          <h3 class="integration-title">Calendar Sync</h3>
+          <p class="integration-description">Keep schedules aligned with Google Calendar, Outlook, and iCal.</p>
+          <a href="https://radhil.com/kb/integration-guides/calendar-sync" class="integration-link">Learn More</a>
+        </div>
+
+        <div class="integration-card" id="custom-integrations">
+          <div class="integration-icon">🔧</div>
+          <h3 class="integration-title">Custom Integrations</h3>
+          <p class="integration-description">Learn how to use RadHIL's API and webhooks for bespoke integrations.</p>
+          <a href="https://radhil.com/kb/integration-guides/custom-integrations" class="integration-link">Learn More</a>
+        </div>
+      </div>
+
+      <h2>General Integration Tips</h2>
+      <ul>
+        <li>Always test integrations in a sandbox environment before going live.</li>
+        <li>Regularly review and update your integrations to ensure optimal performance.</li>
+        <li>Make use of RadHIL's integration health monitoring tools to catch issues early.</li>
+        <li>Consider data privacy and security when setting up integrations, especially those involving guest information.</li>
+        <li>Train your team on how to use and troubleshoot integrated systems for smooth operations.</li>
+      </ul>
+
+      <h2>Need Help?</h2>
+      <p>If you encounter any issues while setting up integrations or have questions not covered in these guides, our support team is here to help. You can reach us through the following channels:</p>
+      <ul>
+        <li>Email: <a href="/cdn-cgi/l/email-protection#5d2e282d2d322f291d2f3c39353431733e3230"><span class="__cf_email__" data-cfemail="aad9dfdadac5d8deead8cbcec2c3c684c9c5c7">[email&#160;protected]</span></a></li>
+        <li>Phone: +1 (800) 123-4567</li>
+        <li>Live Chat: Available on our website during business hours</li>
+        <li>Developer Forum: <a href="https://developers.radhil.com">https://developers.radhil.com</a></li>
+      </ul>
+
+      <p>Remember, proper integration is key to leveraging the full power of RadHIL's AI-driven luxury property management platform. Take your time to<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>

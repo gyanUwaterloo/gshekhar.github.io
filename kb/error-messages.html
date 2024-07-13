@@ -1,0 +1,384 @@
+<html><head><base href="https://radhil.com/kb/error-messages"><title>RadHIL - Understanding Error Messages</title>
+<style>
+  :root {
+    --primary-color: #C9A050;
+    --secondary-color: #1E2A3B;
+    --accent-color: #E0C38C;
+    --text-color: #333333;
+    --bg-color: #FFFFFF;
+    --card-bg: #F8F8F8;
+    --nav-bg: #1E2A3B;
+    --footer-bg: #1E2A3B;
+    --footer-text: #FFFFFF;
+    --code-bg: #f4f4f4;
+  }
+  
+  [data-theme="dark"] {
+    --primary-color: #E0C38C;
+    --secondary-color: #2C3E50;
+    --accent-color: #C9A050;
+    --text-color: #E6E6FA;
+    --bg-color: #1A1A2E;
+    --card-bg: #2D2D44;
+    --nav-bg: #2C3E50;
+    --footer-bg: #2C3E50;
+    --footer-text: #E6E6FA;
+    --code-bg: #2a2a2a;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .header {
+    background-color: var(--nav-bg);
+    color: #FFFFFF;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .nav a:hover, .nav a.active {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+  }
+
+  .main-content {
+    padding-top: 80px;
+    display: flex;
+    gap: 2rem;
+  }
+
+  .article {
+    flex-grow: 1;
+    padding: 2rem;
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .article h1 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+  }
+
+  .article h2 {
+    color: var(--secondary-color);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .article p {
+    margin-bottom: 1rem;
+  }
+
+  .article ul, .article ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+  }
+
+  .article li {
+    margin-bottom: 0.5rem;
+  }
+
+  .error-message {
+    background-color: var(--card-bg);
+    border-left: 4px solid var(--primary-color);
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .error-code {
+    font-weight: bold;
+    color: var(--primary-color);
+  }
+
+  .code-block {
+    background-color: var(--code-bg);
+    padding: 1rem;
+    border-radius: 5px;
+    overflow-x: auto;
+    margin-bottom: 1rem;
+  }
+
+  .footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+  }
+
+  .footer a {
+    color: var(--footer-text);
+    text-decoration: none;
+    margin: 0 0.5rem;
+  }
+
+  .theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+  }
+
+  .theme-switch input {
+    display: none;
+  }
+
+  .slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+  }
+
+  .slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+    border-radius: 50%;
+  }
+
+  input:checked + .slider {
+    background-color: var(--primary-color);
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+  @media (max-width: 768px) {
+    .main-content {
+      flex-direction: column;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-container">
+          <div class="logo-icon">🏆</div>
+          <div class="logo-text">RadHIL</div>
+        </div>
+        <nav class="nav">
+          <a href="https://radhil.com">Home</a>
+          <a href="https://radhil.com/features">Features</a>
+          <a href="https://radhil.com/pricing">Pricing</a>
+          <a href="https://radhil.com/request-demo">Demo</a>
+          <a href="https://radhil.com/support">Support</a>
+        </nav>
+        <div class="theme-switch-wrapper">
+          <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider"></div>
+          </label>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container main-content">
+    <main class="article">
+      <h1>Understanding Error Messages in RadHIL</h1>
+
+      <p>Error messages in RadHIL are designed to provide clear information about issues that may occur during your use of the platform. This guide will help you understand common error messages, their meanings, and how to resolve them.</p>
+
+      <h2>Common Error Messages</h2>
+
+      <div class="error-message">
+        <p><span class="error-code">ERR_001:</span> API Key Invalid</p>
+      </div>
+      <p><strong>Meaning:</strong> The API key you're using is not recognized by our system.</p>
+      <p><strong>Resolution:</strong> Verify your API key in the account settings. If the issue persists, generate a new API key.</p>
+
+      <div class="error-message">
+        <p><span class="error-code">ERR_002:</span> Rate Limit Exceeded</p>
+      </div>
+      <p><strong>Meaning:</strong> You've made too many requests in a short period of time.</p>
+      <p><strong>Resolution:</strong> Wait for a few minutes before making new requests. If you consistently hit this limit, consider upgrading your plan.</p>
+
+      <div class="error-message">
+        <p><span class="error-code">ERR_003:</span> Invalid Date Format</p>
+      </div>
+      <p><strong>Meaning:</strong> The date you've entered is not in the correct format.</p>
+      <p><strong>Resolution:</strong> Ensure all dates are in the format YYYY-MM-DD.</p>
+
+      <h2>Debugging Error Messages</h2>
+
+      <p>When encountering an error, you can use the following steps to debug:</p>
+
+      <ol>
+        <li>Check the error code and message carefully.</li>
+        <li>Consult this knowledge base for common resolutions.</li>
+        <li>Review your recent changes or inputs that might have caused the error.</li>
+        <li>Check your account status and permissions.</li>
+        <li>If the issue persists, contact our support team with the error details.</li>
+      </ol>
+
+      <h2>Error Logging</h2>
+
+      <p>RadHIL automatically logs errors for debugging purposes. You can access these logs in your account settings. Here's an example of what an error log might look like:</p>
+
+      <div class="code-block">
+        <pre><code>
+2023-06-15 14:30:22 [ERR_001] API Key Invalid
+Request URL: https://api.radhil.com/v1/properties
+User ID: 12345
+IP: 192.168.1.1
+        </code></pre>
+      </div>
+
+      <p>These logs can be invaluable when working with our support team to resolve persistent issues.</p>
+
+      <h2>Custom Error Handling</h2>
+
+      <p>If you're integrating RadHIL with your own systems, you may want to implement custom error handling. Here's a basic example in Python:</p>
+
+      <div class="code-block">
+        <pre><code>
+import requests
+
+def radhil_api_call(endpoint, params):
+    try:
+        response = requests.get(f"https://api.radhil.com/v1/{endpoint}", params=params)
+        response.raise_for_status()
+        return response.json()
+    except requests.exceptions.HTTPError as err:
+        if err.response.status_code == 401:
+            print("ERR_001: API Key Invalid. Please check your API key.")
+        elif err.response.status_code == 429:
+            print("ERR_002: Rate Limit Exceeded. Please wait before trying again.")
+        else:
+            print(f"An error occurred: {err}")
+        return None
+        </code></pre>
+      </div>
+
+      <h2>Contacting Support</h2>
+
+      <p>If you're unable to resolve an error using this guide, don't hesitate to contact our support team. When reaching out, please provide:</p>
+
+      <ul>
+        <li>The error code and full error message</li>
+        <li>Steps to reproduce the error</li>
+        <li>Any relevant logs or screenshots</li>
+        <li>Your account email address</li>
+      </ul>
+
+      <p>Our team is dedicated to helping you resolve issues quickly and efficiently.</p>
+
+      <p>Remember, understanding error messages is key to efficiently managing your properties with RadHIL. If you encounter an error not covered in this guide, please let us know so we can continue to improve our documentation.</p>
+    </main>
+  </div>
+  
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2023 RadHIL. All rights reserved.</p>
+      <p>
+        <a href="https://radhil.com/privacy">Privacy Policy</a> | 
+        <a href="https://radhil.com/terms">Terms of Service</a> |
+        <a href="https://radhil.com/contact">Contact Us</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+    const currentTheme = localStorage.getItem('theme');
+
+    if (currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme);
+      
+        if (currentTheme === 'dark') {
+            toggleSwitch.checked = true;
+        }
+    }
+
+    function switchTheme(e) {
+        if (e.target.checked) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        }
+        else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+        }    
+    }
+
+    toggleSwitch.addEventListener('change', switchTheme, false);
+  </script>
+</body>
+</html>

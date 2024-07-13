@@ -1,0 +1,392 @@
+<html><head><base href="https://radhil.com/kb/system-status"><title>RadHIL - System Status and Maintenance</title>
+<style>
+  :root {
+    --primary-color: #C9A050;
+    --secondary-color: #1E2A3B;
+    --accent-color: #E0C38C;
+    --text-color: #333333;
+    --bg-color: #FFFFFF;
+    --card-bg: #F8F8F8;
+    --nav-bg: #1E2A3B;
+    --footer-bg: #1E2A3B;
+    --footer-text: #FFFFFF;
+    --success-color: #4CAF50;
+    --warning-color: #FFC107;
+    --error-color: #F44336;
+  }
+  
+  [data-theme="dark"] {
+    --primary-color: #E0C38C;
+    --secondary-color: #2C3E50;
+    --accent-color: #C9A050;
+    --text-color: #E6E6FA;
+    --bg-color: #1A1A2E;
+    --card-bg: #2D2D44;
+    --nav-bg: #2C3E50;
+    --footer-bg: #2C3E50;
+    --footer-text: #E6E6FA;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .header {
+    background-color: var(--nav-bg);
+    color: #FFFFFF;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .nav a:hover, .nav a.active {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+  }
+
+  .main-content {
+    padding-top: 80px;
+    min-height: calc(100vh - 80px);
+  }
+
+  .article {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 2rem;
+    margin-top: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .article h1 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+  }
+
+  .article h2 {
+    color: var(--secondary-color);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .article p {
+    margin-bottom: 1rem;
+  }
+
+  .status-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .status-card {
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .status-card h3 {
+    margin-bottom: 0.5rem;
+  }
+
+  .status-indicator {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+  }
+
+  .status-operational {
+    background-color: var(--success-color);
+  }
+
+  .status-degraded {
+    background-color: var(--warning-color);
+  }
+
+  .status-outage {
+    background-color: var(--error-color);
+  }
+
+  .maintenance-schedule {
+    margin-top: 2rem;
+  }
+
+  .maintenance-item {
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+  }
+
+  .footer a {
+    color: var(--footer-text);
+    text-decoration: none;
+    margin: 0 0.5rem;
+  }
+
+  .theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+  }
+
+  .theme-switch input {
+    display: none;
+  }
+
+  .slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+  }
+
+  .slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+    border-radius: 50%;
+  }
+
+  input:checked + .slider {
+    background-color: var(--primary-color);
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+  @media (max-width: 768px) {
+    .header-content {
+      flex-direction: column;
+      text-align: center;
+    }
+    .nav {
+      margin-top: 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-container">
+          <div class="logo-icon">🏆</div>
+          <div class="logo-text">RadHIL</div>
+        </div>
+        <nav class="nav">
+          <a href="https://radhil.com">Home</a>
+          <a href="https://radhil.com/features">Features</a>
+          <a href="https://radhil.com/pricing">Pricing</a>
+          <a href="https://radhil.com/request-demo">Demo</a>
+          <a href="https://radhil.com/support">Support</a>
+        </nav>
+        <div class="theme-switch-wrapper">
+          <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider"></div>
+          </label>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+      <article class="article">
+        <h1>System Status and Maintenance</h1>
+        <p>Welcome to the RadHIL System Status page. Here you can find real-time information about our services, upcoming maintenance schedules, and any ongoing issues.</p>
+
+        <h2>Current System Status</h2>
+        <div class="status-grid">
+          <div class="status-card">
+            <h3>Core Platform</h3>
+            <p><span class="status-indicator status-operational"></span>Operational</p>
+          </div>
+          <div class="status-card">
+            <h3>AI Pricing Engine</h3>
+            <p><span class="status-indicator status-operational"></span>Operational</p>
+          </div>
+          <div class="status-card">
+            <h3>Channel Manager</h3>
+            <p><span class="status-indicator status-operational"></span>Operational</p>
+          </div>
+          <div class="status-card">
+            <h3>Messaging System</h3>
+            <p><span class="status-indicator status-degraded"></span>Degraded Performance</p>
+          </div>
+          <div class="status-card">
+            <h3>Analytics Dashboard</h3>
+            <p><span class="status-indicator status-operational"></span>Operational</p>
+          </div>
+          <div class="status-card">
+            <h3>API</h3>
+            <p><span class="status-indicator status-operational"></span>Operational</p>
+          </div>
+        </div>
+
+        <h2>Ongoing Issues</h2>
+        <div class="maintenance-item">
+          <h3>Messaging System: Delayed Message Delivery</h3>
+          <p>We are currently experiencing delays in message delivery due to high volumes. Our team is working on optimizing the system to handle the increased load. Expected resolution: 2 hours.</p>
+        </div>
+
+        <h2>Upcoming Maintenance</h2>
+        <div class="maintenance-schedule">
+          <div class="maintenance-item">
+            <h3>Database Optimization - July 15, 2023</h3>
+            <p>Scheduled maintenance to optimize database performance. Expected downtime: 30 minutes between 2:00 AM - 2:30 AM UTC.</p>
+          </div>
+          <div class="maintenance-item">
+            <h3>AI Model Update - July 20, 2023</h3>
+            <p>We will be updating our AI pricing model to include the latest market trends. No downtime expected, but pricing recommendations may fluctuate during the update process.</p>
+          </div>
+        </div>
+
+        <h2>Recent Updates</h2>
+        <div class="maintenance-item">
+          <h3>Channel Manager Enhancement - July 5, 2023</h3>
+          <p>Successfully implemented improved synchronization with major booking platforms, resulting in faster updates and reduced booking conflicts.</p>
+        </div>
+
+        <h2>Status Notifications</h2>
+        <p>Stay informed about our system status and maintenance schedules:</p>
+        <ul>
+          <li>Follow us on Twitter: <a href="https://twitter.com/RadHILStatus">@RadHILStatus</a></li>
+          <li>Subscribe to our <a href="https://radhil.com/status-rss">RSS feed</a></li>
+          <li>Join our <a href="https://radhil.com/status-notifications">email notification list</a></li>
+        </ul>
+
+        <h2>Need Help?</h2>
+        <p>If you're experiencing issues not listed here, please contact our support team:</p>
+        <ul>
+          <li>Email: <a href="/cdn-cgi/l/email-protection#53202623233c2127132132373b3a3f7d303c3e"><span class="__cf_email__" data-cfemail="9eedebeeeef1eceadeecfffaf6f7f2b0fdf1f3">[email&#160;protected]</span></a></li>
+          <li>Phone: +1 (800) 123-4567</li>
+          <li>Live Chat: Available on the <a href="https://radhil.com/support">Support page</a></li>
+        </ul>
+      </article>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2023 RadHIL. All rights reserved.</p>
+      <p>
+        <a href="https://radhil.com/privacy">Privacy Policy</a> | 
+        <a href="https://radhil.com/terms">Terms of Service</a> |
+        <a href="https://radhil.com/contact">Contact Us</a>
+      </p>
+    </div>
+  </footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+    const currentTheme = localStorage.getItem('theme');
+
+    if (currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme);
+      
+        if (currentTheme === 'dark') {
+            toggleSwitch.checked = true;
+        }
+    }
+
+    function switchTheme(e) {
+        if (e.target.checked) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        }
+        else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+        }    
+    }
+
+    toggleSwitch.addEventListener('change', switchTheme, false);
+  </script>
+</body>
+</html>

@@ -1,0 +1,423 @@
+<html><head><base href="https://radhil.com/kb/security-settings"><title>RadHIL - Security Settings</title>
+<style>
+  :root {
+    --primary-color: #C9A050;
+    --secondary-color: #1E2A3B;
+    --accent-color: #E0C38C;
+    --text-color: #333333;
+    --bg-color: #FFFFFF;
+    --card-bg: #F8F8F8;
+    --nav-bg: #1E2A3B;
+    --footer-bg: #1E2A3B;
+    --footer-text: #FFFFFF;
+  }
+  
+  [data-theme="dark"] {
+    --primary-color: #E0C38C;
+    --secondary-color: #2C3E50;
+    --accent-color: #C9A050;
+    --text-color: #E6E6FA;
+    --bg-color: #1A1A2E;
+    --card-bg: #2D2D44;
+    --nav-bg: #2C3E50;
+    --footer-bg: #2C3E50;
+    --footer-text: #E6E6FA;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .header {
+    background-color: var(--nav-bg);
+    color: #FFFFFF;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .nav a:hover, .nav a.active {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+  }
+
+  .main-content {
+    padding-top: 80px;
+    display: flex;
+    gap: 2rem;
+  }
+
+  .sidebar {
+    width: 250px;
+    padding: 2rem;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    position: sticky;
+    top: 100px;
+    height: calc(100vh - 100px);
+    overflow-y: auto;
+  }
+
+  .sidebar h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+
+  .sidebar ul {
+    list-style-type: none;
+  }
+
+  .sidebar li {
+    margin-bottom: 0.5rem;
+  }
+
+  .sidebar a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .sidebar a:hover, .sidebar a.active {
+    color: var(--primary-color);
+  }
+
+  .article {
+    flex-grow: 1;
+    padding: 2rem;
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .article h1 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+  }
+
+  .article h2 {
+    color: var(--secondary-color);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .article p {
+    margin-bottom: 1rem;
+  }
+
+  .article ul, .article ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+  }
+
+  .article li {
+    margin-bottom: 0.5rem;
+  }
+
+  .article img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin: 1rem 0;
+  }
+
+  .footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+  }
+
+  .footer a {
+    color: var(--footer-text);
+    text-decoration: none;
+    margin: 0 0.5rem;
+  }
+
+  .theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+  }
+
+  .theme-switch input {
+    display: none;
+  }
+
+  .slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+  }
+
+  .slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+    border-radius: 50%;
+  }
+
+  input:checked + .slider {
+    background-color: var(--primary-color);
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+  @media (max-width: 768px) {
+    .main-content {
+      flex-direction: column;
+    }
+    .sidebar {
+      width: 100%;
+      position: static;
+      height: auto;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-container">
+          <div class="logo-icon">🏆</div>
+          <div class="logo-text">RadHIL</div>
+        </div>
+        <nav class="nav">
+          <a href="https://radhil.com">Home</a>
+          <a href="https://radhil.com/features">Features</a>
+          <a href="https://radhil.com/pricing">Pricing</a>
+          <a href="https://radhil.com/request-demo">Demo</a>
+          <a href="https://radhil.com/support">Support</a>
+        </nav>
+        <div class="theme-switch-wrapper">
+          <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider"></div>
+          </label>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container main-content">
+    <aside class="sidebar">
+      <h3>Account Management</h3>
+      <ul>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#password-management">Password Management</a></li>
+        <li><a href="#two-factor-authentication">Two-Factor Authentication</a></li>
+        <li><a href="#access-logs">Access Logs</a></li>
+        <li><a href="#data-encryption">Data Encryption</a></li>
+        <li><a href="#api-security">API Security</a></li>
+        <li><a href="#gdpr-compliance">GDPR Compliance</a></li>
+        <li><a href="#security-best-practices">Security Best Practices</a></li>
+      </ul>
+    </aside>
+
+    <main class="article">
+      <h1>Security Settings</h1>
+
+      <section id="introduction">
+        <h2>Introduction to RadHIL Security</h2>
+        <p>At RadHIL, we take the security of your account and data seriously. Our robust security measures are designed to protect your sensitive information and ensure the integrity of your vacation rental management operations. This guide will walk you through the various security settings and best practices available in your RadHIL account.</p>
+        <img src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Digital lock representing security, blue tones" width="600" height="400">
+      </section>
+
+      <section id="password-management">
+        <h2>Password Management</h2>
+        <p>Strong passwords are your first line of defense against unauthorized access. RadHIL implements the following password policies:</p>
+        <ul>
+          <li>Minimum 12 characters in length</li>
+          <li>Must include uppercase and lowercase letters, numbers, and special characters</li>
+          <li>Passwords are hashed and salted before storage</li>
+          <li>Automatic password expiration every 90 days</li>
+          <li>Previous passwords cannot be reused</li>
+        </ul>
+        <p>To change your password:</p>
+        <ol>
+          <li>Go to "Account Settings" in your RadHIL dashboard</li>
+          <li>Click on "Security"</li>
+          <li>Select "Change Password"</li>
+          <li>Enter your current password and your new password twice</li>
+          <li>Click "Update Password"</li>
+        </ol>
+      </section>
+
+      <section id="two-factor-authentication">
+        <h2>Two-Factor Authentication (2FA)</h2>
+        <p>Two-factor authentication adds an extra layer of security to your account by requiring a second form of verification in addition to your password. RadHIL supports the following 2FA methods:</p>
+        <ul>
+          <li>SMS-based authentication</li>
+          <li>Authenticator app (Google Authenticator, Authy, etc.)</li>
+          <li>Hardware security keys (YubiKey, etc.)</li>
+        </ul>
+        <p>To enable 2FA:</p>
+        <ol>
+          <li>Go to "Account Settings" in your RadHIL dashboard</li>
+          <li>Click on "Security"</li>
+          <li>Select "Two-Factor Authentication"</li>
+          <li>Choose your preferred 2FA method and follow the setup instructions</li>
+        </ol>
+      </section>
+
+      <section id="access-logs">
+        <h2>Access Logs</h2>
+        <p>RadHIL maintains detailed access logs to help you monitor account activity and detect any suspicious behavior. These logs include:</p>
+        <ul>
+          <li>Login attempts (successful and failed)</li>
+          <li>IP addresses and locations</li>
+          <li>Device information</li>
+          <li>Actions performed within the account</li>
+        </ul>
+        <p>To view your access logs:</p>
+        <ol>
+          <li>Go to "Account Settings" in your RadHIL dashboard</li>
+          <li>Click on "Security"</li>
+          <li>Select "Access Logs"</li>
+          <li>Use the filters to search for specific activities or time periods</li>
+        </ol>
+      </section>
+
+      <section id="data-encryption">
+        <h2>Data Encryption</h2>
+        <p>RadHIL uses industry-standard encryption protocols to protect your data both in transit and at rest:</p>
+        <ul>
+          <li>All data transmitted between your browser and our servers is encrypted using TLS 1.3</li>
+          <li>Sensitive data stored in our databases is encrypted using AES-256</li>
+          <li>Encryption keys are managed using a secure key management system</li>
+        </ul>
+      </section>
+
+      <section id="api-security">
+        <h2>API Security</h2>
+        <p>If you're using RadHIL's API for custom integrations, we provide several security measures to protect your data:</p>
+        <ul>
+          <li>API keys with granular permissions</li>
+          <li>OAuth 2.0 for secure authorization</li>
+          <li>Rate limiting to prevent abuse</li>
+          <li>IP whitelisting for API access</li>
+        </ul>
+        <p>To manage your API settings:</p>
+        <ol>
+          <li>Go to "Account Settings" in your RadHIL dashboard</li>
+          <li>Click on "API &amp; Integrations"</li>
+          <li>Here you can generate new API keys, set permissions, and configure IP whitelisting</li>
+        </ol>
+      </section>
+
+      <section id="gdpr-compliance">
+        <h2>GDPR Compliance</h2>
+        <p>RadHIL is committed to protecting user privacy and complying with the General Data Protection Regulation (GDPR). Our GDPR features include:</p>
+        <ul>
+          <li>Data export functionality for user data requests</li>
+          <li>Data deletion tools for right to be forgotten requests</li>
+          <li>Consent management for marketing communications</li>
+          <li>Data processing agreements for our customers</li>
+        </ul>
+        <p>To access GDPR-related tools:</p>
+        <ol>
+          <li>Go to "Account Settings" in your RadHIL dashboard</li>
+          <li>Click on "Privacy &amp; GDPR"</li>
+          <li>Here you can manage consent settings and initiate data export or deletion requests</li>
+        </ol>
+      </section>
+
+      <section id="security-best-practices">
+        <h2>Security Best Practices</h2>
+        <p>In addition to the built-in security features of RadHIL, we recommend the following best practices:</p>
+        <ul>
+          <li>Use a unique, strong password for your RadHIL account</li>
+          <li>Enable two-factor authentication</li>
+          <li>Regularly review your access logs for any suspicious activity</li>
+          <li>Keep your recovery email and phone number up to date</li>
+          <li>Be cautious of phishing attempts - RadHIL will never ask for your password via email</li>
+          <li>Use a password manager to generate and store strong passwords</li>
+          <li>Ensure your computer and browser are up to date with the latest security patches</li>
+          <li>Limit API key sharing and regularly rotate your keys</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2023 RadHIL. All rights reserved.</p>
+      <p>
+        <a href="https://radhil.com/privacy">Privacy Policy</a> | 
+        <a href="https://radhil.com/terms">Terms of Service</a> |
+        <a href="https://radhil.com/contact">Contact

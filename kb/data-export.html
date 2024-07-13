@@ -1,0 +1,440 @@
+<html><head><base href="https://radhil.com/kb/data-export"><title>RadHIL - Data Export and Integration</title>
+<style>
+  :root {
+    --primary-color: #C9A050;
+    --secondary-color: #1E2A3B;
+    --accent-color: #E0C38C;
+    --text-color: #333333;
+    --bg-color: #FFFFFF;
+    --card-bg: #F8F8F8;
+    --nav-bg: #1E2A3B;
+    --footer-bg: #1E2A3B;
+    --footer-text: #FFFFFF;
+    --code-bg: #F0F0F0;
+  }
+  
+  [data-theme="dark"] {
+    --primary-color: #E0C38C;
+    --secondary-color: #2C3E50;
+    --accent-color: #C9A050;
+    --text-color: #E6E6FA;
+    --bg-color: #1A1A2E;
+    --card-bg: #2D2D44;
+    --nav-bg: #2C3E50;
+    --footer-bg: #2C3E50;
+    --footer-text: #E6E6FA;
+    --code-bg: #2A2A3A;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .header {
+    background-color: var(--nav-bg);
+    color: #FFFFFF;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .nav a:hover, .nav a.active {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+  }
+
+  .main-content {
+    padding-top: 80px;
+    display: flex;
+    gap: 2rem;
+  }
+
+  .sidebar {
+    width: 250px;
+    padding: 2rem;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    position: sticky;
+    top: 100px;
+    height: calc(100vh - 100px);
+    overflow-y: auto;
+  }
+
+  .sidebar h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+
+  .sidebar ul {
+    list-style-type: none;
+  }
+
+  .sidebar li {
+    margin-bottom: 0.5rem;
+  }
+
+  .sidebar a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .sidebar a:hover, .sidebar a.active {
+    color: var(--primary-color);
+  }
+
+  .article {
+    flex-grow: 1;
+    padding: 2rem;
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .article h1 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+  }
+
+  .article h2 {
+    color: var(--secondary-color);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .article p {
+    margin-bottom: 1rem;
+  }
+
+  .article ul, .article ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+  }
+
+  .article li {
+    margin-bottom: 0.5rem;
+  }
+
+  .article img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin: 1rem 0;
+  }
+
+  .code-block {
+    background-color: var(--code-bg);
+    border-radius: 5px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    overflow-x: auto;
+  }
+
+  .code-block code {
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--text-color);
+  }
+
+  .footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+  }
+
+  .footer a {
+    color: var(--footer-text);
+    text-decoration: none;
+    margin: 0 0.5rem;
+  }
+
+  .theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+  }
+
+  .theme-switch input {
+    display: none;
+  }
+
+  .slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+  }
+
+  .slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+    border-radius: 50%;
+  }
+
+  input:checked + .slider {
+    background-color: var(--primary-color);
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+  @media (max-width: 768px) {
+    .main-content {
+      flex-direction: column;
+    }
+    .sidebar {
+      width: 100%;
+      position: static;
+      height: auto;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-container">
+          <div class="logo-icon">🏆</div>
+          <div class="logo-text">RadHIL</div>
+        </div>
+        <nav class="nav">
+          <a href="https://radhil.com">Home</a>
+          <a href="https://radhil.com/features">Features</a>
+          <a href="https://radhil.com/pricing">Pricing</a>
+          <a href="https://radhil.com/request-demo">Demo</a>
+          <a href="https://radhil.com/support">Support</a>
+        </nav>
+        <div class="theme-switch-wrapper">
+          <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider"></div>
+          </label>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container main-content">
+    <aside class="sidebar">
+      <h3>Analytics & Reporting</h3>
+      <ul>
+        <li><a href="https://radhil.com/kb/dashboard-overview">Dashboard Overview</a></li>
+        <li><a href="https://radhil.com/kb/performance-metrics">Understanding Performance Metrics</a></li>
+        <li><a href="https://radhil.com/kb/custom-reports">Creating Custom Reports</a></li>
+        <li><a href="https://radhil.com/kb/data-export" class="active">Data Export and Integration</a></li>
+        <li><a href="https://radhil.com/kb/benchmarking">Benchmarking Your Properties</a></li>
+        <li><a href="https://radhil.com/kb/forecasting">Revenue Forecasting</a></li>
+        <li><a href="https://radhil.com/kb/market-insights">Market Insights</a></li>
+      </ul>
+    </aside>
+
+    <main class="article">
+      <h1>Data Export and Integration</h1>
+
+      <p>RadHIL provides powerful data export and integration capabilities to help you leverage your vacation rental data across various platforms and tools. This guide will walk you through the different methods of exporting your data and integrating it with other systems.</p>
+
+      <h2>1. Manual Data Export</h2>
+      <p>You can manually export your data in various formats directly from the RadHIL dashboard:</p>
+      <ol>
+        <li>Navigate to the "Analytics" section</li>
+        <li>Select the data you want to export</li>
+        <li>Click on the "Export" button</li>
+        <li>Choose your preferred format (CSV, Excel, PDF)</li>
+        <li>Download the file to your device</li>
+      </ol>
+
+      <h2>2. Automated Scheduled Exports</h2>
+      <p>Set up automated exports to receive regular updates:</p>
+      <ol>
+        <li>Go to "Settings" &gt; "Integrations" &gt; "Scheduled Exports"</li>
+        <li>Click "Create New Scheduled Export"</li>
+        <li>Select the data to include</li>
+        <li>Choose the frequency (daily, weekly, monthly)</li>
+        <li>Specify the delivery method (email or secure FTP)</li>
+        <li>Save your settings</li>
+      </ol>
+
+      <h2>3. API Integration</h2>
+      <p>RadHIL offers a robust API for seamless integration with your existing systems:</p>
+      <ol>
+        <li>Request API access through your account manager</li>
+        <li>Receive your unique API key</li>
+        <li>Use the API documentation to make requests</li>
+      </ol>
+
+      <p>Example API request to fetch property data:</p>
+      <div class="code-block">
+        <code>
+GET https://api.radhil.com/v1/properties<br>
+Authorization: Bearer YOUR_API_KEY<br>
+Content-Type: application/json
+        </code>
+      </div>
+
+      <h2>4. Third-Party Integrations</h2>
+      <p>RadHIL supports integration with various third-party tools and platforms:</p>
+      <ul>
+        <li>Accounting software (e.g., QuickBooks, Xero)</li>
+        <li>CRM systems (e.g., Salesforce, HubSpot)</li>
+        <li>Business intelligence tools (e.g., Tableau, Power BI)</li>
+        <li>Property management systems (e.g., Guesty, Lodgify)</li>
+      </ul>
+      <p>To set up these integrations, navigate to "Settings" &gt; "Integrations" and follow the setup wizard for your desired platform.</p>
+
+      <h2>5. Custom Webhooks</h2>
+      <p>Create custom webhooks to receive real-time data updates:</p>
+      <ol>
+        <li>Go to "Settings" &gt; "Integrations" &gt; "Webhooks"</li>
+        <li>Click "Create New Webhook"</li>
+        <li>Specify the event type (e.g., new booking, price change)</li>
+        <li>Enter the URL to receive the webhook payload</li>
+        <li>Choose the data to include in the payload</li>
+        <li>Save your webhook configuration</li>
+      </ol>
+
+      <h2>6. Data Lake Integration</h2>
+      <p>For enterprise clients, RadHIL offers direct integration with data lakes:</p>
+      <ul>
+        <li>Amazon S3</li>
+        <li>Google Cloud Storage</li>
+        <li>Azure Blob Storage</li>
+      </ul>
+      <p>Contact your account manager to set up data lake integration.</p>
+
+      <h2>7. Custom Data Pipelines</h2>
+      <p>For complex data integration needs, RadHIL can create custom data pipelines. This service includes:</p>
+      <ul>
+        <li>Data transformation</li>
+        <li>ETL (Extract, Transform, Load) processes</li>
+        <li>Real-time data streaming</li>
+        <li>Custom data models</li>
+      </ul>
+      <p>Reach out to our enterprise solutions team to discuss your specific requirements.</p>
+
+      <h2>8. Data Security and Compliance</h2>
+      <p>RadHIL prioritizes the security and privacy of your data:</p>
+      <ul>
+        <li>All data exports are encrypted using industry-standard protocols</li>
+        <li>API access is secured with OAuth 2.0</li>
+        <li>Regular security audits and penetration testing</li>
+        <li>Compliance with GDPR, CCPA, and other relevant data protection regulations</li>
+      </ul>
+
+      <h2>Best Practices for Data Export and Integration</h2>
+      <ul>
+        <li>Regularly review and update your integration settings</li>
+        <li>Use data mapping to ensure consistency across platforms</li>
+        <li>Implement error handling and notifications for automated processes</li>
+        <li>Keep your API keys and credentials secure</li>
+        <li>Document your integrations and data flows for easy maintenance</li>
+        <li>Leverage RadHIL's data dictionary to understand field definitions and relationships</li>
+      </ul>
+
+      <p>By effectively utilizing RadHIL's data export and integration capabilities, you can streamline your workflows, enhance your analytics, and make more informed decisions for your vacation rental business.</p>
+
+    </main>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2023 RadHIL. All rights reserved.</p>
+      <p>
+        <a href="https://radhil.com/privacy">Privacy Policy</a> | 
+        <a href="https://radhil.com/terms">Terms of Service</a> |
+        <a href="https://radhil.com/contact">Contact Us</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+    const currentTheme = localStorage.getItem('theme');
+
+    if (currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme);
+      
+        if (currentTheme === 'dark') {
+            toggleSwitch.checked = true;
+        }
+    }
+
+    function switchTheme(e) {
+        if (e.target.checked) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        }

@@ -1,0 +1,424 @@
+<html><head><base href="https://radhil.com/kb/channel-integration"><title>RadHIL - Channel Integration Guide</title>
+<style>
+  :root {
+    --primary-color: #C9A050;
+    --secondary-color: #1E2A3B;
+    --accent-color: #E0C38C;
+    --text-color: #333333;
+    --bg-color: #FFFFFF;
+    --card-bg: #F8F8F8;
+    --nav-bg: #1E2A3B;
+    --footer-bg: #1E2A3B;
+    --footer-text: #FFFFFF;
+  }
+  
+  [data-theme="dark"] {
+    --primary-color: #E0C38C;
+    --secondary-color: #2C3E50;
+    --accent-color: #C9A050;
+    --text-color: #E6E6FA;
+    --bg-color: #1A1A2E;
+    --card-bg: #2D2D44;
+    --nav-bg: #2C3E50;
+    --footer-bg: #2C3E50;
+    --footer-text: #E6E6FA;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .header {
+    background-color: var(--nav-bg);
+    color: #FFFFFF;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .nav a:hover, .nav a.active {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+  }
+
+  .main-content {
+    padding-top: 80px;
+    display: flex;
+    gap: 2rem;
+  }
+
+  .sidebar {
+    width: 250px;
+    padding: 2rem;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    position: sticky;
+    top: 100px;
+    height: calc(100vh - 100px);
+    overflow-y: auto;
+  }
+
+  .sidebar h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+
+  .sidebar ul {
+    list-style-type: none;
+  }
+
+  .sidebar li {
+    margin-bottom: 0.5rem;
+  }
+
+  .sidebar a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .sidebar a:hover, .sidebar a.active {
+    color: var(--primary-color);
+  }
+
+  .article {
+    flex-grow: 1;
+    padding: 2rem;
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .article h1 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+  }
+
+  .article h2 {
+    color: var(--secondary-color);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .article p {
+    margin-bottom: 1rem;
+  }
+
+  .article ul, .article ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+  }
+
+  .article li {
+    margin-bottom: 0.5rem;
+  }
+
+  .article img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin: 1rem 0;
+  }
+
+  .footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+  }
+
+  .footer a {
+    color: var(--footer-text);
+    text-decoration: none;
+    margin: 0 0.5rem;
+  }
+
+  .theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+  }
+
+  .theme-switch input {
+    display: none;
+  }
+
+  .slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+  }
+
+  .slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+    border-radius: 50%;
+  }
+
+  input:checked + .slider {
+    background-color: var(--primary-color);
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+  @media (max-width: 768px) {
+    .header-content {
+      flex-direction: column;
+      text-align: center;
+    }
+    .nav {
+      margin-top: 1rem;
+    }
+    .main-content {
+      flex-direction: column;
+    }
+    .sidebar {
+      width: 100%;
+      position: static;
+      height: auto;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-container">
+          <div class="logo-icon">🏆</div>
+          <div class="logo-text">RadHIL</div>
+        </div>
+        <nav class="nav">
+          <a href="https://radhil.com">Home</a>
+          <a href="https://radhil.com/features">Features</a>
+          <a href="https://radhil.com/pricing">Pricing</a>
+          <a href="https://radhil.com/request-demo">Demo</a>
+          <a href="https://radhil.com/support">Support</a>
+        </nav>
+        <div class="theme-switch-wrapper">
+          <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider"></div>
+          </label>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <div class="container main-content">
+    <aside class="sidebar">
+      <h3>Channel Management</h3>
+      <ul>
+        <li><a href="#introduction" class="active">Introduction</a></li>
+        <li><a href="#supported-channels">Supported Channels</a></li>
+        <li><a href="#integration-process">Integration Process</a></li>
+        <li><a href="#api-setup">API Setup</a></li>
+        <li><a href="#mapping-properties">Mapping Properties</a></li>
+        <li><a href="#syncing-calendars">Syncing Calendars</a></li>
+        <li><a href="#managing-rates">Managing Rates</a></li>
+        <li><a href="#handling-bookings">Handling Bookings</a></li>
+        <li><a href="#troubleshooting">Troubleshooting</a></li>
+        <li><a href="#best-practices">Best Practices</a></li>
+      </ul>
+    </aside>
+    
+    <main class="article">
+      <h1>Channel Integration Guide</h1>
+      
+      <section id="introduction">
+        <h2>Introduction</h2>
+        <p>Channel integration is a crucial feature of RadHIL that allows you to manage your property listings across multiple booking platforms from a single, centralized dashboard. This guide will walk you through the process of setting up and optimizing your channel integrations to maximize your property's visibility and streamline your operations.</p>
+      </section>
+      
+      <section id="supported-channels">
+        <h2>Supported Channels</h2>
+        <p>RadHIL currently supports integration with the following channels:</p>
+        <ul>
+          <li>Airbnb</li>
+          <li>Booking.com</li>
+          <li>Vrbo (HomeAway)</li>
+          <li>Expedia</li>
+          <li>TripAdvisor</li>
+          <li>Google Travel</li>
+          <li>Luxury Escapes</li>
+          <li>Direct Booking Website</li>
+        </ul>
+        <p>We're constantly working on expanding our list of supported channels. If you don't see a channel you use, please <a href="https://radhil.com/contact">contact our support team</a> to request integration.</p>
+      </section>
+      
+      <section id="integration-process">
+        <h2>Integration Process Overview</h2>
+        <ol>
+          <li>API Setup: Obtain necessary API credentials from each channel</li>
+          <li>Channel Connection: Connect your channel accounts to RadHIL</li>
+          <li>Property Mapping: Match your properties across different channels</li>
+          <li>Calendar Sync: Ensure availability is synced across all platforms</li>
+          <li>Rate Management: Set up dynamic pricing rules for each channel</li>
+          <li>Booking Handling: Configure how bookings are processed and managed</li>
+        </ol>
+      </section>
+      
+      <section id="api-setup">
+        <h2>API Setup</h2>
+        <p>To integrate each channel, you'll need to set up API access. Here's a general process:</p>
+        <ol>
+          <li>Log in to your account on the channel's extranet or partner portal</li>
+          <li>Navigate to the API or Connectivity settings</li>
+          <li>Generate API keys or tokens as required</li>
+          <li>Copy the API credentials and keep them secure</li>
+        </ol>
+        <p>For detailed instructions on API setup for each channel, please refer to our <a href="https://radhil.com/kb/api-setup-guide">API Setup Guide</a>.</p>
+      </section>
+      
+      <section id="mapping-properties">
+        <h2>Mapping Properties</h2>
+        <p>Once your channels are connected, you'll need to map your properties to ensure consistency across platforms:</p>
+        <ol>
+          <li>Go to the "Property Mapping" section in RadHIL</li>
+          <li>Select a property from your inventory</li>
+          <li>Match it with the corresponding listing on each connected channel</li>
+          <li>Verify details such as room types, amenities, and policies are consistent</li>
+          <li>Save the mapping configuration</li>
+        </ol>
+        <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80" alt="Property mapping interface showing a luxury vacation rental being mapped across different booking channels" width="600" height="400">
+      </section>
+      
+      <section id="syncing-calendars">
+        <h2>Syncing Calendars</h2>
+        <p>Calendar synchronization is critical to avoid double bookings:</p>
+        <ul>
+          <li>Enable two-way calendar sync for each mapped property</li>
+          <li>Set sync frequency (we recommend every 15 minutes)</li>
+          <li>Perform a manual sync after initial setup to ensure all data is up-to-date</li>
+          <li>Monitor the sync status in the RadHIL dashboard</li>
+        </ul>
+      </section>
+      
+      <section id="managing-rates">
+        <h2>Managing Rates</h2>
+        <p>RadHIL's dynamic pricing can be applied across all channels:</p>
+        <ul>
+          <li>Set base rates for each property</li>
+          <li>Configure channel-specific pricing rules (e.g., to account for different commission structures)</li>
+          <li>Apply seasonal adjustments and special event pricing</li>
+          <li>Use RadHIL's AI-driven pricing recommendations for optimal results</li>
+        </ul>
+        <p>For more information, visit our <a href="https://radhil.com/kb/pricing-optimization">Pricing Optimization Guide</a>.</p>
+      </section>
+      
+      <section id="handling-bookings">
+        <h2>Handling Bookings</h2>
+        <p>Configure how RadHIL processes bookings from different channels:</p>
+        <ul>
+          <li>Set up automatic confirmation for instant booking channels</li>
+          <li>Configure review process for channels that allow it</li>
+          <li>Set up notification preferences for new bookings</li>
+          <li>Customize guest communication templates for each channel</li>
+        </ul>
+      </section>
+      
+      <section id="troubleshooting">
+        <h2>Troubleshooting</h2>
+        <p>If you encounter issues with your channel integrations:</p>
+        <ul>
+          <li>Check the Channel Health dashboard for any sync errors</li>
+          <li>Verify API credentials are still valid and haven't expired</li>
+          <li>Ensure your property details are up-to-date on all channels</li>
+          <li>Review our <a href="https://radhil.com/kb/channel-integration-faq">Channel Integration FAQ</a> for common issues and solutions</li>
+        </ul>
+      </section>
+      
+      <section id="best-practices">
+        <h2>Best Practices</h2>
+        <ul>
+          <li>Regularly audit your listings across all channels to ensure consistency</li>
+          <li>Use RadHIL's content distribution feature to update property details across all channels simultaneously</li>
+          <li>Monitor channel performance and adjust your strategy accordingly</li>
+          <li>Keep your API credentials secure and update them periodically</li>
+          <li>Stay informed about changes to channel policies and update your settings as needed</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+  
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2023 RadHIL. All rights reserved.</p>
+      <p>
+        <

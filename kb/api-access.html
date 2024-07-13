@@ -1,0 +1,431 @@
+<html><head><base href="https://radhil.com/kb/api-access"><title>RadHIL - API Access and Integration</title>
+<style>
+  :root {
+    --primary-color: #C9A050;
+    --secondary-color: #1E2A3B;
+    --accent-color: #E0C38C;
+    --text-color: #333333;
+    --bg-color: #FFFFFF;
+    --card-bg: #F8F8F8;
+    --nav-bg: #1E2A3B;
+    --footer-bg: #1E2A3B;
+    --footer-text: #FFFFFF;
+    --code-bg: #f4f4f4;
+  }
+  
+  [data-theme="dark"] {
+    --primary-color: #E0C38C;
+    --secondary-color: #2C3E50;
+    --accent-color: #C9A050;
+    --text-color: #E6E6FA;
+    --bg-color: #1A1A2E;
+    --card-bg: #2D2D44;
+    --nav-bg: #2C3E50;
+    --footer-bg: #2C3E50;
+    --footer-text: #E6E6FA;
+    --code-bg: #2d2d2d;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .header {
+    background-color: var(--nav-bg);
+    color: #FFFFFF;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .nav a:hover, .nav a.active {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+  }
+
+  .main-content {
+    padding-top: 80px;
+    display: flex;
+    gap: 2rem;
+  }
+
+  .sidebar {
+    width: 250px;
+    padding: 2rem;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    position: sticky;
+    top: 100px;
+    height: calc(100vh - 100px);
+    overflow-y: auto;
+  }
+
+  .sidebar h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+
+  .sidebar ul {
+    list-style-type: none;
+  }
+
+  .sidebar li {
+    margin-bottom: 0.5rem;
+  }
+
+  .sidebar a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .sidebar a:hover, .sidebar a.active {
+    color: var(--primary-color);
+  }
+
+  .article {
+    flex-grow: 1;
+    padding: 2rem;
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .article h1 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+  }
+
+  .article h2 {
+    color: var(--secondary-color);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .article p {
+    margin-bottom: 1rem;
+  }
+
+  .article ul, .article ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+  }
+
+  .article li {
+    margin-bottom: 0.5rem;
+  }
+
+  .article pre {
+    background-color: var(--code-bg);
+    padding: 1rem;
+    border-radius: 5px;
+    overflow-x: auto;
+    margin-bottom: 1rem;
+  }
+
+  .article code {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+  }
+
+  .footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+  }
+
+  .footer a {
+    color: var(--footer-text);
+    text-decoration: none;
+    margin: 0 0.5rem;
+  }
+
+  .theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+  }
+
+  .theme-switch input {
+    display: none;
+  }
+
+  .slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+  }
+
+  .slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+    border-radius: 50%;
+  }
+
+  input:checked + .slider {
+    background-color: var(--primary-color);
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+  @media (max-width: 768px) {
+    .main-content {
+      flex-direction: column;
+    }
+    .sidebar {
+      width: 100%;
+      position: static;
+      height: auto;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-container">
+          <div class="logo-icon">🏆</div>
+          <div class="logo-text">RadHIL</div>
+        </div>
+        <nav class="nav">
+          <a href="https://radhil.com">Home</a>
+          <a href="https://radhil.com/features">Features</a>
+          <a href="https://radhil.com/pricing">Pricing</a>
+          <a href="https://radhil.com/request-demo">Demo</a>
+          <a href="https://radhil.com/support">Support</a>
+        </nav>
+        <div class="theme-switch-wrapper">
+          <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider"></div>
+          </label>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container main-content">
+    <aside class="sidebar">
+      <h3>API Documentation</h3>
+      <ul>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#authentication">Authentication</a></li>
+        <li><a href="#endpoints">API Endpoints</a></li>
+        <li><a href="#rate-limits">Rate Limits</a></li>
+        <li><a href="#error-handling">Error Handling</a></li>
+        <li><a href="#sdk">SDKs and Libraries</a></li>
+        <li><a href="#webhooks">Webhooks</a></li>
+        <li><a href="#best-practices">Best Practices</a></li>
+        <li><a href="#changelog">Changelog</a></li>
+      </ul>
+    </aside>
+
+    <main class="article">
+      <h1>API Access and Integration</h1>
+
+      <section id="introduction">
+        <h2>Introduction</h2>
+        <p>The RadHIL API allows you to programmatically access and manage your vacation rental data, pricing, and bookings. This guide will help you get started with integrating RadHIL into your own applications.</p>
+      </section>
+
+      <section id="authentication">
+        <h2>Authentication</h2>
+        <p>To use the RadHIL API, you'll need to authenticate your requests using an API key. Here's how to obtain and use your API key:</p>
+        <ol>
+          <li>Log in to your RadHIL dashboard</li>
+          <li>Navigate to Account Settings > API Access</li>
+          <li>Click "Generate New API Key"</li>
+          <li>Copy your API key and keep it secure</li>
+        </ol>
+        <p>Include your API key in the header of each request:</p>
+        <pre><code>Authorization: Bearer YOUR_API_KEY</code></pre>
+      </section>
+
+      <section id="endpoints">
+        <h2>API Endpoints</h2>
+        <p>The RadHIL API provides the following main endpoints:</p>
+        <ul>
+          <li><code>/properties</code> - Manage your properties</li>
+          <li><code>/bookings</code> - Handle bookings and reservations</li>
+          <li><code>/pricing</code> - Access and update pricing information</li>
+          <li><code>/guests</code> - Manage guest information</li>
+          <li><code>/analytics</code> - Retrieve performance analytics</li>
+        </ul>
+        <p>For detailed information on each endpoint and its methods, please refer to our <a href="https://api.radhil.com/docs">full API documentation</a>.</p>
+      </section>
+
+      <section id="rate-limits">
+        <h2>Rate Limits</h2>
+        <p>To ensure fair usage and optimal performance, the RadHIL API has the following rate limits:</p>
+        <ul>
+          <li>100 requests per minute per API key</li>
+          <li>1000 requests per hour per API key</li>
+        </ul>
+        <p>If you exceed these limits, you'll receive a 429 Too Many Requests response. The response will include a Retry-After header indicating when you can resume making requests.</p>
+      </section>
+
+      <section id="error-handling">
+        <h2>Error Handling</h2>
+        <p>The API uses standard HTTP response codes to indicate success or failure of requests. Here are some common codes:</p>
+        <ul>
+          <li>200 OK - The request was successful</li>
+          <li>201 Created - A new resource was successfully created</li>
+          <li>400 Bad Request - The request was invalid or cannot be served</li>
+          <li>401 Unauthorized - Authentication failed or user doesn't have permissions</li>
+          <li>404 Not Found - The requested resource could not be found</li>
+          <li>429 Too Many Requests - Rate limit exceeded</li>
+          <li>500 Internal Server Error - Something went wrong on our end</li>
+        </ul>
+        <p>Error responses will include a JSON body with more details about the error.</p>
+      </section>
+
+      <section id="sdk">
+        <h2>SDKs and Libraries</h2>
+        <p>To make integration easier, we provide official SDKs for popular programming languages:</p>
+        <ul>
+          <li><a href="https://github.com/radhil/radhil-python">Python SDK</a></li>
+          <li><a href="https://github.com/radhil/radhil-node">Node.js SDK</a></li>
+          <li><a href="https://github.com/radhil/radhil-php">PHP SDK</a></li>
+          <li><a href="https://github.com/radhil/radhil-ruby">Ruby SDK</a></li>
+        </ul>
+      </section>
+
+      <section id="webhooks">
+        <h2>Webhooks</h2>
+        <p>RadHIL supports webhooks for real-time notifications about events in your account. To set up webhooks:</p>
+        <ol>
+          <li>Go to Account Settings > Webhooks in your RadHIL dashboard</li>
+          <li>Click "Add Webhook"</li>
+          <li>Enter the URL where you want to receive webhook events</li>
+          <li>Select the events you want to subscribe to</li>
+          <li>Click "Save"</li>
+        </ol>
+        <p>We'll send a POST request to your specified URL whenever a subscribed event occurs.</p>
+      </section>
+
+      <section id="best-practices">
+        <h2>Best Practices</h2>
+        <ul>
+          <li>Store your API key securely and never expose it in client-side code</li>
+          <li>Implement proper error handling in your integration</li>
+          <li>Use our SDKs when available to simplify integration</li>
+          <li>Cache API responses when appropriate to reduce the number of API calls</li>
+          <li>Use webhooks for real-time updates instead of polling the API</li>
+        </ul>
+      </section>
+
+      <section id="changelog">
+        <h2>Changelog</h2>
+        <p>Stay up to date with API changes and improvements:</p>
+        <ul>
+          <li><strong>v2.1.0</strong> (2023-06-15): Added support for multi-currency pricing</li>
+          <li><strong>v2.0.0</strong> (2023-03-01): Major version update with breaking changes. See migration guide.</li>
+          <li><strong>v1.5.0</strong> (2022-11-10): Introduced webhooks for real-time notifications</li>
+        </ul>
+        <p>For a full list of changes, please visit our <a href="https://api.radhil.com/changelog">API Changelog</a> page.</p>
+      </section>
+    </main>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2023 RadHIL. All rights reserved.</p>
+      <p>
+        <a href="https://radhil.com/privacy">Privacy Policy</a> | 
+        <a href="https://radhil.com/terms">Terms of Service</a> |
+        <a href="https://radhil.com/contact">Contact Us</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+    const currentTheme = localStorage.getItem('theme');
+
+    if (currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme);
+      
+        if (currentTheme === 'dark') {
+            toggleSwitch.checked = true;
+        }
+    }
+
+    function switchTheme(e) {

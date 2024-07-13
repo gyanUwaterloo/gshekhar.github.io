@@ -1,0 +1,430 @@
+<html><head><base href="https://radhil.com/features"><title>RadHIL - Luxury Vacation Rental Management Features</title>
+<style>
+  :root {
+    --primary-color: #C9A050;
+    --secondary-color: #1E2A3B;
+    --accent-color: #E0C38C;
+    --text-color: #333333;
+    --bg-color: #FFFFFF;
+    --card-bg: #F8F8F8;
+    --nav-bg: #1E2A3B;
+    --footer-bg: #1E2A3B;
+    --footer-text: #FFFFFF;
+  }
+  
+  [data-theme="dark"] {
+    --primary-color: #E0C38C;
+    --secondary-color: #2C3E50;
+    --accent-color: #C9A050;
+    --text-color: #E6E6FA;
+    --bg-color: #1A1A2E;
+    --card-bg: #2D2D44;
+    --nav-bg: #2C3E50;
+    --footer-bg: #2C3E50;
+    --footer-text: #E6E6FA;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .header {
+    background-color: var(--nav-bg);
+    color: #FFFFFF;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .nav a:hover, .nav a.active {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+  }
+
+  .hero {
+    background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+    background-size: cover;
+    background-position: center;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #FFFFFF;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  }
+
+  .features {
+    padding: 6rem 0;
+    background-color: var(--card-bg);
+  }
+
+  .features-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--primary-color);
+  }
+
+  .feature-section {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    margin-bottom: 4rem;
+  }
+
+  .feature-item {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .feature-item:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+
+  .feature-image {
+    flex: 1;
+    max-width: 500px;
+  }
+
+  .feature-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .feature-content {
+    flex: 1;
+  }
+
+  .feature-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+  }
+
+  .feature-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+  }
+
+  .feature-description {
+    margin-bottom: 1.5rem;
+  }
+
+  .feature-list {
+    list-style-type: none;
+  }
+
+  .feature-list li {
+    margin-bottom: 0.5rem;
+    position: relative;
+    padding-left: 1.5rem;
+  }
+
+  .feature-list li::before {
+    content: '✓';
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+  }
+
+  .cta-section {
+    text-align: center;
+    padding: 4rem 0;
+    background-color: var(--secondary-color);
+    color: #FFFFFF;
+  }
+
+  .cta-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .cta-description {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .cta-button:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+
+  .footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 2rem 0;
+  }
+
+  .footer a {
+    color: var(--footer-text);
+    text-decoration: none;
+    margin: 0 0.5rem;
+  }
+
+  .theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+  }
+
+  .theme-switch input {
+    display: none;
+  }
+
+  .slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+  }
+
+  .slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+    border-radius: 50%;
+  }
+
+  input:checked + .slider {
+    background-color: var(--primary-color);
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+  @media (max-width: 768px) {
+    .header-content {
+      flex-direction: column;
+      text-align: center;
+    }
+    .nav {
+      margin-top: 1rem;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+    .feature-item, .feature-item:nth-child(even) {
+      flex-direction: column;
+    }
+    .feature-image {
+      max-width: 100%;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-container">
+          <div class="logo-icon">🏆</div>
+          <div class="logo-text">RadHIL</div>
+        </div>
+        <nav class="nav">
+          <a href="https://radhil.com">Home</a>
+          <a href="https://radhil.com/features" class="active">Features</a>
+          <a href="https://radhil.com/pricing">Pricing</a>
+          <a href="https://radhil.com/request-demo">Demo</a>
+          <a href="https://radhil.com/support">Support</a>
+        </nav>
+        <div class="theme-switch-wrapper">
+          <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider"></div>
+          </label>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Powerful Features for Luxury Rentals</h1>
+      </div>
+    </section>
+    
+    <section class="features">
+      <div class="container">
+        <h2 class="features-title">Elevate Your Rental Management Experience</h2>
+        <div class="feature-section">
+          <div class="feature-item">
+            <div class="feature-image">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="AI-Driven Dynamic Pricing" width="500" height="333">
+            </div>
+            <div class="feature-content">
+              <div class="feature-icon">💎</div>
+              <h3 class="feature-title">AI-Driven Dynamic Pricing</h3>
+              <p class="feature-description">Maximize your revenue with our cutting-edge pricing algorithm that adapts to market trends and demand in real-time.</p>
+              <ul class="feature-list">
+                <li>Real-time market analysis and competitor monitoring</li>
+                <li>Seasonal and event-based price adjustments</li>
+                <li>Customizable pricing rules and strategies</li>
+                <li>Automatic price optimization based on occupancy goals</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-image">
+              <img src="https://images.unsplash.com/photo-1586227740560-8cf2732c1531?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2161&q=80" alt="Seamless Channel Management" width="500" height="333">
+            </div>
+            <div class="feature-content">
+              <div class="feature-icon">🌐</div>
+              <h3 class="feature-title">Seamless Channel Management</h3>
+              <p class="feature-description">Expand your reach across multiple platforms effortlessly, ensuring maximum visibility and bookings for your luxury properties.</p>
+              <ul class="feature-list">
+                <li>Integration with 50+ booking platforms and OTAs</li>
+                <li>Centralized calendar and reservation management</li>
+                <li>Automatic listing updates across all channels</li>
+                <li>Unified inbox for streamlined communication</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-image">
+              <img src="https://images.unsplash.com/photo-1577563908411-5077b6dc7624?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Intelligent Guest Communication" width="500" height="333">
+            </div>
+            <div class="feature-content">
+              <div class="feature-icon">💬</div>
+              <h3 class="feature-title">Intelligent Guest Communication</h3>
+              <p class="feature-description">Elevate guest experiences with automated, personalized interactions that cater to the high standards of luxury travelers.</p>
+              <ul class="feature-list">
+                <li>AI-powered chatbot for instant guest assistance</li>
+                <li>Customizable message templates and scheduling</li>
+                <li>Multi-language support for international guests</li>
+                <li>Automated review requests and feedback collection</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-image">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Comprehensive Analytics Dashboard" width="500" height="333">
+            </div>
+            <div class="feature-content">
+              <div class="feature-icon">📊</div>
+              <h3 class="feature-title">Comprehensive Analytics Dashboard</h3>
+              <p class="feature-description">Make data-driven decisions with in-depth insights into your property's performance and guest preferences.</p>
+              <ul class="feature-list">
+                <li>Real-time performance metrics and KPI tracking</li>
+                <li>Occupancy and revenue forecasts</li>
+                <li>Guest behavior analysis and segmentation</li>
+                <li>Customizable reports and data exports</li>

@@ -1,0 +1,430 @@
+<html><head><base href="https://radhil.com/kb/integration-guides/calendar-sync"><title>RadHIL Knowledge Base - Calendar Sync Integration Guide</title>
+<style>
+  :root {
+    --primary-color: #C9A050;
+    --secondary-color: #1E2A3B;
+    --accent-color: #E0C38C;
+    --text-color: #333333;
+    --bg-color: #FFFFFF;
+    --card-bg: #F8F8F8;
+    --nav-bg: #1E2A3B;
+    --footer-bg: #1E2A3B;
+    --footer-text: #FFFFFF;
+    --code-bg: #f4f4f4;
+  }
+  
+  [data-theme="dark"] {
+    --primary-color: #E0C38C;
+    --secondary-color: #2C3E50;
+    --accent-color: #C9A050;
+    --text-color: #E6E6FA;
+    --bg-color: #1A1A2E;
+    --card-bg: #2D2D44;
+    --nav-bg: #2C3E50;
+    --footer-bg: #2C3E50;
+    --footer-text: #E6E6FA;
+    --code-bg: #2d2d2d;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .header {
+    background-color: var(--nav-bg);
+    color: #FFFFFF;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .nav a:hover, .nav a.active {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+  }
+
+  .main-content {
+    padding-top: 80px;
+    display: flex;
+    gap: 2rem;
+  }
+
+  .sidebar {
+    width: 250px;
+    padding: 2rem;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    position: sticky;
+    top: 100px;
+    height: calc(100vh - 100px);
+    overflow-y: auto;
+  }
+
+  .sidebar h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+
+  .sidebar ul {
+    list-style-type: none;
+  }
+
+  .sidebar li {
+    margin-bottom: 0.5rem;
+  }
+
+  .sidebar a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .sidebar a:hover, .sidebar a.active {
+    color: var(--primary-color);
+  }
+
+  .article {
+    flex-grow: 1;
+    padding: 2rem;
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .article h1 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+  }
+
+  .article h2 {
+    color: var(--secondary-color);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .article p {
+    margin-bottom: 1rem;
+  }
+
+  .article ul, .article ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+  }
+
+  .article li {
+    margin-bottom: 0.5rem;
+  }
+
+  .article img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin: 1rem 0;
+  }
+
+  .code-block {
+    background-color: var(--code-bg);
+    border-radius: 5px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    overflow-x: auto;
+  }
+
+  .code-block code {
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--text-color);
+  }
+
+  .note {
+    background-color: var(--accent-color);
+    color: var(--secondary-color);
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+  }
+
+  .footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+  }
+
+  .footer a {
+    color: var(--footer-text);
+    text-decoration: none;
+    margin: 0 0.5rem;
+  }
+
+  .theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+  }
+
+  .theme-switch input {
+    display: none;
+  }
+
+  .slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+  }
+
+  .slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+    border-radius: 50%;
+  }
+
+  input:checked + .slider {
+    background-color: var(--primary-color);
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+  @media (max-width: 768px) {
+    .main-content {
+      flex-direction: column;
+    }
+    .sidebar {
+      width: 100%;
+      position: static;
+      height: auto;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-container">
+          <div class="logo-icon">🏆</div>
+          <div class="logo-text">RadHIL</div>
+        </div>
+        <nav class="nav">
+          <a href="https://radhil.com">Home</a>
+          <a href="https://radhil.com/features">Features</a>
+          <a href="https://radhil.com/pricing">Pricing</a>
+          <a href="https://radhil.com/request-demo">Demo</a>
+          <a href="https://radhil.com/support">Support</a>
+        </nav>
+        <div class="theme-switch-wrapper">
+          <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider"></div>
+          </label>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container main-content">
+    <aside class="sidebar">
+      <h3>Integration Guides</h3>
+      <ul>
+        <li><a href="https://radhil.com/kb/integration-guides/booking-channels">Booking Channels</a></li>
+        <li><a href="https://radhil.com/kb/integration-guides/payment-gateways">Payment Gateways</a></li>
+        <li><a href="https://radhil.com/kb/integration-guides/accounting-software">Accounting Software</a></li>
+        <li><a href="https://radhil.com/kb/integration-guides/smart-home-devices">Smart Home Devices</a></li>
+        <li><a href="https://radhil.com/kb/integration-guides/crm-systems">CRM Systems</a></li>
+        <li><a href="https://radhil.com/kb/integration-guides/cleaning-services">Cleaning Services</a></li>
+        <li><a href="#" class="active">Calendar Sync</a></li>
+        <li><a href="https://radhil.com/kb/integration-guides/custom-integrations">Custom Integrations</a></li>
+      </ul>
+    </aside>
+
+    <main class="article">
+      <h1>Calendar Sync Integration Guide</h1>
+
+      <p>Seamless calendar synchronization is crucial for managing luxury properties efficiently. RadHIL's Calendar Sync integration ensures that your bookings, maintenance schedules, and personal calendars are always up-to-date across all platforms. This guide will walk you through the process of setting up and optimizing calendar sync for your RadHIL account.</p>
+
+      <h2>Supported Calendar Platforms</h2>
+      <ul>
+        <li>Google Calendar</li>
+        <li>Apple iCloud Calendar</li>
+        <li>Microsoft Outlook Calendar</li>
+        <li>Airbnb Calendar</li>
+        <li>Booking.com Calendar</li>
+        <li>VRBO Calendar</li>
+      </ul>
+
+      <h2>General Integration Steps</h2>
+      <ol>
+        <li>Log in to your RadHIL dashboard</li>
+        <li>Navigate to "Integrations" in the main menu</li>
+        <li>Select "Calendar Sync" from the integration categories</li>
+        <li>Choose the calendar platforms you want to sync with RadHIL</li>
+        <li>Click "Connect" for each platform and follow the authentication process</li>
+        <li>Configure sync settings for each connected calendar</li>
+        <li>Set up two-way sync or one-way sync as needed</li>
+        <li>Test the integration by adding a test event</li>
+        <li>Activate the live sync</li>
+      </ol>
+
+      <h2>Google Calendar Integration</h2>
+      <p>Google Calendar is widely used and offers robust synchronization capabilities. Here's how to set it up with RadHIL:</p>
+
+      <ol>
+        <li>In the RadHIL dashboard, select Google Calendar from the calendar platforms list</li>
+        <li>Click "Connect to Google Calendar"</li>
+        <li>You'll be redirected to Google's authorization page. Log in and grant access to RadHIL</li>
+        <li>Back in RadHIL, click "Configure Sync Settings"</li>
+        <li>Choose which RadHIL calendars to sync with Google:
+          <ul>
+            <li>Property Bookings</li>
+            <li>Maintenance Schedules</li>
+            <li>Cleaning Schedules</li>
+            <li>Staff Schedules</li>
+          </ul>
+        </li>
+        <li>Set up sync direction (two-way or one-way)</li>
+        <li>Configure event color coding for different types of events</li>
+        <li>Set up privacy settings for synced events</li>
+        <li>Save your configuration</li>
+      </ol>
+
+      <div class="code-block">
+        <code>
+          // Example of RadHIL to Google Calendar sync configuration
+          {
+            "propertyBookings": {
+              "syncEnabled": true,
+              "syncDirection": "twoWay",
+              "colorCode": "#4285F4",
+              "privacy": "public"
+            },
+            "maintenanceSchedules": {
+              "syncEnabled": true,
+              "syncDirection": "oneWay",
+              "colorCode": "#FBBC05",
+              "privacy": "private"
+            }
+          }
+        </code>
+      </div>
+
+      <h2>Airbnb Calendar Sync</h2>
+      <p>Syncing with Airbnb's calendar is crucial for avoiding double bookings. Here's how to set it up:</p>
+
+      <ol>
+        <li>Select Airbnb from the calendar platforms list in RadHIL</li>
+        <li>Click "Connect to Airbnb Calendar"</li>
+        <li>You'll be prompted to enter your Airbnb iCal URL for each property</li>
+        <li>In Airbnb, go to your listing, find the calendar export option, and copy the iCal URL</li>
+        <li>Paste the URL into RadHIL for each corresponding property</li>
+        <li>Set the sync frequency (e.g., every 15 minutes, hourly, daily)</li>
+        <li>Configure how RadHIL should handle conflicting bookings</li>
+        <li>Save your configuration</li>
+      </ol>
+
+      <div class="note">
+        <p><strong>Note:</strong> Airbnb calendar sync is typically one-way (Airbnb to RadHIL) to prevent potential overbooking issues.</p>
+      </div>
+
+      <h2>Advanced Calendar Sync Features</h2>
+      <p>RadHIL's calendar sync offers advanced features for power users:</p>
+      <ul>
+        <li>Multi-property Overview: Sync all your properties into a single, color-coded calendar view</li>
+        <li>Availability Blocks: Automatically block off maintenance periods across all synced calendars</li>
+        <li>Smart Conflict Resolution: AI-powered suggestions for resolving booking conflicts</li>
+        <li>Custom Event Types: Create and sync custom event types (e.g., photoshoots, inspections)</li>
+        <li>Calendar Analytics: Get insights on booking patterns and occupancy rates</li>
+      </ul>
+
+      <h2>Best Practices for Calendar Sync</h2>
+      <ul>
+        <li>Regularly verify that all calendars are syncing correctly</li>
+        <li>Use unique, descriptive names for each property to avoid confusion</li>
+        <li>Set up notifications for sync errors or conflicts</li>
+        <li>Implement a buffer period between bookings to account for cleaning and maintenance</li>
+        <li>Train your team on the importance of keeping calendars updated</li>
+        <li>Periodically review and update sync settings as your business grows</li>
+      </ul>
+
+      <h2>Troubleshooting Common Sync Issues</h2>
+      <p>If you encounter problems with your calendar sync:</p>
+      <ol>
+        <li>Check your internet connection and ensure all platforms are accessible</li>
+        <li>Verify that your authentication tokens are still valid for each platform</li>
+        <li>Review sync logs in RadHIL for any error messages</li>
+        <li>Try disconnecting and reconnecting the problematic calendar</li>
+        <li>Ensure that the time zones are correctly

@@ -1,0 +1,410 @@
+<html><head><base href="https://radhil.com/kb/benchmarking"><title>RadHIL - Benchmarking Your Properties</title>
+<style>
+  :root {
+    --primary-color: #C9A050;
+    --secondary-color: #1E2A3B;
+    --accent-color: #E0C38C;
+    --text-color: #333333;
+    --bg-color: #FFFFFF;
+    --card-bg: #F8F8F8;
+    --nav-bg: #1E2A3B;
+    --footer-bg: #1E2A3B;
+    --footer-text: #FFFFFF;
+    --chart-color-1: #4E79A7;
+    --chart-color-2: #F28E2B;
+    --chart-color-3: #E15759;
+    --chart-color-4: #76B7B2;
+  }
+  
+  [data-theme="dark"] {
+    --primary-color: #E0C38C;
+    --secondary-color: #2C3E50;
+    --accent-color: #C9A050;
+    --text-color: #E6E6FA;
+    --bg-color: #1A1A2E;
+    --card-bg: #2D2D44;
+    --nav-bg: #2C3E50;
+    --footer-bg: #2C3E50;
+    --footer-text: #E6E6FA;
+    --chart-color-1: #6D9EC1;
+    --chart-color-2: #F6AD55;
+    --chart-color-3: #E77C79;
+    --chart-color-4: #95D5D2;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .header {
+    background-color: var(--nav-bg);
+    color: #FFFFFF;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .nav a:hover, .nav a.active {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+  }
+
+  .main-content {
+    padding-top: 80px;
+    display: flex;
+    gap: 2rem;
+  }
+
+  .sidebar {
+    width: 250px;
+    padding: 2rem;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    position: sticky;
+    top: 100px;
+    height: calc(100vh - 100px);
+    overflow-y: auto;
+  }
+
+  .sidebar h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+
+  .sidebar ul {
+    list-style-type: none;
+  }
+
+  .sidebar li {
+    margin-bottom: 0.5rem;
+  }
+
+  .sidebar a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .sidebar a:hover, .sidebar a.active {
+    color: var(--primary-color);
+  }
+
+  .article {
+    flex-grow: 1;
+    padding: 2rem;
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .article h1 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+  }
+
+  .article h2 {
+    color: var(--secondary-color);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .article p {
+    margin-bottom: 1rem;
+  }
+
+  .article ul, .article ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+  }
+
+  .article li {
+    margin-bottom: 0.5rem;
+  }
+
+  .article img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin: 1rem 0;
+  }
+
+  .chart-container {
+    width: 100%;
+    height: 400px;
+    margin: 2rem 0;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+  }
+
+  .footer a {
+    color: var(--footer-text);
+    text-decoration: none;
+    margin: 0 0.5rem;
+  }
+
+  .theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+  }
+
+  .theme-switch input {
+    display: none;
+  }
+
+  .slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+  }
+
+  .slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+    border-radius: 50%;
+  }
+
+  input:checked + .slider {
+    background-color: var(--primary-color);
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+  @media (max-width: 768px) {
+    .main-content {
+      flex-direction: column;
+    }
+    .sidebar {
+      width: 100%;
+      position: static;
+      height: auto;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-container">
+          <div class="logo-icon">🏆</div>
+          <div class="logo-text">RadHIL</div>
+        </div>
+        <nav class="nav">
+          <a href="https://radhil.com">Home</a>
+          <a href="https://radhil.com/features">Features</a>
+          <a href="https://radhil.com/pricing">Pricing</a>
+          <a href="https://radhil.com/request-demo">Demo</a>
+          <a href="https://radhil.com/support">Support</a>
+        </nav>
+        <div class="theme-switch-wrapper">
+          <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider"></div>
+          </label>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container main-content">
+    <aside class="sidebar">
+      <h3>Analytics & Reporting</h3>
+      <ul>
+        <li><a href="https://radhil.com/kb/dashboard-overview">Dashboard Overview</a></li>
+        <li><a href="https://radhil.com/kb/performance-metrics">Understanding Performance Metrics</a></li>
+        <li><a href="https://radhil.com/kb/custom-reports">Creating Custom Reports</a></li>
+        <li><a href="https://radhil.com/kb/data-export">Data Export and Integration</a></li>
+        <li><a href="https://radhil.com/kb/benchmarking" class="active">Benchmarking Your Properties</a></li>
+        <li><a href="https://radhil.com/kb/forecasting">Revenue Forecasting</a></li>
+        <li><a href="https://radhil.com/kb/market-insights">Market Insights</a></li>
+      </ul>
+    </aside>
+
+    <main class="article">
+      <h1>Benchmarking Your Properties</h1>
+
+      <p>Benchmarking is a crucial feature of RadHIL that allows you to compare your property's performance against similar properties in your market. This powerful tool helps you identify areas for improvement and opportunities for growth.</p>
+
+      <h2>1. Understanding Benchmarking</h2>
+      <p>Benchmarking in RadHIL compares your property's key performance indicators (KPIs) to those of similar properties in your area. This comparison helps you:</p>
+      <ul>
+        <li>Gauge your property's performance relative to the market</li>
+        <li>Identify areas where you're outperforming or underperforming</li>
+        <li>Set realistic goals based on market data</li>
+        <li>Make data-driven decisions to optimize your strategy</li>
+      </ul>
+
+      <h2>2. Accessing Benchmarking Data</h2>
+      <p>To access benchmarking data in RadHIL:</p>
+      <ol>
+        <li>Navigate to the "Analytics" section in your dashboard</li>
+        <li>Select "Benchmarking" from the menu</li>
+        <li>Choose the property you want to benchmark</li>
+        <li>Select the date range for comparison</li>
+        <li>View the benchmarking dashboard</li>
+      </ol>
+
+      <h2>3. Key Metrics for Benchmarking</h2>
+      <p>RadHIL provides benchmarking data for several crucial metrics:</p>
+      <ul>
+        <li>Occupancy Rate</li>
+        <li>Average Daily Rate (ADR)</li>
+        <li>Revenue Per Available Room (RevPAR)</li>
+        <li>Booking Lead Time</li>
+        <li>Length of Stay</li>
+        <li>Guest Ratings</li>
+      </ul>
+
+      <div class="chart-container">
+        <!-- This is where a chart would be rendered in a real application -->
+        <svg width="100%" height="100%" viewBox="0 0 800 400">
+          <rect x="0" y="0" width="800" height="400" fill="var(--card-bg)"/>
+          <text x="400" y="30" font-size="20" text-anchor="middle" fill="var(--text-color)">Occupancy Rate Benchmark</text>
+          <line x1="50" y1="350" x2="750" y2="350" stroke="var(--text-color)" stroke-width="2"/>
+          <line x1="50" y1="50" x2="50" y2="350" stroke="var(--text-color)" stroke-width="2"/>
+          <polyline points="50,280 200,220 350,300 500,150 650,200" fill="none" stroke="var(--chart-color-1)" stroke-width="3"/>
+          <polyline points="50,300 200,250 350,280 500,200 650,230" fill="none" stroke="var(--chart-color-2)" stroke-width="3" stroke-dasharray="5,5"/>
+          <text x="750" y="280" font-size="14" fill="var(--chart-color-1)">Your Property</text>
+          <text x="750" y="300" font-size="14" fill="var(--chart-color-2)">Market Average</text>
+        </svg>
+      </div>
+
+      <h2>4. Customizing Your Competitive Set</h2>
+      <p>To ensure accurate benchmarking, you can customize your competitive set:</p>
+      <ol>
+        <li>Go to "Settings" &gt; "Benchmarking"</li>
+        <li>Select the property you want to set up</li>
+        <li>Choose criteria for your competitive set (e.g., location, property type, number of bedrooms)</li>
+        <li>Review and approve the suggested competitive set</li>
+        <li>Save your settings</li>
+      </ol>
+
+      <h2>5. Interpreting Benchmarking Data</h2>
+      <p>When analyzing your benchmarking data:</p>
+      <ul>
+        <li>Look for significant deviations from the market average</li>
+        <li>Identify trends over time</li>
+        <li>Consider seasonal variations</li>
+        <li>Analyze the impact of your pricing and marketing strategies</li>
+      </ul>
+
+      <h2>6. Taking Action Based on Benchmarking Insights</h2>
+      <p>Use your benchmarking data to inform your strategy:</p>
+      <ul>
+        <li>Adjust your pricing strategy if your ADR is significantly different from the market</li>
+        <li>Improve your property's amenities or marketing if your occupancy rate is lagging</li>
+        <li>Optimize your minimum stay requirements based on the market's average length of stay</li>
+        <li>Enhance your guest experience to improve ratings if you're falling behind competitors</li>
+      </ul>
+
+      <h2>7. Advanced Benchmarking Features</h2>
+      <p>RadHIL offers advanced benchmarking features for deeper insights:</p>
+      <ul>
+        <li>Segmented benchmarking (e.g., by booking channel, guest type)</li>
+        <li>Historical trend analysis</li>
+        <li>Forecasted benchmarks based on market trends</li>
+        <li>Custom KPI benchmarking</li>
+      </ul>
+
+      <h2>8. Benchmarking Reports</h2>
+      <p>Generate comprehensive benchmarking reports:</p>
+      <ol>
+        <li>Go to "Reports" &gt; "Benchmarking"</li>
+        <li>Select the properties and metrics to include</li>
+        <li>Choose the date range and comparison period</li>
+        <li>Generate the report in your preferred format (PDF, Excel, etc.)</li>
+      </ol>
+
+      <h2>Best Practices for Effective Benchmarking</h2>
+      <ul>
+        <li>Regularly review and update your competitive set</li>
+        <li>Consider multiple metrics for a holistic view of performance</li>
+        <li>Use benchmarking data in conjunction with other analytics tools</li>
+        <li>Share benchmarking insights with your team to align strategies</li>
+        <li>Set realistic

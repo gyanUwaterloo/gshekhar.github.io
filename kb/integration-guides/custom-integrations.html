@@ -1,0 +1,423 @@
+<html><head><base href="https://radhil.com/kb/integration-guides/custom-integrations"><title>RadHIL Knowledge Base - Custom Integrations Guide</title>
+<style>
+  :root {
+    --primary-color: #C9A050;
+    --secondary-color: #1E2A3B;
+    --accent-color: #E0C38C;
+    --text-color: #333333;
+    --bg-color: #FFFFFF;
+    --card-bg: #F8F8F8;
+    --nav-bg: #1E2A3B;
+    --footer-bg: #1E2A3B;
+    --footer-text: #FFFFFF;
+    --code-bg: #f4f4f4;
+  }
+  
+  [data-theme="dark"] {
+    --primary-color: #E0C38C;
+    --secondary-color: #2C3E50;
+    --accent-color: #C9A050;
+    --text-color: #E6E6FA;
+    --bg-color: #1A1A2E;
+    --card-bg: #2D2D44;
+    --nav-bg: #2C3E50;
+    --footer-bg: #2C3E50;
+    --footer-text: #E6E6FA;
+    --code-bg: #2d2d2d;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .header {
+    background-color: var(--nav-bg);
+    color: #FFFFFF;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .nav a:hover, .nav a.active {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+  }
+
+  .main-content {
+    padding-top: 80px;
+    display: flex;
+    gap: 2rem;
+  }
+
+  .sidebar {
+    width: 250px;
+    padding: 2rem;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    position: sticky;
+    top: 100px;
+    height: calc(100vh - 100px);
+    overflow-y: auto;
+  }
+
+  .sidebar h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+
+  .sidebar ul {
+    list-style-type: none;
+  }
+
+  .sidebar li {
+    margin-bottom: 0.5rem;
+  }
+
+  .sidebar a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .sidebar a:hover, .sidebar a.active {
+    color: var(--primary-color);
+  }
+
+  .article {
+    flex-grow: 1;
+    padding: 2rem;
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .article h1 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+  }
+
+  .article h2 {
+    color: var(--secondary-color);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .article p {
+    margin-bottom: 1rem;
+  }
+
+  .article ul, .article ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+  }
+
+  .article li {
+    margin-bottom: 0.5rem;
+  }
+
+  .article img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin: 1rem 0;
+  }
+
+  .code-block {
+    background-color: var(--code-bg);
+    border-radius: 5px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    overflow-x: auto;
+  }
+
+  .code-block code {
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--text-color);
+  }
+
+  .note {
+    background-color: var(--accent-color);
+    color: var(--secondary-color);
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+  }
+
+  .footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+  }
+
+  .footer a {
+    color: var(--footer-text);
+    text-decoration: none;
+    margin: 0 0.5rem;
+  }
+
+  .theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+  }
+
+  .theme-switch input {
+    display: none;
+  }
+
+  .slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+  }
+
+  .slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+    border-radius: 50%;
+  }
+
+  input:checked + .slider {
+    background-color: var(--primary-color);
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+  @media (max-width: 768px) {
+    .main-content {
+      flex-direction: column;
+    }
+    .sidebar {
+      width: 100%;
+      position: static;
+      height: auto;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-container">
+          <div class="logo-icon">🏆</div>
+          <div class="logo-text">RadHIL</div>
+        </div>
+        <nav class="nav">
+          <a href="https://radhil.com">Home</a>
+          <a href="https://radhil.com/features">Features</a>
+          <a href="https://radhil.com/pricing">Pricing</a>
+          <a href="https://radhil.com/request-demo">Demo</a>
+          <a href="https://radhil.com/support">Support</a>
+        </nav>
+        <div class="theme-switch-wrapper">
+          <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider"></div>
+          </label>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container main-content">
+    <aside class="sidebar">
+      <h3>Integration Guides</h3>
+      <ul>
+        <li><a href="https://radhil.com/kb/integration-guides/booking-channels">Booking Channels</a></li>
+        <li><a href="https://radhil.com/kb/integration-guides/payment-gateways">Payment Gateways</a></li>
+        <li><a href="https://radhil.com/kb/integration-guides/accounting-software">Accounting Software</a></li>
+        <li><a href="https://radhil.com/kb/integration-guides/smart-home-devices">Smart Home Devices</a></li>
+        <li><a href="https://radhil.com/kb/integration-guides/crm-systems">CRM Systems</a></li>
+        <li><a href="https://radhil.com/kb/integration-guides/cleaning-services">Cleaning Services</a></li>
+        <li><a href="https://radhil.com/kb/integration-guides/calendar-sync">Calendar Sync</a></li>
+        <li><a href="#" class="active">Custom Integrations</a></li>
+      </ul>
+    </aside>
+
+    <main class="article">
+      <h1>Custom Integrations Guide</h1>
+
+      <p>RadHIL's custom integration capabilities allow you to connect our luxury property management system with virtually any third-party service or proprietary software. This guide will walk you through the process of creating and implementing custom integrations to tailor RadHIL to your unique business needs.</p>
+
+      <h2>Understanding RadHIL's API</h2>
+      <p>At the core of RadHIL's custom integration capabilities is our robust API. Here's what you need to know:</p>
+      <ul>
+        <li>RESTful API architecture</li>
+        <li>JSON data format for requests and responses</li>
+        <li>OAuth 2.0 authentication</li>
+        <li>Rate limiting: 1000 requests per hour</li>
+        <li>Comprehensive endpoint documentation available at <a href="https://api.radhil.com/docs">https://api.radhil.com/docs</a></li>
+      </ul>
+
+      <h2>Getting Started with Custom Integrations</h2>
+      <ol>
+        <li>Log in to your RadHIL dashboard</li>
+        <li>Navigate to "Developer Settings" in the main menu</li>
+        <li>Click on "Create New API Key"</li>
+        <li>Name your integration and select the required scopes</li>
+        <li>Store your API key securely - it will only be shown once</li>
+        <li>Use the API key in your integration's authentication process</li>
+      </ol>
+
+      <h2>Example: Custom Concierge Service Integration</h2>
+      <p>Let's walk through an example of integrating a custom concierge service with RadHIL:</p>
+
+      <div class="code-block">
+        <code>
+          // Example API request to create a concierge task
+          POST https://api.radhil.com/v1/concierge-tasks
+          
+          Headers:
+          Authorization: Bearer YOUR_API_KEY
+          Content-Type: application/json
+          
+          Body:
+          {
+            "propertyId": "lux-villa-123",
+            "guestId": "guest-456",
+            "taskType": "restaurant-reservation",
+            "description": "Book a table for 2 at La Vue, 8 PM on 2023-07-15",
+            "status": "pending",
+            "priority": "high"
+          }
+        </code>
+      </div>
+
+      <p>This request creates a new concierge task in RadHIL, which can then be managed through your custom concierge service interface.</p>
+
+      <h2>Webhooks for Real-time Updates</h2>
+      <p>RadHIL supports webhooks to push real-time updates to your integrated systems:</p>
+      <ol>
+        <li>Go to "Developer Settings" in your RadHIL dashboard</li>
+        <li>Click on "Configure Webhooks"</li>
+        <li>Add a new webhook endpoint URL</li>
+        <li>Select the events you want to subscribe to (e.g., new bookings, check-ins, maintenance requests)</li>
+        <li>Save your webhook configuration</li>
+      </ol>
+
+      <div class="note">
+        <p><strong>Note:</strong> Ensure your webhook endpoint is secure (HTTPS) and can handle the expected volume of events.</p>
+      </div>
+
+      <h2>Advanced Integration Features</h2>
+      <ul>
+        <li>Batch Operations: Perform multiple operations in a single API call</li>
+        <li>Delta Sync: Retrieve only changed data since your last sync</li>
+        <li>Custom Fields: Create and manage custom data fields for properties, guests, and bookings</li>
+        <li>Automation Triggers: Set up custom automation based on specific events or conditions</li>
+        <li>Data Export: Bulk export data for offline processing or backup</li>
+      </ul>
+
+      <h2>Best Practices for Custom Integrations</h2>
+      <ul>
+        <li>Use appropriate error handling and logging in your integration code</li>
+        <li>Implement retry logic with exponential backoff for failed API calls</li>
+        <li>Cache frequently accessed data to reduce API calls and improve performance</li>
+        <li>Regularly review and update your integration as RadHIL's API evolves</li>
+        <li>Monitor your API usage to stay within rate limits</li>
+        <li>Keep your API keys and webhook endpoints secure</li>
+      </ul>
+
+      <h2>Testing Your Integration</h2>
+      <p>RadHIL provides a sandbox environment for testing your integrations:</p>
+      <ol>
+        <li>Use the base URL https://api-sandbox.radhil.com for all API calls in the sandbox</li>
+        <li>Create test data in the sandbox environment</li>
+        <li>Simulate various scenarios (bookings, cancellations, maintenance issues) to test your integration</li>
+        <li>Use the RadHIL dashboard in sandbox mode to verify data synchronization</li>
+      </ol>
+
+      <h2>Support and Resources</h2>
+      <p>We're here to help you succeed with your custom integrations:</p>
+      <ul>
+        <li>API Documentation: <a href="https://api.radhil.com/docs">https://api.radhil.com/docs</a></li>
+        <li>Developer Forum: <a href="https://developer.radhil.com/forum">https://developer.radhil.com/forum</a></li>
+        <li>Integration Examples: <a href="https://github.com/radhil-examples">https://github.com/radhil-examples</a></li>
+        <li>Email Support: <a href="/cdn-cgi/l/email-protection#1677667f3b65636666796462566477727e7f7a3875797b"><span class="__cf_email__" data-cfemail="0564756c28767075756a7771457764616d6c692b666a68">[email&#160;protected]</span></a></li>
+      </ul>
+
+      <p>Remember, the possibilities with custom integrations are limitless. Whether you're connecting RadHIL to a bespoke guest experience app, a specialized revenue management tool, or an IoT system for smart properties, our flexible API and development tools are designed to support your innovation in luxury property management.</p>
+    </main>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2023<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>

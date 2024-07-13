@@ -1,0 +1,427 @@
+<html><head><base href="https://radhil.com/features/ai-pricing/competitive-analysis"><title>RadHIL - Competitive Analysis</title>
+<style>
+  :root {
+    --primary-color: #C9A050;
+    --secondary-color: #1E2A3B;
+    --accent-color: #E0C38C;
+    --text-color: #333333;
+    --bg-color: #FFFFFF;
+    --card-bg: #F8F8F8;
+    --nav-bg: #1E2A3B;
+    --footer-bg: #1E2A3B;
+    --footer-text: #FFFFFF;
+    --chart-color-1: #4E79A7;
+    --chart-color-2: #F28E2B;
+    --chart-color-3: #E15759;
+    --chart-color-4: #76B7B2;
+  }
+  
+  [data-theme="dark"] {
+    --primary-color: #E0C38C;
+    --secondary-color: #2C3E50;
+    --accent-color: #C9A050;
+    --text-color: #E6E6FA;
+    --bg-color: #1A1A2E;
+    --card-bg: #2D2D44;
+    --nav-bg: #2C3E50;
+    --footer-bg: #2C3E50;
+    --footer-text: #E6E6FA;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .header {
+    background-color: var(--nav-bg);
+    color: #FFFFFF;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .nav a:hover, .nav a.active {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+  }
+
+  .hero {
+    background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+    background-size: cover;
+    background-position: center;
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #FFFFFF;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  }
+
+  .main-content {
+    padding: 4rem 0;
+  }
+
+  .feature-section {
+    margin-bottom: 4rem;
+  }
+
+  .feature-section h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .feature-card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+
+  .chart-container {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .chart {
+    width: 100%;
+    height: 300px;
+    margin-top: 1rem;
+  }
+
+  .cta-section {
+    background-color: var(--accent-color);
+    padding: 4rem 0;
+    text-align: center;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background-color: var(--secondary-color);
+    color: #FFFFFF;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+  }
+
+  .cta-button:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-3px);
+  }
+
+  .footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 2rem 0;
+  }
+
+  .footer a {
+    color: var(--footer-text);
+    text-decoration: none;
+    margin: 0 0.5rem;
+  }
+
+  .theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+  }
+
+  .theme-switch input {
+    display: none;
+  }
+
+  .slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+  }
+
+  .slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+    border-radius: 50%;
+  }
+
+  input:checked + .slider {
+    background-color: var(--primary-color);
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+  @media (max-width: 768px) {
+    .header-content {
+      flex-direction: column;
+      text-align: center;
+    }
+    .nav {
+      margin-top: 1rem;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-container">
+          <div class="logo-icon">🏆</div>
+          <div class="logo-text">RadHIL</div>
+        </div>
+        <nav class="nav">
+          <a href="https://radhil.com">Home</a>
+          <a href="https://radhil.com/features" class="active">Features</a>
+          <a href="https://radhil.com/pricing">Pricing</a>
+          <a href="https://radhil.com/request-demo">Demo</a>
+          <a href="https://radhil.com/support">Support</a>
+        </nav>
+        <div class="theme-switch-wrapper">
+          <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider"></div>
+          </label>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Competitive Analysis</h1>
+        <p>Stay ahead with AI-driven market insights</p>
+      </div>
+    </section>
+    
+    <section class="main-content">
+      <div class="container">
+        <div class="feature-section">
+          <h2>Comprehensive Market Intelligence</h2>
+          <p>RadHIL's AI-powered competitive analysis tool gives you an unparalleled view of your market positioning. By continuously monitoring and analyzing data from various sources, we provide you with actionable insights to optimize your pricing strategy and stay ahead of the competition.</p>
+          
+          <div class="feature-grid">
+            <div class="feature-card">
+              <div class="feature-icon">📊</div>
+              <h3>Real-time Competitor Tracking</h3>
+              <p>Monitor pricing changes, occupancy rates, and special offers from your competitors in real-time.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">🎯</div>
+              <h3>Market Positioning</h3>
+              <p>Understand where your properties stand in relation to competitors based on various factors like amenities, location, and guest ratings.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">📅</div>
+              <h3>Seasonal Trend Analysis</h3>
+              <p>Identify patterns in seasonal demand and pricing strategies across your market.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">🔔</div>
+              <h3>Smart Alerts</h3>
+              <p>Receive notifications for significant market changes or opportunities that require your attention.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="feature-section">
+          <h2>Data-Driven Insights</h2>
+          <p>Our AI doesn't just collect data; it transforms it into meaningful insights that drive your business forward.</p>
+          
+          <div class="chart-container">
+            <h3>Comparative Pricing Analysis</h3>
+            <div class="chart">
+              <!-- Placeholder for chart -->
+              <svg width="100%" height="300">
+                <rect x="0" y="0" width="100%" height="100%" fill="#f0f0f0"/>
+                <line x1="50" y1="250" x2="550" y2="250" stroke="black"/>
+                <line x1="50" y1="250" x2="50" y2="50" stroke="black"/>
+                <polyline points="50,200 150,180 250,220 350,150 450,100" fill="none" stroke="var(--chart-color-1)" stroke-width="2"/>
+                <polyline points="50,180 150,200 250,190 350,170 450,140" fill="none" stroke="var(--chart-color-2)" stroke-width="2"/>
+                <polyline points="50,220 150,210 250,230 350,200 450,180" fill="none" stroke="var(--chart-color-3)" stroke-width="2"/>
+                <text x="300" y="280" text-anchor="middle">Time</text>
+                <text x="30" y="150" text-anchor="middle" transform="rotate(-90 30,150)">Price</text>
+                <text x="550" y="190" fill="var(--chart-color-1)">Your Property</text>
+                <text x="550" y="220" fill="var(--chart-color-2)">Competitor A</text>
+                <text x="550" y="250" fill="var(--chart-color-3)">Competitor B</text>
+              </svg>
+            </div>
+          </div>
+        </div>
+        
+        <div class="feature-section">
+          <h2>AI-Powered Recommendations</h2>
+          <p>Let our advanced AI guide your pricing decisions with tailored recommendations based on comprehensive market analysis.</p>
+          
+          <div class="feature-grid">
+            <div class="feature-card">
+              <div class="feature-icon">💡</div>
+              <h3>Dynamic Pricing Suggestions</h3>
+              <p>Receive AI-generated pricing recommendations that adapt to market conditions in real-time.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">📈</div>
+              <h3>Revenue Optimization</h3>
+              <p>Maximize your revenue with suggestions for promotional strategies and special offers.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">🏆</div>
+              <h3>Competitive Edge Insights</h3>
+              <p>Identify unique selling points and areas for improvement to stand out in your market.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">🔮</div>
+              <h3>Predictive Analytics</h3>
+              <p>Anticipate market shifts and demand changes with our AI's predictive capabilities.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="cta-section">
+      <div class="container">
+        <h2>Ready to Outperform Your Competition?</h2>
+        <p>Harness the power of AI-driven competitive analysis with RadHIL</p>
+        <a href="https://radhil.com/request-demo" class="cta-button">Request a Demo</a>
+      </div>
+    </section>
+  </main>
+  
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2023 RadHIL. All rights reserved.</p>
+      <p>
+        <a href="https://radhil.com/privacy">Privacy Policy</a> | 
+        <a href="https://radhil.com/terms">Terms of Service</a> |
+        <a href="https://radhil.com/contact">Contact Us</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const toggleSwitch = document.querySelector('.

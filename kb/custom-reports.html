@@ -1,0 +1,452 @@
+<html><head><base href="https://radhil.com/kb/custom-reports"><title>RadHIL - Creating Custom Reports</title>
+<style>
+  :root {
+    --primary-color: #C9A050;
+    --secondary-color: #1E2A3B;
+    --accent-color: #E0C38C;
+    --text-color: #333333;
+    --bg-color: #FFFFFF;
+    --card-bg: #F8F8F8;
+    --nav-bg: #1E2A3B;
+    --footer-bg: #1E2A3B;
+    --footer-text: #FFFFFF;
+  }
+  
+  [data-theme="dark"] {
+    --primary-color: #E0C38C;
+    --secondary-color: #2C3E50;
+    --accent-color: #C9A050;
+    --text-color: #E6E6FA;
+    --bg-color: #1A1A2E;
+    --card-bg: #2D2D44;
+    --nav-bg: #2C3E50;
+    --footer-bg: #2C3E50;
+    --footer-text: #E6E6FA;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .header {
+    background-color: var(--nav-bg);
+    color: #FFFFFF;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .nav a:hover, .nav a.active {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+  }
+
+  .main-content {
+    padding-top: 80px;
+    display: flex;
+    gap: 2rem;
+  }
+
+  .sidebar {
+    width: 250px;
+    padding: 2rem;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    position: sticky;
+    top: 100px;
+    height: calc(100vh - 100px);
+    overflow-y: auto;
+  }
+
+  .sidebar h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+
+  .sidebar ul {
+    list-style-type: none;
+  }
+
+  .sidebar li {
+    margin-bottom: 0.5rem;
+  }
+
+  .sidebar a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .sidebar a:hover, .sidebar a.active {
+    color: var(--primary-color);
+  }
+
+  .article {
+    flex-grow: 1;
+    padding: 2rem;
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .article h1 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+  }
+
+  .article h2 {
+    color: var(--secondary-color);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .article p {
+    margin-bottom: 1rem;
+  }
+
+  .article ul, .article ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+  }
+
+  .article li {
+    margin-bottom: 0.5rem;
+  }
+
+  .article img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin: 1rem 0;
+  }
+
+  .footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+  }
+
+  .footer a {
+    color: var(--footer-text);
+    text-decoration: none;
+    margin: 0 0.5rem;
+  }
+
+  .theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+  }
+
+  .theme-switch input {
+    display: none;
+  }
+
+  .slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+  }
+
+  .slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+    border-radius: 50%;
+  }
+
+  input:checked + .slider {
+    background-color: var(--primary-color);
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+  .cta-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+  }
+
+  .cta-button:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+
+  @media (max-width: 768px) {
+    .main-content {
+      flex-direction: column;
+    }
+    .sidebar {
+      width: 100%;
+      position: static;
+      height: auto;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-container">
+          <div class="logo-icon">🏆</div>
+          <div class="logo-text">RadHIL</div>
+        </div>
+        <nav class="nav">
+          <a href="https://radhil.com">Home</a>
+          <a href="https://radhil.com/features">Features</a>
+          <a href="https://radhil.com/pricing">Pricing</a>
+          <a href="https://radhil.com/request-demo">Demo</a>
+          <a href="https://radhil.com/support">Support</a>
+        </nav>
+        <div class="theme-switch-wrapper">
+          <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider"></div>
+          </label>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container main-content">
+    <aside class="sidebar">
+      <h3>Analytics & Reporting</h3>
+      <ul>
+        <li><a href="https://radhil.com/kb/dashboard-overview">Dashboard Overview</a></li>
+        <li><a href="https://radhil.com/kb/performance-metrics">Understanding Performance Metrics</a></li>
+        <li><a href="https://radhil.com/kb/custom-reports" class="active">Creating Custom Reports</a></li>
+        <li><a href="https://radhil.com/kb/data-export">Data Export and Integration</a></li>
+        <li><a href="https://radhil.com/kb/benchmarking">Benchmarking Your Properties</a></li>
+        <li><a href="https://radhil.com/kb/forecasting">Revenue Forecasting</a></li>
+        <li><a href="https://radhil.com/kb/market-insights">Market Insights</a></li>
+      </ul>
+    </aside>
+
+    <main class="article">
+      <h1>Creating Custom Reports</h1>
+
+      <p>RadHIL's custom reporting feature allows you to tailor your analytics to your specific needs. This guide will walk you through the process of creating, customizing, and sharing your own reports.</p>
+
+      <h2>1. Accessing the Custom Report Builder</h2>
+      <p>To start creating a custom report:</p>
+      <ol>
+        <li>Log into your RadHIL dashboard</li>
+        <li>Navigate to the "Analytics" section</li>
+        <li>Click on "Custom Reports" in the sidebar</li>
+        <li>Select "Create New Report" to launch the report builder</li>
+      </ol>
+
+      <h2>2. Selecting Data Sources</h2>
+      <p>Choose the data you want to include in your report:</p>
+      <ul>
+        <li>Property performance metrics</li>
+        <li>Booking data</li>
+        <li>Financial information</li>
+        <li>Guest demographics</li>
+        <li>Channel performance</li>
+        <li>Seasonal trends</li>
+      </ul>
+      <p>You can select multiple data sources to create comprehensive reports.</p>
+
+      <h2>3. Choosing Metrics and Dimensions</h2>
+      <p>After selecting your data sources, choose the specific metrics and dimensions you want to analyze:</p>
+      <ul>
+        <li>Metrics: Numerical values like revenue, occupancy rate, ADR, etc.</li>
+        <li>Dimensions: Categories to segment your data, such as property, date range, booking channel, etc.</li>
+      </ul>
+
+      <h2>4. Setting Date Ranges</h2>
+      <p>Specify the time period for your report:</p>
+      <ul>
+        <li>Use preset options like Last 30 Days, Last Quarter, or Year-to-Date</li>
+        <li>Set custom date ranges for more specific analysis</li>
+        <li>Create comparative reports by selecting multiple date ranges</li>
+      </ul>
+
+      <h2>5. Applying Filters</h2>
+      <p>Refine your data further by applying filters:</p>
+      <ul>
+        <li>Property type</li>
+        <li>Location</li>
+        <li>Booking channel</li>
+        <li>Guest type (e.g., first-time vs. returning)</li>
+        <li>Minimum stay duration</li>
+      </ul>
+
+      <h2>6. Choosing Visualization Types</h2>
+      <p>Select how you want to display your data:</p>
+      <ul>
+        <li>Tables</li>
+        <li>Line charts</li>
+        <li>Bar graphs</li>
+        <li>Pie charts</li>
+        <li>Scatter plots</li>
+        <li>Heat maps</li>
+      </ul>
+      <p>You can include multiple visualizations in a single report for a more comprehensive view.</p>
+
+      <h2>7. Customizing Layout and Design</h2>
+      <p>Personalize the look of your report:</p>
+      <ul>
+        <li>Arrange elements by dragging and dropping</li>
+        <li>Resize charts and tables</li>
+        <li>Add text boxes for notes and explanations</li>
+        <li>Customize colors and fonts</li>
+        <li>Add your company logo</li>
+      </ul>
+
+      <h2>8. Setting Up Automated Reports</h2>
+      <p>Schedule your custom reports to run automatically:</p>
+      <ol>
+        <li>Choose the frequency (daily, weekly, monthly, etc.)</li>
+        <li>Set the delivery method (email, dashboard notification, or API)</li>
+        <li>Specify recipients if sending via email</li>
+      </ol>
+
+      <h2>9. Sharing and Collaborating</h2>
+      <p>Share your custom reports with team members or stakeholders:</p>
+      <ul>
+        <li>Set viewing or editing permissions</li>
+        <li>Generate shareable links</li>
+        <li>Export reports in various formats (PDF, Excel, CSV)</li>
+      </ul>
+
+      <h2>10. Saving and Iterating</h2>
+      <p>After creating your report:</p>
+      <ul>
+        <li>Save it for future use</li>
+        <li>Create variations by duplicating and modifying existing reports</li>
+        <li>Continuously refine your reports based on new insights and changing needs</li>
+      </ul>
+
+      <h2>Tips for Effective Custom Reports</h2>
+      <ul>
+        <li>Start with a clear objective for each report</li>
+        <li>Keep reports focused and avoid information overload</li>
+        <li>Use consistent naming conventions for easy organization</li>
+        <li>Regularly review and update your reports to ensure relevance</li>
+        <li>Combine multiple metrics to create powerful KPI dashboards</li>
+        <li>Use color coding and conditional formatting to highlight important data points</li>
+      </ul>
+
+      <p>Custom reports are a powerful tool for gaining deep insights into your vacation rental business. By mastering this feature, you can make data-driven decisions that optimize your performance and drive growth.</p>
+
+      <a href="https://radhil.com/custom-reports-tutorial" class="cta-button">Watch Video Tutorial</a>
+
+    </main>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2023 RadHIL. All rights reserved.</p>
+      <p>
+        <a href="https://radhil.com/privacy">Privacy Policy</a> | 
+        <a href="https://radhil.com/terms">Terms of Service</a> |
+        <a href="https://radhil.com/contact">Contact Us</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+    const currentTheme = localStorage.getItem('theme');
+
+    if (currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme);
+      
+        if (currentTheme === 'dark') {
+            toggleSwitch.checked = true;
+        }
+    }
+
+    function switchTheme(e) {
+        if (e.target.checked) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        }
+        else {
+            document.

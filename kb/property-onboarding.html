@@ -1,0 +1,419 @@
+<html><head><base href="https://radhil.com/kb/property-onboarding"><title>RadHIL Knowledge Base - Property Onboarding</title>
+<style>
+  :root {
+    --primary-color: #C9A050;
+    --secondary-color: #1E2A3B;
+    --accent-color: #E0C38C;
+    --text-color: #333333;
+    --bg-color: #FFFFFF;
+    --card-bg: #F8F8F8;
+    --nav-bg: #1E2A3B;
+    --footer-bg: #1E2A3B;
+    --footer-text: #FFFFFF;
+  }
+  
+  [data-theme="dark"] {
+    --primary-color: #E0C38C;
+    --secondary-color: #2C3E50;
+    --accent-color: #C9A050;
+    --text-color: #E6E6FA;
+    --bg-color: #1A1A2E;
+    --card-bg: #2D2D44;
+    --nav-bg: #2C3E50;
+    --footer-bg: #2C3E50;
+    --footer-text: #E6E6FA;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .header {
+    background-color: var(--nav-bg);
+    color: #FFFFFF;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .nav a:hover, .nav a.active {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+  }
+
+  .main-content {
+    padding-top: 80px;
+    display: flex;
+    gap: 2rem;
+  }
+
+  .sidebar {
+    width: 250px;
+    padding: 2rem;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    position: sticky;
+    top: 100px;
+    height: calc(100vh - 100px);
+    overflow-y: auto;
+  }
+
+  .sidebar h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+
+  .sidebar ul {
+    list-style-type: none;
+  }
+
+  .sidebar li {
+    margin-bottom: 0.5rem;
+  }
+
+  .sidebar a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .sidebar a:hover, .sidebar a.active {
+    color: var(--primary-color);
+  }
+
+  .article {
+    flex-grow: 1;
+    padding: 2rem;
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .article h1 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+  }
+
+  .article h2 {
+    color: var(--secondary-color);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .article p {
+    margin-bottom: 1rem;
+  }
+
+  .article ul, .article ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+  }
+
+  .article li {
+    margin-bottom: 0.5rem;
+  }
+
+  .article img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin: 1rem 0;
+  }
+
+  .footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+  }
+
+  .footer a {
+    color: var(--footer-text);
+    text-decoration: none;
+    margin: 0 0.5rem;
+  }
+
+  .theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+  }
+
+  .theme-switch input {
+    display: none;
+  }
+
+  .slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+  }
+
+  .slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+    border-radius: 50%;
+  }
+
+  input:checked + .slider {
+    background-color: var(--primary-color);
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+  @media (max-width: 768px) {
+    .main-content {
+      flex-direction: column;
+    }
+    .sidebar {
+      width: 100%;
+      position: static;
+      height: auto;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-container">
+          <div class="logo-icon">🏆</div>
+          <div class="logo-text">RadHIL</div>
+        </div>
+        <nav class="nav">
+          <a href="https://radhil.com">Home</a>
+          <a href="https://radhil.com/features">Features</a>
+          <a href="https://radhil.com/pricing">Pricing</a>
+          <a href="https://radhil.com/request-demo">Demo</a>
+          <a href="https://radhil.com/support">Support</a>
+        </nav>
+        <div class="theme-switch-wrapper">
+          <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider"></div>
+          </label>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container main-content">
+    <aside class="sidebar">
+      <h3>Getting Started</h3>
+      <ul>
+        <li><a href="https://radhil.com/kb/quickstart-guide">QuickStart Guide</a></li>
+        <li><a href="https://radhil.com/kb/account-setup">Account Setup</a></li>
+        <li><a href="#" class="active">Property Onboarding</a></li>
+        <li><a href="https://radhil.com/kb/initial-configuration">Initial Configuration</a></li>
+        <li><a href="https://radhil.com/kb/integration-overview">Integration Overview</a></li>
+      </ul>
+    </aside>
+
+    <main class="article">
+      <h1>Property Onboarding</h1>
+
+      <p>Welcome to the RadHIL property onboarding guide. This comprehensive walkthrough will help you add your luxury rentals to our advanced management platform, ensuring that you're ready to leverage our AI-driven pricing and automation tools for maximum profitability.</p>
+
+      <h2>1. Accessing the Property Dashboard</h2>
+      <p>After logging into your RadHIL account, navigate to the 'Properties' section in the main dashboard. Click on the 'Add New Property' button to begin the onboarding process.</p>
+
+      <h2>2. Basic Property Information</h2>
+      <p>Start by entering the following details:</p>
+      <ul>
+        <li>Property name</li>
+        <li>Address</li>
+        <li>Property type (e.g., villa, penthouse, chalet)</li>
+        <li>Number of bedrooms and bathrooms</li>
+        <li>Maximum occupancy</li>
+      </ul>
+
+      <h2>3. Amenities and Features</h2>
+      <p>RadHIL's AI uses this information to optimize pricing. Be sure to include:</p>
+      <ul>
+        <li>All available amenities (e.g., pool, hot tub, home theater)</li>
+        <li>Unique features (e.g., ocean view, private chef, helipad)</li>
+        <li>Smart home capabilities</li>
+        <li>Accessibility features</li>
+      </ul>
+
+      <h2>4. High-Quality Media</h2>
+      <p>Upload high-resolution photos and videos of your property. Our system will automatically enhance and optimize these for various booking platforms.</p>
+      <ul>
+        <li>Minimum of 20 high-quality photos</li>
+        <li>360-degree virtual tour (if available)</li>
+        <li>Drone footage (if available)</li>
+      </ul>
+
+      <h2>5. Pricing Information</h2>
+      <p>While RadHIL's AI will dynamically adjust prices, we need a baseline:</p>
+      <ul>
+        <li>Standard nightly rate</li>
+        <li>Minimum stay requirements</li>
+        <li>Seasonal adjustments (if any)</li>
+        <li>Special event pricing (if applicable)</li>
+      </ul>
+
+      <h2>6. Booking Rules and Policies</h2>
+      <p>Define your booking parameters:</p>
+      <ul>
+        <li>Check-in and check-out times</li>
+        <li>Cancellation policy</li>
+        <li>House rules</li>
+        <li>Additional fees (e.g., cleaning fee, security deposit)</li>
+      </ul>
+
+      <h2>7. Channel Manager Integration</h2>
+      <p>Connect your property to various booking channels:</p>
+      <ul>
+        <li>Select the platforms where you want to list your property (e.g., Airbnb, Booking.com, VRBO)</li>
+        <li>Sync your existing listings or create new ones directly from RadHIL</li>
+        <li>Set channel-specific pricing rules if desired</li>
+      </ul>
+
+      <h2>8. Automated Messaging Setup</h2>
+      <p>Configure your guest communication:</p>
+      <ul>
+        <li>Set up welcome messages</li>
+        <li>Create check-in instructions</li>
+        <li>Customize mid-stay and check-out messages</li>
+      </ul>
+
+      <h2>9. Service Provider Information</h2>
+      <p>Add details for:</p>
+      <ul>
+        <li>Cleaning service</li>
+        <li>Maintenance contacts</li>
+        <li>Concierge service (if offered)</li>
+      </ul>
+
+      <h2>10. Review and Activation</h2>
+      <p>Before finalizing:</p>
+      <ul>
+        <li>Review all entered information for accuracy</li>
+        <li>Preview how your listing will appear on different channels</li>
+        <li>Activate your property on the RadHIL system</li>
+      </ul>
+
+      <p>Congratulations! Your property is now onboarded to RadHIL. Our AI will begin analyzing market data and optimizing your pricing strategy immediately. Remember, the more detailed and accurate the information you provide, the better our system can work for you.</p>
+
+      <p>For any questions or assistance during the onboarding process, please don't hesitate to contact our 24/7 support team or refer to our other knowledge base articles for more detailed information on specific features.</p>
+
+      <img src="https://images.unsplash.com/photo-1582610116397-edb318620f90?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Luxury villa with infinity pool overlooking the ocean, showcasing the type of high-end property that can be onboarded to RadHIL" width="800" height="533">
+    </main>
+  </div>
+  
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2023 RadHIL. All rights reserved.</p>
+      <p>
+        <a href="https://radhil.com/privacy">Privacy Policy</a> | 
+        <a href="https://radhil.com/terms">Terms of Service</a> |
+        <a href="https://radhil.com/contact">Contact Us</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+    const currentTheme = localStorage.getItem('theme');
+
+    if (currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme);
+      
+        if (currentTheme === 'dark') {
+            toggleSwitch.checked = true;
+        }
+    }
+
+    function switchTheme(e) {
+        if (e.target.checked) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        }
+        else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+        }    
+    }
+
+    toggleSwitch.addEventListener('change', switchTheme, false);
+  </script>
+</body>
+</html>

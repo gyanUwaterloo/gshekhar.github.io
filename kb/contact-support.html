@@ -1,0 +1,386 @@
+<html><head><base href="https://radhil.com/kb/contact-support"><title>RadHIL - Contact Support</title>
+<style>
+  :root {
+    --primary-color: #C9A050;
+    --secondary-color: #1E2A3B;
+    --accent-color: #E0C38C;
+    --text-color: #333333;
+    --bg-color: #FFFFFF;
+    --card-bg: #F8F8F8;
+    --nav-bg: #1E2A3B;
+    --footer-bg: #1E2A3B;
+    --footer-text: #FFFFFF;
+  }
+  
+  [data-theme="dark"] {
+    --primary-color: #E0C38C;
+    --secondary-color: #2C3E50;
+    --accent-color: #C9A050;
+    --text-color: #E6E6FA;
+    --bg-color: #1A1A2E;
+    --card-bg: #2D2D44;
+    --nav-bg: #2C3E50;
+    --footer-bg: #2C3E50;
+    --footer-text: #E6E6FA;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .header {
+    background-color: var(--nav-bg);
+    color: #FFFFFF;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .nav a:hover, .nav a.active {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+  }
+
+  .main-content {
+    padding-top: 80px;
+    min-height: calc(100vh - 80px - 100px); /* Subtracting header and footer heights */
+  }
+
+  .article {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 2rem;
+    margin: 2rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .article h1 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+  }
+
+  .article h2 {
+    color: var(--secondary-color);
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .article p {
+    margin-bottom: 1rem;
+  }
+
+  .article ul {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+  }
+
+  .article li {
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .contact-card {
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .contact-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+
+  .contact-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-info {
+    font-size: 1rem;
+  }
+
+  .contact-link {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+  }
+
+  .contact-link:hover {
+    background-color: var(--accent-color);
+  }
+
+  .footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 2rem 0;
+  }
+
+  .footer a {
+    color: var(--footer-text);
+    text-decoration: none;
+    margin: 0 0.5rem;
+  }
+
+  .theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+  }
+
+  .theme-switch input {
+    display: none;
+  }
+
+  .slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+  }
+
+  .slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+    border-radius: 50%;
+  }
+
+  input:checked + .slider {
+    background-color: var(--primary-color);
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+  @media (max-width: 768px) {
+    .header-content {
+      flex-direction: column;
+      text-align: center;
+    }
+    .nav {
+      margin-top: 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-container">
+          <div class="logo-icon">🏆</div>
+          <div class="logo-text">RadHIL</div>
+        </div>
+        <nav class="nav">
+          <a href="https://radhil.com">Home</a>
+          <a href="https://radhil.com/features">Features</a>
+          <a href="https://radhil.com/pricing">Pricing</a>
+          <a href="https://radhil.com/request-demo">Demo</a>
+          <a href="https://radhil.com/support">Support</a>
+        </nav>
+        <div class="theme-switch-wrapper">
+          <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider"></div>
+          </label>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+      <article class="article">
+        <h1>Contact RadHIL Support</h1>
+        <p>At RadHIL, we're committed to providing you with exceptional support to ensure you get the most out of our AI-driven luxury vacation rental management platform. Our support team is available through various channels to assist you with any questions, concerns, or technical issues you may encounter.</p>
+
+        <h2>Before Contacting Support</h2>
+        <p>To help us serve you better and resolve your issue more quickly, please consider the following steps before reaching out:</p>
+        <ul>
+          <li>Check our <a href="https://radhil.com/kb">Knowledge Base</a> for answers to common questions and troubleshooting guides.</li>
+          <li>Review the <a href="https://radhil.com/kb/system-status">System Status</a> page to see if there are any ongoing issues or maintenance that might be affecting your service.</li>
+          <li>Have your account information ready, including your account email and any relevant error messages or screenshots.</li>
+        </ul>
+
+        <h2>Contact Methods</h2>
+        <p>Choose the contact method that best suits your needs:</p>
+
+        <div class="contact-methods">
+          <div class="contact-card">
+            <div class="contact-icon">💬</div>
+            <div class="contact-title">Live Chat</div>
+            <div class="contact-info">Available 24/7 for quick assistance</div>
+            <a href="https://radhil.com/live-chat" class="contact-link">Start Chat</a>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-icon">📧</div>
+            <div class="contact-title">Email Support</div>
+            <div class="contact-info"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f5868085859a8781b58794919d9c99db969a98">[email&#160;protected]</a></div>
+            <a href="/cdn-cgi/l/email-protection#4e3d3b3e3e213c3a0e3c2f2a262722602d2123" class="contact-link">Send Email</a>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-icon">📞</div>
+            <div class="contact-title">Phone Support</div>
+            <div class="contact-info">+1 (800) 123-4567</div>
+            <a href="tel:+18001234567" class="contact-link">Call Now</a>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-icon">🌐</div>
+            <div class="contact-title">Community Forum</div>
+            <div class="contact-info">Connect with other RadHIL users</div>
+            <a href="https://community.radhil.com" class="contact-link">Join Forum</a>
+          </div>
+        </div>
+
+        <h2>Support Hours</h2>
+        <p>Our support team is available during the following hours:</p>
+        <ul>
+          <li>Live Chat: 24/7</li>
+          <li>Email Support: 24/7 (responses within 24 hours)</li>
+          <li>Phone Support: Monday to Friday, 9 AM - 8 PM EST</li>
+        </ul>
+
+        <h2>Priority Support</h2>
+        <p>Enterprise-level customers have access to priority support with dedicated account managers. If you're interested in upgrading your plan for enhanced support, please <a href="https://radhil.com/contact-sales">contact our sales team</a>.</p>
+
+        <h2>Feedback and Suggestions</h2>
+        <p>We value your input! If you have ideas for improving RadHIL or suggestions for new features, please submit them through our <a href="https://radhil.com/feedback">feedback portal</a>. Your insights help us continually enhance our platform to better serve your needs.</p>
+      </article>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2023 RadHIL. All rights reserved.</p>
+      <p>
+        <a href="https://radhil.com/privacy">Privacy Policy</a> | 
+        <a href="https://radhil.com/terms">Terms of Service</a> |
+        <a href="https://radhil.com/contact">Contact Us</a>
+      </p>
+    </div>
+  </footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+    const currentTheme = localStorage.getItem('theme');
+
+    if (currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme);
+      
+        if (currentTheme === 'dark') {
+            toggleSwitch.checked = true;
+        }
+    }
+
+    function switchTheme(e) {
+        if (e.target.checked) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        }
+        else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+        }    
+    }
+
+    toggleSwitch.addEventListener('change', switchTheme, false);
+  </script>
+</body>
+</html>
