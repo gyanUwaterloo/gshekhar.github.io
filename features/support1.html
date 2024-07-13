@@ -1,0 +1,417 @@
+<html><head><base href="https://radhil.com/support"><title>RadHIL - Customer Support</title>
+<style>
+  :root {
+    --primary-color: #C9A050;
+    --secondary-color: #1E2A3B;
+    --accent-color: #E0C38C;
+    --text-color: #333333;
+    --bg-color: #FFFFFF;
+    --card-bg: #F8F8F8;
+    --nav-bg: #1E2A3B;
+    --footer-bg: #1E2A3B;
+    --footer-text: #FFFFFF;
+  }
+  
+  [data-theme="dark"] {
+    --primary-color: #E0C38C;
+    --secondary-color: #2C3E50;
+    --accent-color: #C9A050;
+    --text-color: #E6E6FA;
+    --bg-color: #1A1A2E;
+    --card-bg: #2D2D44;
+    --nav-bg: #2C3E50;
+    --footer-bg: #2C3E50;
+    --footer-text: #E6E6FA;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .header {
+    background-color: var(--nav-bg);
+    color: #FFFFFF;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .nav a:hover, .nav a.active {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+  }
+
+  .hero {
+    background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #FFFFFF;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  }
+
+  .support-options {
+    padding: 4rem 0;
+  }
+
+  .option-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .option-card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+
+  .option-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+  }
+
+  .option-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+  }
+
+  .option-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+  }
+
+  .option-description {
+    margin-bottom: 1.5rem;
+  }
+
+  .option-link {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+
+  .option-link:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-3px);
+  }
+
+  .faq-section {
+    background-color: var(--accent-color);
+    padding: 4rem 0;
+  }
+
+  .faq-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--secondary-color);
+  }
+
+  .faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+
+  .faq-question {
+    padding: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .faq-answer {
+    padding: 0 1rem 1rem;
+    display: none;
+  }
+
+  .footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 2rem 0;
+  }
+
+  .footer a {
+    color: var(--footer-text);
+    text-decoration: none;
+    margin: 0 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .header-content {
+      flex-direction: column;
+      text-align: center;
+    }
+    .nav {
+      margin-top: 1rem;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-container">
+          <div class="logo-icon">🏆</div>
+          <div class="logo-text">RadHIL</div>
+        </div>
+        <nav class="nav">
+          <a href="https://radhil.com">Home</a>
+          <a href="https://radhil.com/features">Features</a>
+          <a href="https://radhil.com/pricing">Pricing</a>
+          <a href="https://radhil.com/request-demo">Demo</a>
+          <a href="https://radhil.com/support" class="active">Support</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+  
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Customer Support</h1>
+        <p>We're here to help you succeed with RadHIL</p>
+      </div>
+    </section>
+    
+    <section class="support-options">
+      <div class="container">
+        <div class="option-grid">
+          <div class="option-card">
+            <div class="option-icon">📚</div>
+            <h2 class="option-title">Knowledge Base</h2>
+            <p class="option-description">Access our comprehensive library of guides, tutorials, and FAQs to find quick answers to common questions.</p>
+            <a href="https://radhil.com/support/knowledge-base" class="option-link">Explore Knowledge Base</a>
+          </div>
+          
+          <div class="option-card">
+            <div class="option-icon">💬</div>
+            <h2 class="option-title">Live Chat Support</h2>
+            <p class="option-description">Connect with our support team in real-time for immediate assistance with your RadHIL-related inquiries.</p>
+            <a href="https://radhil.com/support/live-chat" class="option-link">Start Live Chat</a>
+          </div>
+          
+          <div class="option-card">
+            <div class="option-icon">📧</div>
+            <h2 class="option-title">Email Support</h2>
+            <p class="option-description">Send us a detailed message about your issue, and our team will get back to you with a solution promptly.</p>
+            <a href="https://radhil.com/support/email" class="option-link">Send Email</a>
+          </div>
+          
+          <div class="option-card">
+            <div class="option-icon">📞</div>
+            <h2 class="option-title">Phone Support</h2>
+            <p class="option-description">For urgent matters or complex issues, speak directly with our dedicated support specialists.</p>
+            <a href="https://radhil.com/support/phone" class="option-link">Call Us</a>
+          </div>
+          
+          <div class="option-card">
+            <div class="option-icon">🎥</div>
+            <h2 class option-title">Video Tutorials</h2>
+            <p class="option-description">Watch step-by-step video guides to learn how to make the most of RadHIL's features and functionalities.</p>
+            <a href="https://radhil.com/support/video-tutorials" class="option-link">Watch Tutorials</a>
+          </div>
+          
+          <div class="option-card">
+            <div class="option-icon">👥</div>
+            <h2 class="option-title">Community Forum</h2>
+            <p class="option-description">Connect with other RadHIL users, share experiences, and get advice from our thriving community.</p>
+            <a href="https://radhil.com/support/community" class="option-link">Join Community</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="faq-section">
+      <div class="container">
+        <h2 class="faq-title">Frequently Asked Questions</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <div class="faq-question">
+              How do I reset my password?
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              To reset your password, go to the login page and click on "Forgot Password". Follow the instructions sent to your email to create a new password.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              Can I integrate RadHIL with my existing property management software?
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              Yes, RadHIL offers API integration with many popular property management software solutions. Check our integration page for a list of supported platforms or contact our support team for custom integration options.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              How often is the AI pricing algorithm updated?
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              Our AI pricing algorithm is continuously learning and updating in real-time. It takes into account market trends, seasonal variations, and your property's unique characteristics to provide optimal pricing recommendations.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              Is there a mobile app available for RadHIL?
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              Yes, we offer mobile apps for both iOS and Android devices. You can download them from the App Store or Google Play Store to manage your properties on-the-go.
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              How secure is my data with RadHIL?
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              We take data security very seriously. RadHIL uses bank-level encryption, regular security audits, and follows best practices in data protection. For more details, please visit our Security Features page.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2023 RadHIL. All rights reserved.</p>
+      <p>
+        <a href="https://radhil.com/privacy">Privacy Policy</a> | 
+        <a href="https://radhil.com/terms">Terms of Service</a> |
+        <a href="https://radhil.com/contact">Contact Us</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Simple FAQ toggle functionality
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        const toggle = question.querySelector('.faq-toggle');
+        
+        if (answer.style.display === 'block') {
+          answer.style.display = 'none';
+          toggle.textContent = '+';
+        } else {
+          answer.style.display = 'block';
+          toggle.textContent = '-';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

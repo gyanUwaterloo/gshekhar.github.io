@@ -1,0 +1,316 @@
+<html><head><base href="https://radhil.com/features/mobile-app"><title>RadHIL - Mobile App Features</title>
+<style>
+  :root {
+    --primary-color: #C9A050;
+    --secondary-color: #1E2A3B;
+    --accent-color: #E0C38C;
+    --text-color: #333333;
+    --bg-color: #FFFFFF;
+    --card-bg: #F8F8F8;
+    --nav-bg: #1E2A3B;
+    --footer-bg: #1E2A3B;
+    --footer-text: #FFFFFF;
+  }
+  
+  [data-theme="dark"] {
+    --primary-color: #E0C38C;
+    --secondary-color: #2C3E50;
+    --accent-color: #C9A050;
+    --text-color: #E6E6FA;
+    --bg-color: #1A1A2E;
+    --card-bg: #2D2D44;
+    --nav-bg: #2C3E50;
+    --footer-bg: #2C3E50;
+    --footer-text: #E6E6FA;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  header {
+    background-color: var(--nav-bg);
+    color: #FFFFFF;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  nav ul {
+    display: flex;
+    list-style-type: none;
+  }
+
+  nav ul li {
+    margin-left: 20px;
+  }
+
+  nav ul li a {
+    color: #FFFFFF;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  nav ul li a:hover {
+    color: var(--primary-color);
+  }
+
+  .hero {
+    background-image: url('https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #FFFFFF;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .app-features {
+    padding: 4rem 0;
+  }
+
+  .feature {
+    display: flex;
+    margin-bottom: 3rem;
+    align-items: center;
+  }
+
+  .feature:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+
+  .feature-image {
+    flex: 1;
+    margin: 0 2rem;
+  }
+
+  .feature-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .feature-content {
+    flex: 1;
+  }
+
+  .feature h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+  }
+
+  .feature p {
+    margin-bottom: 1rem;
+  }
+
+  .cta {
+    background-color: var(--secondary-color);
+    color: #FFFFFF;
+    padding: 4rem 0;
+    text-align: center;
+  }
+
+  .cta h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .cta-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+
+  .cta-button:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-3px);
+  }
+
+  footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 2rem 0;
+  }
+
+  footer a {
+    color: var(--footer-text);
+    text-decoration: none;
+    margin: 0 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .feature {
+      flex-direction: column;
+    }
+    .feature:nth-child(even) {
+      flex-direction: column;
+    }
+    .feature-image {
+      margin: 1rem 0;
+    }
+    .cta-buttons {
+      flex-direction: column;
+    }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">RadHIL</div>
+        <nav>
+          <ul>
+            <li><a href="https://radhil.com">Home</a></li>
+            <li><a href="https://radhil.com/features">Features</a></li>
+            <li><a href="https://radhil.com/pricing">Pricing</a></li>
+            <li><a href="https://radhil.com/contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>RadHIL Mobile App</h1>
+        <p>Manage your luxury rentals on the go</p>
+      </div>
+    </section>
+
+    <section class="app-features">
+      <div class="container">
+        <div class="feature">
+          <div class="feature-image">
+            <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Real-time Dashboard" width="500" height="300">
+          </div>
+          <div class="feature-content">
+            <h2>Real-time Dashboard</h2>
+            <p>Get an instant overview of your properties' performance, occupancy rates, and upcoming bookings. Our intuitive dashboard puts critical information at your fingertips, allowing you to make informed decisions on the go.</p>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-image">
+            <img src="https://images.unsplash.com/photo-1533749871411-5e21e14bcc7d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2061&q=80" alt="Instant Messaging" width="500" height="300">
+          </div>
+          <div class="feature-content">
+            <h2>Instant Messaging</h2>
+            <p>Communicate with guests, staff, and service providers in real-time. Our built-in messaging system ensures you never miss an important conversation, enhancing guest satisfaction and operational efficiency.</p>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-image">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80" alt="AI-Powered Insights" width="500" height="300">
+          </div>
+          <div class="feature-content">
+            <h2>AI-Powered Insights</h2>
+            <p>Leverage the power of AI to gain valuable insights into market trends, pricing strategies, and guest preferences. Our app provides personalized recommendations to optimize your listings and boost your revenue.</p>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-image">
+            <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Smart Home Integration" width="500" height="300">
+          </div>
+          <div class="feature-content">
+            <h2>Smart Home Integration</h2>
+            <p>Control your property's smart home features directly from the app. Adjust thermostats, manage access codes, and monitor security cameras to ensure your guests have a comfortable and secure stay.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <h2>Ready to Revolutionize Your Rental Management?</h2>
+        <p>Download the RadHIL app now and experience the future of luxury rental management.</p>
+        <div class="cta-buttons">
+          <a href="https://radhil.com/app/ios" class="cta-button">Download for iOS</a>
+          <a href="https://radhil.com/app/android" class="cta-button">Download for Android</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2023 RadHIL. All rights reserved.</p>
+      <p>
+        <a href="https://radhil.com/privacy">Privacy Policy</a> |
+        <a href="https://radhil.com/terms">Terms of Service</a> |
+        <a href="https://radhil.com/contact">Contact Us</a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

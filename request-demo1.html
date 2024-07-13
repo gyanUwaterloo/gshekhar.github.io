@@ -1,0 +1,352 @@
+<html><head><base href="https://radhil.com/request-demo"><title>Request a Demo - RadHIL: Revolutionary Vacation Rental Management</title>
+<style>
+  :root {
+    --primary-color: #C9A050;
+    --secondary-color: #1E2A3B;
+    --accent-color: #E0C38C;
+    --text-color: #333333;
+    --bg-color: #FFFFFF;
+    --card-bg: #F8F8F8;
+    --nav-bg: #1E2A3B;
+    --footer-bg: #1E2A3B;
+    --footer-text: #FFFFFF;
+  }
+  
+  [data-theme="dark"] {
+    --primary-color: #E0C38C;
+    --secondary-color: #2C3E50;
+    --accent-color: #C9A050;
+    --text-color: #E6E6FA;
+    --bg-color: #1A1A2E;
+    --card-bg: #2D2D44;
+    --nav-bg: #2C3E50;
+    --footer-bg: #2C3E50;
+    --footer-text: #E6E6FA;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .header {
+    background-color: var(--nav-bg);
+    color: #FFFFFF;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .nav a:hover, .nav a.active {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+  }
+
+  .main-content {
+    padding-top: 80px;
+    display: flex;
+    gap: 2rem;
+  }
+
+  .demo-content {
+    flex-grow: 1;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 2rem;
+  }
+
+  .demo-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .demo-title {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+  }
+
+  .demo-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    opacity: 0.8;
+  }
+
+  .demo-form {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--accent-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+  }
+
+  .form-select {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--accent-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+  }
+
+  .form-submit {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .form-submit:hover {
+    background-color: var(--accent-color);
+  }
+
+  .features-list {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 2rem;
+  }
+
+  .feature-item {
+    flex-basis: calc(33.333% - 1rem);
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .feature-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+  }
+
+  .feature-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  .feature-description {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    opacity: 0.8;
+  }
+
+  .footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+  }
+
+  .footer a {
+    color: var(--footer-text);
+    text-decoration: none;
+    margin: 0 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .main-content {
+      flex-direction: column;
+    }
+    .feature-item {
+      flex-basis: calc(50% - 1rem);
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-container">
+          <div class="logo-icon">🏆</div>
+          <div class="logo-text">RadHIL</div>
+        </div>
+        <nav class="nav">
+          <a href="https://radhil.com">Home</a>
+          <a href="https://radhil.com/features">Features</a>
+          <a href="https://radhil.com/pricing">Pricing</a>
+          <a href="https://radhil.com/request-demo" class="active">Demo</a>
+          <a href="https://radhil.com/support">Support</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+  
+  <main class="container main-content">
+    <div class="demo-content">
+      <header class="demo-header">
+        <h1 class="demo-title">Experience the Future of Vacation Rental Management</h1>
+        <p class="demo-subtitle">Request a personalized demo and see how RadHIL can revolutionize your property management</p>
+      </header>
+      
+      <form class="demo-form" method="GET" action="https://radhil.com/submit-demo-request">
+        <div class="form-group">
+          <label for="name" class="form-label">Full Name</label>
+          <input type="text" id="name" name="name" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label for="email" class="form-label">Email Address</label>
+          <input type="email" id="email" name="email" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label for="phone" class="form-label">Phone Number</label>
+          <input type="tel" id="phone" name="phone" class="form-input">
+        </div>
+        <div class="form-group">
+          <label for="company" class="form-label">Company Name</label>
+          <input type="text" id="company" name="company" class="form-input">
+        </div>
+        <div class="form-group">
+          <label for="properties" class="form-label">Number of Properties</label>
+          <select id="properties" name="properties" class="form-select" required>
+            <option value="">Select an option</option>
+            <option value="1-5">1-5</option>
+            <option value="6-20">6-20</option>
+            <option value="21-50">21-50</option>
+            <option value="51-100">51-100</option>
+            <option value="100+">100+</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="interests" class="form-label">Features of Interest (Select all that apply)</label>
+          <select id="interests" name="interests" class="form-select" multiple required>
+            <option value="ai-pricing">AI-Powered Pricing</option>
+            <option value="vr-tours">VR Property Tours</option>
+            <option value="ar-maintenance">AR Maintenance Guide</option>
+            <option value="blockchain-loyalty">Blockchain Loyalty Program</option>
+            <option value="smart-home">Smart Home Integration</option>
+            <option value="ai-concierge">AI Concierge Service</option>
+          </select>
+        </div>
+        <button type="submit" class="form-submit">Request Your Demo</button>
+      </form>
+
+      <ul class="features-list">
+        <li class="feature-item">
+          <div class="feature-icon">🤖</div>
+          <h3 class="feature-title">AI-Powered Pricing</h3>
+          <p class="feature-description">Optimize your rates with machine learning algorithms</p>
+        </li>
+        <li class="feature-item">
+          <div class="feature-icon">🥽</div>
+          <h3 class="feature-title">VR Property Tours</h3>
+          <p class="feature-description">Immersive virtual tours for potential guests</p>
+        </li>
+        <li class="feature-item">
+          <div class="feature-icon">🔧</div>
+          <h3 class="feature-title">AR Maintenance Guide</h3>
+          <p class="feature-description">Augmented reality assistance for property upkeep</p>
+        </li>
+        <li class="feature-item">
+          <div class="feature-icon">🔗</div>
+          <h3 class="feature-title">Blockchain Loyalty</h3>
+          <p class="feature-description">Secure and transparent rewards program</p>
+        </li>
+        <li class="feature-item">
+          <div class="feature-icon">🏠</div>
+          <h3 class="feature-title">Smart Home Integration</h3>
+          <p class="feature-description">Seamless control of property devices</p>
+        </li>
+        <li class="feature-item">
+          <div class="feature-icon">💬</div>
+          <h3 class="feature-title">AI Concierge Service</h3>
+          <p class="feature-description">24/7 automated guest support and recommendations</p>
+        </li>
+      </ul>
+    </div>
+  </main>
+  
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2023 RadHIL. All rights reserved.</p>
+      <p>
+        <a href="https://radhil.com/privacy">Privacy Policy</a> | 
+        <a href="https://radhil.com/terms">Terms of Service</a> |
+        <a href="https://radhil.com/contact">Contact Us</a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

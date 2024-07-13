@@ -1,0 +1,360 @@
+<html><head><base href="https://radhil.com/features"><title>RadHIL Features - Revolutionizing Vacation Rental Management</title>
+<style>
+  :root {
+    --primary-color: #C9A050;
+    --secondary-color: #1E2A3B;
+    --accent-color: #E0C38C;
+    --text-color: #333333;
+    --bg-color: #FFFFFF;
+    --card-bg: #F8F8F8;
+    --nav-bg: #1E2A3B;
+    --footer-bg: #1E2A3B;
+    --footer-text: #FFFFFF;
+  }
+  
+  [data-theme="dark"] {
+    --primary-color: #E0C38C;
+    --secondary-color: #2C3E50;
+    --accent-color: #C9A050;
+    --text-color: #E6E6FA;
+    --bg-color: #1A1A2E;
+    --card-bg: #2D2D44;
+    --nav-bg: #2C3E50;
+    --footer-bg: #2C3E50;
+    --footer-text: #E6E6FA;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .header {
+    background-color: var(--nav-bg);
+    color: #FFFFFF;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .nav a:hover, .nav a.active {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+  }
+
+  .main-content {
+    padding-top: 80px;
+  }
+
+  .hero {
+    background-image: url('https://radhil.com/images/features/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 100px 0;
+    margin-bottom: 3rem;
+  }
+
+  .hero-content {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 2rem;
+    border-radius: 10px;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.8;
+  }
+
+  .feature-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4rem;
+  }
+
+  .feature-section:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+
+  .feature-content {
+    flex: 1;
+    padding: 2rem;
+  }
+
+  .feature-image {
+    flex: 1;
+    text-align: center;
+  }
+
+  .feature-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+
+  .feature-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+  }
+
+  .feature-title {
+    font-size: 2rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+  }
+
+  .feature-description {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+  }
+
+  .feature-points {
+    list-style-type: none;
+  }
+
+  .feature-point {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .feature-point::before {
+    content: "•";
+    color: var(--primary-color);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-right: 0.5em;
+  }
+
+  .cta-section {
+    text-align: center;
+    margin-top: 4rem;
+    padding: 3rem;
+    background-color: var(--accent-color);
+    border-radius: 10px;
+  }
+
+  .cta-title {
+    font-size: 2rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+  }
+
+  .cta-description {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin-bottom: 2rem;
+  }
+
+  .cta-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+
+  .cta-button:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+  }
+
+  .footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 4rem;
+  }
+
+  .footer a {
+    color: var(--footer-text);
+    text-decoration: none;
+    margin: 0 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .feature-section {
+      flex-direction: column;
+    }
+    .feature-section:nth-child(even) {
+      flex-direction: column;
+    }
+    .feature-image {
+      margin-top: 2rem;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-container">
+          <div class="logo-icon">🏆</div>
+          <div class="logo-text">RadHIL</div>
+        </div>
+        <nav class="nav">
+          <a href="https://radhil.com">Home</a>
+          <a href="https://radhil.com/features" class="active">Features</a>
+          <a href="https://radhil.com/pricing">Pricing</a>
+          <a href="https://radhil.com/request-demo">Demo</a>
+          <a href="https://radhil.com/support">Support</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+  
+  <main class="main-content">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-title">Cutting-Edge Features for Modern Vacation Rental Management</h1>
+          <p class="hero-subtitle">Discover how RadHIL is revolutionizing the industry with innovative technology</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <section class="feature-section">
+        <div class="feature-content">
+          <div class="feature-icon">🤖</div>
+          <h2 class="feature-title">AI-Powered Pricing</h2>
+          <p class="feature-description">Our advanced machine learning algorithms analyze market trends, local events, and historical data to optimize your rental rates in real-time, maximizing your revenue.</p>
+          <ul class="feature-points">
+            <li class="feature-point">Real-time market analysis and price adjustments</li>
+            <li class="feature-point">Integration with local event calendars for demand forecasting</li>
+            <li class="feature-point">Customizable pricing strategies based on your goals</li>
+            <li class="feature-point">Competitor pricing tracking and analysis</li>
+          </ul>
+        </div>
+        <div class="feature-image">
+          <img src="https://radhil.com/images/features/ai-pricing.jpg" alt="Graph showing AI-powered pricing optimization" width="500" height="300">
+        </div>
+      </section>
+
+      <section class="feature-section">
+        <div class="feature-content">
+          <div class="feature-icon">🥽</div>
+          <h2 class="feature-title">VR Property Tours</h2>
+          <p class="feature-description">Offer immersive virtual reality tours of your properties, allowing potential guests to explore every detail from anywhere in the world, increasing bookings and reducing pre-stay inquiries.</p>
+          <ul class="feature-points">
+            <li class="feature-point">360-degree room-by-room virtual walkthroughs</li>
+            <li class="feature-point">Interactive hotspots highlighting key features</li>
+            <li class="feature-point">VR-compatible for full immersion experience</li>
+            <li class="feature-point">Easily embeddable on your website and listing platforms</li>
+          </ul>
+        </div>
+        <div class="feature-image">
+          <img src="https://radhil.com/images/features/vr-tour.jpg" alt="Person using VR headset to view a property" width="500" height="300">
+        </div>
+      </section>
+
+      <section class="feature-section">
+        <div class="feature-content">
+          <div class="feature-icon">🔧</div>
+          <h2 class="feature-title">AR Maintenance Guide</h2>
+          <p class="feature-description">Utilize augmented reality to guide your staff or yourself through maintenance tasks. Overlay instructions and diagrams onto real-world views for efficient problem-solving.</p>
+          <ul class="feature-points">
+            <li class="feature-point">Step-by-step AR guides for common maintenance tasks</li>
+            <li class="feature-point">Remote expert assistance with live AR annotations</li>
+            <li class="feature-point">Digital twin integration for equipment diagnostics</li>
+            <li class="feature-point">Maintenance history tracking and predictive alerts</li>
+          </ul>
+        </div>
+        <div class="feature-image">
+          <img src="https://radhil.com/images/features/ar-maintenance.jpg" alt="Technician using AR glasses for maintenance" width="500" height="300">
+        </div>
+      </section>
+
+      <!-- Additional features can be added here following the same structure -->
+
+      <section class="cta-section">
+        <h2 class="cta-title">Ready to Transform Your Vacation Rental Business?</h2>
+        <p class="cta-description">Experience the future of property management with RadHIL's innovative features.</p>
+        <a href="https://radhil.com/request-demo" class="cta-button">Request a Demo</a>
+      </section>
+    </div>
+  </main>
+  
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2023 RadHIL. All rights reserved.</p>
+      <p>
+        <a href="https://radhil.com/privacy">Privacy Policy</a> | 
+        <a href="https://radhil.com/terms">Terms of Service</a> |
+        <a href="https://radhil.com/contact">Contact Us</a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

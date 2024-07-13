@@ -1,0 +1,323 @@
+<html><head><base href="https://radhil.com/features/ai-pricing"><title>RadHIL - AI-Powered Pricing</title>
+<style>
+  :root {
+    --primary-color: #C9A050;
+    --secondary-color: #1E2A3B;
+    --accent-color: #E0C38C;
+    --text-color: #333333;
+    --bg-color: #FFFFFF;
+    --card-bg: #F8F8F8;
+    --nav-bg: #1E2A3B;
+    --footer-bg: #1E2A3B;
+    --footer-text: #FFFFFF;
+  }
+  
+  [data-theme="dark"] {
+    --primary-color: #E0C38C;
+    --secondary-color: #2C3E50;
+    --accent-color: #C9A050;
+    --text-color: #E6E6FA;
+    --bg-color: #1A1A2E;
+    --card-bg: #2D2D44;
+    --nav-bg: #2C3E50;
+    --footer-bg: #2C3E50;
+    --footer-text: #E6E6FA;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .header {
+    background-color: var(--nav-bg);
+    color: #FFFFFF;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .nav a:hover, .nav a.active {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+  }
+
+  .hero {
+    background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #FFFFFF;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  }
+
+  .main-content {
+    padding: 4rem 0;
+  }
+
+  .section {
+    margin-bottom: 4rem;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--secondary-color);
+  }
+
+  .section-content {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .text-content {
+    flex: 1;
+  }
+
+  .image-content {
+    flex: 1;
+  }
+
+  .feature-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .cta-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    margin-top: 2rem;
+  }
+
+  .cta-button:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-3px);
+  }
+
+  .footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 2rem 0;
+  }
+
+  .footer a {
+    color: var(--footer-text);
+    text-decoration: none;
+    margin: 0 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .header-content {
+      flex-direction: column;
+      text-align: center;
+    }
+    .nav {
+      margin-top: 1rem;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+    .section-content {
+      flex-direction: column;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-container">
+          <div class="logo-icon">🏆</div>
+          <div class="logo-text">RadHIL</div>
+        </div>
+        <nav class="nav">
+          <a href="https://radhil.com">Home</a>
+          <a href="https://radhil.com/features">Features</a>
+          <a href="https://radhil.com/pricing">Pricing</a>
+          <a href="https://radhil.com/request-demo">Demo</a>
+          <a href="https://radhil.com/support">Support</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+  
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>AI-Powered Pricing</h1>
+        <p>Maximize your revenue with intelligent, dynamic pricing</p>
+      </div>
+    </section>
+    
+    <section class="main-content">
+      <div class="container">
+        <div class="section">
+          <h2 class="section-title">How It Works</h2>
+          <div class="section-content">
+            <div class="text-content">
+              <p>RadHIL's AI-Powered Pricing feature leverages advanced machine learning algorithms to analyze vast amounts of data and provide optimal pricing recommendations for your luxury rentals. Our system takes into account:</p>
+              <ul>
+                <li>Historical booking data</li>
+                <li>Real-time market demand</li>
+                <li>Competitor pricing</li>
+                <li>Seasonal trends</li>
+                <li>Local events and holidays</li>
+                <li>Property-specific attributes</li>
+              </ul>
+              <p>By considering all these factors, our AI ensures that your pricing is always competitive and maximizes your revenue potential.</p>
+            </div>
+            <div class="image-content">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="AI-powered pricing dashboard" class="feature-image" width="600" height="400">
+            </div>
+          </div>
+        </div>
+        
+        <div class="section">
+          <h2 class="section-title">Key Benefits</h2>
+          <div class="section-content">
+            <div class="image-content">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80" alt="Graph showing increased revenue" class="feature-image" width="600" height="400">
+            </div>
+            <div class="text-content">
+              <ul>
+                <li><strong>Increased Revenue:</strong> Our AI typically helps property owners increase their revenue by 15-30%.</li>
+                <li><strong>Time Savings:</strong> Automate your pricing strategy and free up time to focus on other aspects of your business.</li>
+                <li><strong>Market Adaptability:</strong> Our system quickly adapts to market changes, ensuring your pricing remains optimal even in volatile conditions.</li>
+                <li><strong>Customizable Rules:</strong> Set your own pricing rules and let our AI work within your specified parameters.</li>
+                <li><strong>Competitive Edge:</strong> Stay ahead of the competition with prices that are always optimized for the current market conditions.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="section">
+          <h2 class="section-title">Case Study</h2>
+          <div class="section-content">
+            <div class="text-content">
+              <p>Luxury Villa Rentals, a high-end property management company in the Mediterranean, implemented RadHIL's AI-Powered Pricing in 2022. Within the first six months, they saw:</p>
+              <ul>
+                <li>A 22% increase in overall revenue</li>
+                <li>15% higher occupancy rates</li>
+                <li>30% reduction in time spent on pricing strategy</li>
+                <li>Consistent 5-star reviews praising the value for money</li>
+              </ul>
+              <p>"RadHIL's AI-Powered Pricing has transformed our business. We're now able to capture more value from our properties while still providing competitive rates to our guests. It's a win-win situation." - Maria Contos, CEO of Luxury Villa Rentals</p>
+            </div>
+            <div class="image-content">
+              <img src="https://images.unsplash.com/photo-1615460549969-36fa19521a4f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Luxury villa by the sea" class="feature-image" width="600" height="400">
+            </div>
+          </div>
+        </div>
+        
+        <a href="https://radhil.com/request-demo" class="cta-button">Request a Demo</a>
+      </div>
+    </section>
+  </main>
+  
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2023 RadHIL. All rights reserved.</p>
+      <p>
+        <a href="https://radhil.com/privacy">Privacy Policy</a> | 
+        <a href="https://radhil.com/terms">Terms of Service</a> |
+        <a href="https://radhil.com/contact">Contact Us</a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

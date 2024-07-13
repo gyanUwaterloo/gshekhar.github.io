@@ -1,0 +1,385 @@
+<html><head><base href="https://radhil.com/features/security"><title>RadHIL - Advanced Security Features</title>
+<style>
+  :root {
+    --primary-color: #C9A050;
+    --secondary-color: #1E2A3B;
+    --accent-color: #E0C38C;
+    --text-color: #333333;
+    --bg-color: #FFFFFF;
+    --card-bg: #F8F8F8;
+    --nav-bg: #1E2A3B;
+    --footer-bg: #1E2A3B;
+    --footer-text: #FFFFFF;
+  }
+  
+  [data-theme="dark"] {
+    --primary-color: #E0C38C;
+    --secondary-color: #2C3E50;
+    --accent-color: #C9A050;
+    --text-color: #E6E6FA;
+    --bg-color: #1A1A2E;
+    --card-bg: #2D2D44;
+    --nav-bg: #2C3E50;
+    --footer-bg: #2C3E50;
+    --footer-text: #E6E6FA;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .header {
+    background-color: var(--nav-bg);
+    color: #FFFFFF;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .nav a:hover, .nav a.active {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+  }
+
+  .hero {
+    background-image: url('https://images.unsplash.com/photo-1614064641938-3bbee52942c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #FFFFFF;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  }
+
+  .security-features {
+    padding: 4rem 0;
+  }
+
+  .feature-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4rem;
+  }
+
+  .feature-content {
+    flex: 1;
+    padding-right: 2rem;
+  }
+
+  .feature-image {
+    flex: 1;
+  }
+
+  .feature-image img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
+
+  .feature-title {
+    font-size: 2rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+  }
+
+  .feature-description {
+    margin-bottom: 1.5rem;
+  }
+
+  .feature-list {
+    list-style-type: none;
+  }
+
+  .feature-list li {
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  .feature-list li::before {
+    content: '✓';
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .cta-section {
+    background-color: var(--accent-color);
+    padding: 4rem 0;
+    text-align: center;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background-color: var(--secondary-color);
+    color: #FFFFFF;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+  }
+
+  .cta-button:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-3px);
+  }
+
+  .footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 2rem 0;
+  }
+
+  .footer a {
+    color: var(--footer-text);
+    text-decoration: none;
+    margin: 0 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .header-content {
+      flex-direction: column;
+      text-align: center;
+    }
+    .nav {
+      margin-top: 1rem;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+    .feature-section {
+      flex-direction: column;
+    }
+    .feature-content {
+      padding-right: 0;
+      margin-bottom: 2rem;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-container">
+          <div class="logo-icon">🏆</div>
+          <div class="logo-text">RadHIL</div>
+        </div>
+        <nav class="nav">
+          <a href="https://radhil.com">Home</a>
+          <a href="https://radhil.com/features">Features</a>
+          <a href="https://radhil.com/pricing">Pricing</a>
+          <a href="https://radhil.com/request-demo">Demo</a>
+          <a href="https://radhil.com/support">Support</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+  
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Advanced Security Features</h1>
+        <p>Protect your business with state-of-the-art security solutions</p>
+      </div>
+    </section>
+    
+    <section class="security-features">
+      <div class="container">
+        <div class="feature-section">
+          <div class="feature-content">
+            <h2 class="feature-title">Fraud Detection</h2>
+            <p class="feature-description">Our AI-powered system continuously monitors transactions and user behavior to detect and prevent fraudulent activities.</p>
+            <ul class="feature-list">
+              <li>Real-time transaction monitoring</li>
+              <li>Behavioral analysis for suspicious activities</li>
+              <li>Machine learning algorithms for pattern recognition</li>
+              <li>Automatic flagging of high-risk transactions</li>
+              <li>Customizable risk thresholds</li>
+            </ul>
+          </div>
+          <div class="feature-image">
+            <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="AI-powered fraud detection visualization" width="600" height="400">
+          </div>
+        </div>
+
+        <div class="feature-section">
+          <div class="feature-image">
+            <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Secure payment gateway interface" width="600" height="400">
+          </div>
+          <div class="feature-content">
+            <h2 class="feature-title">Secure Payments</h2>
+            <p class="feature-description">All financial transactions are processed through PCI-DSS compliant gateways, ensuring the highest level of payment security.</p>
+            <ul class="feature-list">
+              <li>PCI-DSS Level 1 compliance</li>
+              <li>Tokenization of sensitive data</li>
+              <li>3D Secure authentication</li>
+              <li>End-to-end encryption for all transactions</li>
+              <li>Regular security audits and compliance checks</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="feature-section">
+          <div class="feature-content">
+            <h2 class="feature-title">Data Encryption</h2>
+            <p class="feature-description">We use industry-standard SSL/TLS encryption to protect all data in transit and at rest, safeguarding your sensitive information.</p>
+            <ul class="feature-list">
+              <li>256-bit AES encryption for data at rest</li>
+              <li>TLS 1.3 for data in transit</li>
+              <li>Secure key management system</li>
+              <li>Regular encryption key rotation</li>
+              <li>Encrypted backups and disaster recovery</li>
+            </ul>
+          </div>
+          <div class="feature-image">
+            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Data encryption concept visualization" width="600" height="400">
+          </div>
+        </div>
+
+        <div class="feature-section">
+          <div class="feature-image">
+            <img src="https://images.unsplash.com/photo-1576670159805-08ea7f2b5cebAuto=format&fit=crop&w=1470&q=80" alt="Identity verification process illustration" width="600" height="400">
+          </div>
+          <div class="feature-content">
+            <h2 class="feature-title">Identity Verification</h2>
+            <p class="feature-description">Our multi-factor authentication and advanced identity verification processes ensure only authorized users access your account.</p>
+            <ul class="feature-list">
+              <li>Two-factor authentication (2FA)</li>
+              <li>Biometric verification options</li>
+              <li>ID document verification</li>
+              <li>Risk-based authentication</li>
+              <li>Single sign-on (SSO) integration</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="feature-section">
+          <div class="feature-content">
+            <h2 class="feature-title">24/7 Monitoring</h2>
+            <p class="feature-description">Our security team provides round-the-clock monitoring and incident response to keep your data safe at all times.</p>
+            <ul class="feature-list">
+              <li>Real-time threat detection and alerts</li>
+              <li>Automated incident response protocols</li>
+              <li>Continuous system health monitoring</li>
+              <li>Anomaly detection and investigation</li>
+              <li>Regular security reports and notifications</li>
+            </ul>
+          </div>
+          <div class="feature-image">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="24/7 security monitoring center" width="600" height="400">
+          </div>
+        </div>
+
+        <div class="feature-section">
+          <div class="feature-image">
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80" alt="Security audit process visualization" width="600" height="400">
+          </div>
+          <div class="feature-content">
+            <h2 class="feature-title">Regular Security Audits</h2>
+            <p class="feature-description">We conduct regular security audits and penetration testing to identify and address potential vulnerabilities proactively.</p>
+            <ul class="feature-list">
+              <li>Quarterly internal security audits</li>
+              <li>Annual third-party penetration testing</li>
+              <li>Continuous vulnerability scanning</li>
+              <li>Code reviews and static analysis</li>
+              <li>Compliance checks for industry standards</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="cta-section">
+      <div class="container">
+        <h2>Ready to secure your luxury rental business?</h2>
+        <p>Experience the peace of mind that comes with RadHIL's advanced security

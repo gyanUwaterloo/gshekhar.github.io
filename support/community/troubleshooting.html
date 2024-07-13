@@ -1,0 +1,347 @@
+<html><head><base href="https://radhil.com/support/community/troubleshooting"><title>RadHIL Community Forum - Troubleshooting</title>
+<style>
+  :root {
+    --primary-color: #C9A050;
+    --secondary-color: #1E2A3B;
+    --accent-color: #E0C38C;
+    --text-color: #333333;
+    --bg-color: #FFFFFF;
+    --card-bg: #F8F8F8;
+    --nav-bg: #1E2A3B;
+    --footer-bg: #1E2A3B;
+    --footer-text: #FFFFFF;
+    --solved-color: #4CAF50;
+    --unsolved-color: #FFC107;
+  }
+  
+  [data-theme="dark"] {
+    --primary-color: #E0C38C;
+    --secondary-color: #2C3E50;
+    --accent-color: #C9A050;
+    --text-color: #E6E6FA;
+    --bg-color: #1A1A2E;
+    --card-bg: #2D2D44;
+    --nav-bg: #2C3E50;
+    --footer-bg: #2C3E50;
+    --footer-text: #E6E6FA;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .header {
+    background-color: var(--nav-bg);
+    color: #FFFFFF;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .nav a:hover, .nav a.active {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+  }
+
+  .main-content {
+    padding-top: 80px;
+    display: flex;
+    gap: 2rem;
+  }
+
+  .sidebar {
+    width: 250px;
+    padding: 1rem;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    height: fit-content;
+  }
+
+  .sidebar h2 {
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+  }
+
+  .sidebar ul {
+    list-style-type: none;
+  }
+
+  .sidebar li {
+    margin-bottom: 0.5rem;
+  }
+
+  .sidebar a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .sidebar a:hover, .sidebar a.active {
+    color: var(--primary-color);
+  }
+
+  .forum-content {
+    flex-grow: 1;
+  }
+
+  .forum-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .new-question-btn {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .new-question-btn:hover {
+    background-color: var(--accent-color);
+  }
+
+  .question-list {
+    list-style-type: none;
+  }
+
+  .question-item {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+  }
+
+  .question-item:hover {
+    transform: translateY(-5px);
+  }
+
+  .question-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .question-meta {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    opacity: 0.7;
+    margin-bottom: 0.5rem;
+  }
+
+  .question-preview {
+    margin-bottom: 0.5rem;
+  }
+
+  .question-status {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    font-weight: bold;
+  }
+
+  .status-solved {
+    background-color: var(--solved-color);
+    color: white;
+  }
+
+  .status-unsolved {
+    background-color: var(--unsolved-color);
+    color: black;
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+
+  .pagination a {
+    color: var(--text-color);
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    border: 1px solid var(--accent-color);
+    margin: 0 0.25rem;
+  }
+
+  .pagination a:hover {
+    background-color: var(--accent-color);
+  }
+
+  .footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+  }
+
+  .footer a {
+    color: var(--footer-text);
+    text-decoration: none;
+    margin: 0 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .main-content {
+      flex-direction: column;
+    }
+    .sidebar {
+      width: 100%;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-container">
+          <div class="logo-icon">🏆</div>
+          <div class="logo-text">RadHIL</div>
+        </div>
+        <nav class="nav">
+          <a href="https://radhil.com">Home</a>
+          <a href="https://radhil.com/features">Features</a>
+          <a href="https://radhil.com/pricing">Pricing</a>
+          <a href="https://radhil.com/request-demo">Demo</a>
+          <a href="https://radhil.com/support">Support</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+  
+  <main class="container main-content">
+    <aside class="sidebar">
+      <h2>Categories</h2>
+      <ul>
+        <li><a href="https://radhil.com/support/community/general">General Discussion</a></li>
+        <li><a href="https://radhil.com/support/community/tips-and-tricks">Tips & Tricks</a></li>
+        <li><a href="https://radhil.com/support/community/feature-requests">Feature Requests</a></li>
+        <li><a href="https://radhil.com/support/community/troubleshooting" class="active">Troubleshooting</a></li>
+        <li><a href="https://radhil.com/support/community/integrations">Integrations</a></li>
+        <li><a href="https://radhil.com/support/community/success-stories">Success Stories</a></li>
+      </ul>
+    </aside>
+    
+    <div class="forum-content">
+      <div class="forum-header">
+        <h1>Troubleshooting</h1>
+        <a href="https://radhil.com/support/community/troubleshooting/new" class="new-question-btn">Ask a Question</a>
+      </div>
+      
+      <ul class="question-list">
+        <li class="question-item">
+          <h3 class="question-title"><a href="https://radhil.com/support/community/troubleshooting/1">AI Pricing Algorithm Not Adjusting for Local Events</a></h3>
+          <p class="question-meta">Asked by PricingPro | 2 days ago | 8 replies</p>
+          <p class="question-preview">I've noticed that the AI pricing algorithm isn't taking into account a major local event happening next month. How can I ensure it factors in these events for more accurate pricing?</p>
+          <span class="question-status status-unsolved">Unsolved</span>
+        </li>
+        <li class="question-item">
+          <h3 class="question-title"><a href="https://radhil.com/support/community/troubleshooting/2">Virtual Reality Tour Not Loading for Specific Property</a></h3>
+          <p class="question-meta">Asked by VREnthusiast | 1 week ago | 12 replies</p>
+          <p class="question-preview">The VR tour for one of my properties isn't loading properly. It works fine for all other properties. What could be causing this issue?</p>
+          <span class="question-status status-solved">Solved</span>
+        </li>
+        <li class="question-item">
+          <h3 class="question-title"><a href="https://radhil.com/support/community/troubleshooting/3">Smart Lock Integration Failing After Recent Update</a></h3>
+          <p class="question-meta">Asked by TechSavvyHost | 3 days ago | 6 replies</p>
+          <p class="question-preview">After the latest RadHIL update, my smart lock integration is no longer working. Guests are unable to access their unique codes. How can I resolve this?</p>
+          <span class="question-status status-unsolved">Unsolved</span>
+        </li>
+        <li class="question-item">
+          <h3 class="question-title"><a href="https://radhil.com/support/community/troubleshooting/4">AI Concierge Providing Outdated Local Recommendations</a></h3>
+          <p class="question-meta">Asked by LocalExpert | 5 days ago | 9 replies</p>
+          <p class="question-preview">The AI concierge is recommending restaurants and attractions that have been closed for months. How can I update its local knowledge base?</p>
+          <span class="question-status status-solved">Solved</span>
+        </li>
+        <li class="question-item">
+          <h3 class="question-title"><a href="https://radhil.com/support/community/troubleshooting/5">Blockchain Loyalty Program Not Crediting Points</a></h3>
+          <p class="question-meta">Asked by CryptoEnthusiast | 1 day ago | 3 replies</p>
+          <p class="question-preview">Guests are reporting that they're not receiving loyalty points for their stays. The blockchain transaction seems to be failing. Any ideas on how to troubleshoot this?</p>
+          <span class="question-status status-unsolved">Unsolved</span>
+        </li>
+      </ul>
+      
+      <div class="pagination">
+        <a href="https://radhil.com/support/community/troubleshooting?page=1">1</a>
+        <a href="https://radhil.com/support/community/troubleshooting?page=2">2</a>
+        <a href="https://radhil.com/support/community/troubleshooting?page=3">3</a>
+        <a href="https://radhil.com/support/community/troubleshooting?page=4">4</a>
+        <a href="https://radhil.com/support/community/troubleshooting?page=5">5</a>
+      </div>
+    </div>
+  </main>
+  
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2023 RadHIL. All rights reserved.</p>
+      <p>
+        <a href="https://radhil.com/privacy">Privacy Policy</a> | 
+        <a href="https://radhil.com/terms">Terms of Service</a> |
+        <a href="https://radhil.com/contact">Contact Us</a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

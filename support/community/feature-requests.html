@@ -1,0 +1,423 @@
+<html><head><base href="https://radhil.com/support/community/feature-requests"><title>RadHIL Community Forum - Feature Requests</title>
+<style>
+  :root {
+    --primary-color: #C9A050;
+    --secondary-color: #1E2A3B;
+    --accent-color: #E0C38C;
+    --text-color: #333333;
+    --bg-color: #FFFFFF;
+    --card-bg: #F8F8F8;
+    --nav-bg: #1E2A3B;
+    --footer-bg: #1E2A3B;
+    --footer-text: #FFFFFF;
+    --vote-bg: #E0E0E0;
+    --vote-text: #333333;
+    --vote-hover: #C9A050;
+    --status-planned: #4CAF50;
+    --status-considering: #FFC107;
+    --status-implemented: #2196F3;
+  }
+  
+  [data-theme="dark"] {
+    --primary-color: #E0C38C;
+    --secondary-color: #2C3E50;
+    --accent-color: #C9A050;
+    --text-color: #E6E6FA;
+    --bg-color: #1A1A2E;
+    --card-bg: #2D2D44;
+    --nav-bg: #2C3E50;
+    --footer-bg: #2C3E50;
+    --footer-text: #E6E6FA;
+    --vote-bg: #3D3D5C;
+    --vote-text: #E6E6FA;
+    --vote-hover: #E0C38C;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .header {
+    background-color: var(--nav-bg);
+    color: #FFFFFF;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .nav a:hover, .nav a.active {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+  }
+
+  .main-content {
+    padding-top: 80px;
+    display: flex;
+    gap: 2rem;
+  }
+
+  .sidebar {
+    width: 250px;
+    padding: 1rem;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    height: fit-content;
+  }
+
+  .sidebar h2 {
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+  }
+
+  .sidebar ul {
+    list-style-type: none;
+  }
+
+  .sidebar li {
+    margin-bottom: 0.5rem;
+  }
+
+  .sidebar a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .sidebar a:hover, .sidebar a.active {
+    color: var(--primary-color);
+  }
+
+  .forum-content {
+    flex-grow: 1;
+  }
+
+  .forum-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .new-feature-btn {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .new-feature-btn:hover {
+    background-color: var(--accent-color);
+  }
+
+  .feature-list {
+    list-style-type: none;
+  }
+
+  .feature-item {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+  }
+
+  .feature-item:hover {
+    transform: translateY(-5px);
+  }
+
+  .vote-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 1rem;
+  }
+
+  .vote-button {
+    background-color: var(--vote-bg);
+    color: var(--vote-text);
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .vote-button:hover {
+    background-color: var(--vote-hover);
+  }
+
+  .vote-count {
+    font-weight: bold;
+    margin: 0.5rem 0;
+  }
+
+  .feature-content {
+    flex-grow: 1;
+  }
+
+  .feature-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .feature-meta {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    opacity: 0.7;
+    margin-bottom: 0.5rem;
+  }
+
+  .feature-description {
+    margin-bottom: 0.5rem;
+  }
+
+  .feature-status {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    font-weight: bold;
+  }
+
+  .status-planned {
+    background-color: var(--status-planned);
+    color: white;
+  }
+
+  .status-considering {
+    background-color: var(--status-considering);
+    color: black;
+  }
+
+  .status-implemented {
+    background-color: var(--status-implemented);
+    color: white;
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+
+  .pagination a {
+    color: var(--text-color);
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    border: 1px solid var(--accent-color);
+    margin: 0 0.25rem;
+  }
+
+  .pagination a:hover {
+    background-color: var(--accent-color);
+  }
+
+  .footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+  }
+
+  .footer a {
+    color: var(--footer-text);
+    text-decoration: none;
+    margin: 0 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .main-content {
+      flex-direction: column;
+    }
+    .sidebar {
+      width: 100%;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-container">
+          <div class="logo-icon">🏆</div>
+          <div class="logo-text">RadHIL</div>
+        </div>
+        <nav class="nav">
+          <a href="https://radhil.com">Home</a>
+          <a href="https://radhil.com/features">Features</a>
+          <a href="https://radhil.com/pricing">Pricing</a>
+          <a href="https://radhil.com/request-demo">Demo</a>
+          <a href="https://radhil.com/support">Support</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+  
+  <main class="container main-content">
+    <aside class="sidebar">
+      <h2>Categories</h2>
+      <ul>
+        <li><a href="https://radhil.com/support/community/general">General Discussion</a></li>
+        <li><a href="https://radhil.com/support/community/tips-and-tricks">Tips & Tricks</a></li>
+        <li><a href="https://radhil.com/support/community/feature-requests" class="active">Feature Requests</a></li>
+        <li><a href="https://radhil.com/support/community/troubleshooting">Troubleshooting</a></li>
+        <li><a href="https://radhil.com/support/community/integrations">Integrations</a></li>
+        <li><a href="https://radhil.com/support/community/success-stories">Success Stories</a></li>
+      </ul>
+    </aside>
+    
+    <div class="forum-content">
+      <div class="forum-header">
+        <h1>Feature Requests</h1>
+        <a href="https://radhil.com/support/community/feature-requests/new" class="new-feature-btn">Suggest New Feature</a>
+      </div>
+      
+      <ul class="feature-list">
+        <li class="feature-item">
+          <div class="vote-container">
+            <button class="vote-button">▲</button>
+            <span class="vote-count">328</span>
+            <button class="vote-button">▼</button>
+          </div>
+          <div class="feature-content">
+            <h3 class="feature-title"><a href="https://radhil.com/support/community/feature-requests/1">AI-Powered Guest Preference Prediction</a></h3>
+            <p class="feature-meta">Requested by FutureTech | 2 weeks ago</p>
+            <p class="feature-description">Implement an AI system that predicts guest preferences based on past stays and similar guest profiles, allowing for personalized experiences.</p>
+            <span class="feature-status status-considering">Under Consideration</span>
+          </div>
+        </li>
+        <li class="feature-item">
+          <div class="vote-container">
+            <button class="vote-button">▲</button>
+            <span class="vote-count">275</span>
+            <button class="vote-button">▼</button>
+          </div>
+          <div class="feature-content">
+            <h3 class="feature-title"><a href="https://radhil.com/support/community/feature-requests/2">Virtual Reality Property Tours</a></h3>
+            <p class="feature-meta">Requested by VREnthusiast | 1 month ago</p>
+            <p class="feature-description">Integrate VR technology to allow potential guests to take immersive virtual tours of properties before booking.</p>
+            <span class="feature-status status-planned">Planned</span>
+          </div>
+        </li>
+        <li class="feature-item">
+          <div class="vote-container">
+            <button class="vote-button">▲</button>
+            <span class="vote-count">214</span>
+            <button class="vote-button">▼</button>
+          </div>
+          <div class="feature-content">
+            <h3 class="feature-title"><a href="https://radhil.com/support/community/feature-requests/3">Blockchain-Based Guest Loyalty Program</a></h3>
+            <p class="feature-meta">Requested by CryptoHost | 3 weeks ago</p>
+            <p class="feature-description">Implement a blockchain-based loyalty program that allows guests to earn and redeem tokens across multiple luxury properties.</p>
+            <span class="feature-status status-considering">Under Consideration</span>
+          </div>
+        </li>
+        <li class="feature-item">
+          <div class="vote-container">
+            <button class="vote-button">▲</button>
+            <span class="vote-count">189</span>
+            <button class="vote-button">▼</button>
+          </div>
+          <div class="feature-content">
+            <h3 class="feature-title"><a href="https://radhil.com/support/community/feature-requests/4">Automated Luxury Concierge Service</a></h3>
+            <p class="feature-meta">Requested by ConciergePro | 1 month ago</p>
+            <p class="feature-description">Develop an AI-powered concierge service that can handle guest requests, make reservations, and provide local recommendations 24/7.</p>
+            <span class="feature-status status-implemented">Implemented</span>
+          </div>
+        </li>
+        <li class="feature-item">
+          <div class="vote-container">
+            <button class="vote-button">▲</button>
+            <span class="vote-count">156</span>
+            <button class="vote-button">▼</button>
+          </div>
+          <div class="feature-content">
+            <h3 class="feature-title"><a href="https://radhil.com/support/community/feature-requests/5">Dynamic Pricing Based on Real-Time Events</a></h3>
+            <p class="feature-meta">Requested by PricingWizard | 2 weeks ago</p>
+            <p class="feature-description">Enhance the AI pricing algorithm to factor in real-time local events, weather conditions, and market trends for more accurate pricing.</p>
+            <span class="feature-status status-planned">Planned</span>
+          </div>
+        </li>
+      </ul>
+      
+      <div class="pagination">
+        <a href="https://radhil.com/support/community/feature-requests?page=1">1</a>
+        <a href="https://radhil.com/support/community/feature-requests?page=2">2</a>
+        <a href="https://radhil.com/support/community/feature-requests?page=3">3</a>
+        <a href="https://radhil.com/support/community/feature-requests?page=4">4</a>
+        <a href="https://radhil.com/support/community/feature-requests?page=5">5</a>
+      </div>
+    </div>
+  </main>
+  
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2023 RadHIL. All rights reserved.</p>
+      <p>
+        <a href="https://radhil.com/privacy">Privacy Policy</a> | 
+        <a href="https://radhil.com/terms">Terms of Service</a> |
+        <a href="https://

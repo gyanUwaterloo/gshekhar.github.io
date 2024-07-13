@@ -1,0 +1,328 @@
+<html><head><base href="https://radhil.com/features/channel-management"><title>RadHIL - Multi-Channel Management</title>
+<style>
+  :root {
+    --primary-color: #C9A050;
+    --secondary-color: #1E2A3B;
+    --accent-color: #E0C38C;
+    --text-color: #333333;
+    --bg-color: #FFFFFF;
+    --card-bg: #F8F8F8;
+    --nav-bg: #1E2A3B;
+    --footer-bg: #1E2A3B;
+    --footer-text: #FFFFFF;
+  }
+  
+  [data-theme="dark"] {
+    --primary-color: #E0C38C;
+    --secondary-color: #2C3E50;
+    --accent-color: #C9A050;
+    --text-color: #E6E6FA;
+    --bg-color: #1A1A2E;
+    --card-bg: #2D2D44;
+    --nav-bg: #2C3E50;
+    --footer-bg: #2C3E50;
+    --footer-text: #E6E6FA;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  header {
+    background-color: var(--nav-bg);
+    color: #FFFFFF;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  nav ul {
+    display: flex;
+    list-style-type: none;
+  }
+
+  nav ul li {
+    margin-left: 20px;
+  }
+
+  nav ul li a {
+    color: #FFFFFF;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  nav ul li a:hover {
+    color: var(--primary-color);
+  }
+
+  .hero {
+    background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #FFFFFF;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .feature-section {
+    padding: 4rem 0;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .feature-card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .feature-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+  }
+
+  .feature-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .channels-section {
+    background-color: var(--secondary-color);
+    color: #FFFFFF;
+    padding: 4rem 0;
+  }
+
+  .channels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .channel-logo {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+  }
+
+  .channel-logo img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .cta-section {
+    text-align: center;
+    padding: 4rem 0;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: #FFFFFF;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+
+  .cta-button:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-3px);
+  }
+
+  footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 2rem 0;
+  }
+
+  footer a {
+    color: var(--footer-text);
+    text-decoration: none;
+    margin: 0 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .header-content {
+      flex-direction: column;
+    }
+    nav ul {
+      margin-top: 1rem;
+    }
+    .hero h1 {
+      font-size: 2rem;
+    }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">RadHIL</div>
+        <nav>
+          <ul>
+            <li><a href="https://radhil.com">Home</a></li>
+            <li><a href="https://radhil.com/features">Features</a></li>
+            <li><a href="https://radhil.com/pricing">Pricing</a></li>
+            <li><a href="https://radhil.com/contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Multi-Channel Management</h1>
+        <p>Streamline your luxury rental listings across all major platforms</p>
+      </div>
+    </section>
+
+    <section class="feature-section">
+      <div class="container">
+        <h2>Key Features</h2>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🔄</div>
+            <h3 class="feature-title">Synchronized Calendars</h3>
+            <p>Keep your availability up-to-date across all channels automatically</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">💰</div>
+            <h3 class="feature-title">Unified Pricing</h3>
+            <p>Set and update prices once, apply everywhere</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3 class="feature-title">Centralized Analytics</h3>
+            <p>Get insights on performance across all channels in one place</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🔔</div>
+            <h3 class="feature-title">Instant Notifications</h3>
+            <p>Receive real-time alerts for bookings, inquiries, and reviews</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="channels-section">
+      <div class="container">
+        <h2>Supported Channels</h2>
+        <div class="channels-grid">
+          <div class="channel-logo">
+            <img src="https://radhil.com/images/airbnb-logo.png" alt="Airbnb logo" width="100" height="50">
+          </div>
+          <div class="channel-logo">
+            <img src="https://radhil.com/images/booking-logo.png" alt="Booking.com logo" width="100" height="50">
+          </div>
+          <div class="channel-logo">
+            <img src="https://radhil.com/images/vrbo-logo.png" alt="VRBO logo" width="100" height="50">
+          </div>
+          <div class="channel-logo">
+            <img src="https://radhil.com/images/expedia-logo.png" alt="Expedia logo" width="100" height="50">
+          </div>
+          <div class="channel-logo">
+            <img src="https://radhil.com/images/tripadvisor-logo.png" alt="TripAdvisor logo" width="100" height="50">
+          </div>
+          <div class="channel-logo">
+            <img src="https://radhil.com/images/agoda-logo.png" alt="Agoda logo" width="100" height="50">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container">
+        <h2>Ready to streamline your multi-channel management?</h2>
+        <p>Join RadHIL today and take control of your luxury rental business</p>
+        <a href="https://radhil.com/signup" class="cta-button">Get Started</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2023 RadHIL. All rights reserved.</p>
+      <p>
+        <a href="https://radhil.com/privacy">Privacy Policy</a> | 
+        <a href="https://radhil.com/terms">Terms of Service</a> |
+        <a href="https://radhil.com/contact">Contact Us</a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

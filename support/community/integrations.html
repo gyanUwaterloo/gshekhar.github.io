@@ -1,0 +1,369 @@
+<html><head><base href="https://radhil.com/support/community/integrations"><title>RadHIL Community Forum - Integrations</title>
+<style>
+  :root {
+    --primary-color: #C9A050;
+    --secondary-color: #1E2A3B;
+    --accent-color: #E0C38C;
+    --text-color: #333333;
+    --bg-color: #FFFFFF;
+    --card-bg: #F8F8F8;
+    --nav-bg: #1E2A3B;
+    --footer-bg: #1E2A3B;
+    --footer-text: #FFFFFF;
+    --integration-official: #4CAF50;
+    --integration-community: #FFC107;
+  }
+  
+  [data-theme="dark"] {
+    --primary-color: #E0C38C;
+    --secondary-color: #2C3E50;
+    --accent-color: #C9A050;
+    --text-color: #E6E6FA;
+    --bg-color: #1A1A2E;
+    --card-bg: #2D2D44;
+    --nav-bg: #2C3E50;
+    --footer-bg: #2C3E50;
+    --footer-text: #E6E6FA;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .header {
+    background-color: var(--nav-bg);
+    color: #FFFFFF;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .nav a:hover, .nav a.active {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+  }
+
+  .main-content {
+    padding-top: 80px;
+    display: flex;
+    gap: 2rem;
+  }
+
+  .sidebar {
+    width: 250px;
+    padding: 1rem;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    height: fit-content;
+  }
+
+  .sidebar h2 {
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+  }
+
+  .sidebar ul {
+    list-style-type: none;
+  }
+
+  .sidebar li {
+    margin-bottom: 0.5rem;
+  }
+
+  .sidebar a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .sidebar a:hover, .sidebar a.active {
+    color: var(--primary-color);
+  }
+
+  .forum-content {
+    flex-grow: 1;
+  }
+
+  .forum-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .new-integration-btn {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .new-integration-btn:hover {
+    background-color: var(--accent-color);
+  }
+
+  .integration-list {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+
+  .integration-item {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 1rem;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .integration-item:hover {
+    transform: translateY(-5px);
+  }
+
+  .integration-logo {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 0.5rem;
+  }
+
+  .integration-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .integration-description {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    flex-grow: 1;
+  }
+
+  .integration-type {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-top: auto;
+  }
+
+  .type-official {
+    background-color: var(--integration-official);
+    color: white;
+  }
+
+  .type-community {
+    background-color: var(--integration-community);
+    color: black;
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+
+  .pagination a {
+    color: var(--text-color);
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    border: 1px solid var(--accent-color);
+    margin: 0 0.25rem;
+  }
+
+  .pagination a:hover {
+    background-color: var(--accent-color);
+  }
+
+  .footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+  }
+
+  .footer a {
+    color: var(--footer-text);
+    text-decoration: none;
+    margin: 0 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .main-content {
+      flex-direction: column;
+    }
+    .sidebar {
+      width: 100%;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-container">
+          <div class="logo-icon">🏆</div>
+          <div class="logo-text">RadHIL</div>
+        </div>
+        <nav class="nav">
+          <a href="https://radhil.com">Home</a>
+          <a href="https://radhil.com/features">Features</a>
+          <a href="https://radhil.com/pricing">Pricing</a>
+          <a href="https://radhil.com/request-demo">Demo</a>
+          <a href="https://radhil.com/support">Support</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+  
+  <main class="container main-content">
+    <aside class="sidebar">
+      <h2>Categories</h2>
+      <ul>
+        <li><a href="https://radhil.com/support/community/general">General Discussion</a></li>
+        <li><a href="https://radhil.com/support/community/tips-and-tricks">Tips & Tricks</a></li>
+        <li><a href="https://radhil.com/support/community/feature-requests">Feature Requests</a></li>
+        <li><a href="https://radhil.com/support/community/troubleshooting">Troubleshooting</a></li>
+        <li><a href="https://radhil.com/support/community/integrations" class="active">Integrations</a></li>
+        <li><a href="https://radhil.com/support/community/success-stories">Success Stories</a></li>
+      </ul>
+    </aside>
+    
+    <div class="forum-content">
+      <div class="forum-header">
+        <h1>Integrations</h1>
+        <a href="https://radhil.com/support/community/integrations/new" class="new-integration-btn">Submit New Integration</a>
+      </div>
+      
+      <ul class="integration-list">
+        <li class="integration-item">
+          <img src="https://radhil.com/images/integrations/smart-home.png" alt="Smart Home Hub Logo" class="integration-logo" width="60" height="60">
+          <h3 class="integration-title">Smart Home Hub</h3>
+          <p class="integration-description">Control all your property's smart devices from a single dashboard.</p>
+          <span class="integration-type type-official">Official</span>
+        </li>
+        <li class="integration-item">
+          <img src="https://radhil.com/images/integrations/ai-concierge.png" alt="AI Concierge Logo" class="integration-logo" width="60" height="60">
+          <h3 class="integration-title">AI Concierge</h3>
+          <p class="integration-description">24/7 automated guest support powered by advanced AI.</p>
+          <span class="integration-type type-official">Official</span>
+        </li>
+        <li class="integration-item">
+          <img src="https://radhil.com/images/integrations/vr-tour.png" alt="VR Property Tour Logo" class="integration-logo" width="60" height="60">
+          <h3 class="integration-title">VR Property Tour</h3>
+          <p class="integration-description">Create immersive virtual reality tours of your properties.</p>
+          <span class="integration-type type-official">Official</span>
+        </li>
+        <li class="integration-item">
+          <img src="https://radhil.com/images/integrations/blockchain-loyalty.png" alt="Blockchain Loyalty Program Logo" class="integration-logo" width="60" height="60">
+          <h3 class="integration-title">Blockchain Loyalty Program</h3>
+          <p class="integration-description">Reward guests with cryptocurrency tokens for their stays.</p>
+          <span class="integration-type type-official">Official</span>
+        </li>
+        <li class="integration-item">
+          <img src="https://radhil.com/images/integrations/eco-impact.png" alt="Eco Impact Calculator Logo" class="integration-logo" width="60" height="60">
+          <h3 class="integration-title">Eco Impact Calculator</h3>
+          <p class="integration-description">Track and offset the environmental impact of each stay.</p>
+          <span class="integration-type type-community">Community</span>
+        </li>
+        <li class="integration-item">
+          <img src="https://radhil.com/images/integrations/ar-maintenance.png" alt="AR Maintenance Guide Logo" class="integration-logo" width="60" height="60">
+          <h3 class="integration-title">AR Maintenance Guide</h3>
+          <p class="integration-description">Use augmented reality for easy property maintenance.</p>
+          <span class="integration-type type-community">Community</span>
+        </li>
+        <li class="integration-item">
+          <img src="https://radhil.com/images/integrations/local-experiences.png" alt="Local Experiences Marketplace Logo" class="integration-logo" width="60" height="60">
+          <h3 class="integration-title">Local Experiences Marketplace</h3>
+          <p class="integration-description">Offer unique local experiences to your guests.</p>
+          <span class="integration-type type-official">Official</span>
+        </li>
+        <li class="integration-item">
+          <img src="https://radhil.com/images/integrations/voice-control.png" alt="Voice-Controlled Property Management Logo" class="integration-logo" width="60" height="60">
+          <h3 class="integration-title">Voice-Controlled Property Management</h3>
+          <p class="integration-description">Manage your properties using voice commands.</p>
+          <span class="integration-type type-community">Community</span>
+        </li>
+      </ul>
+      
+      <div class="pagination">
+        <a href="https://radhil.com/support/community/integrations?page=1">1</a>
+        <a href="https://radhil.com/support/community/integrations?page=2">2</a>
+        <a href="https://radhil.com/support/community/integrations?page=3">3</a>
+      </div>
+    </div>
+  </main>
+  
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2023 RadHIL. All rights reserved.</p>
+      <p>
+        <a href="https://radhil.com/privacy">Privacy Policy</a> | 
+        <a href="https://radhil.com/terms">Terms of Service</a> |
+        <a href="https://radhil.com/contact">Contact Us</a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
