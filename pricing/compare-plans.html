@@ -1,4 +1,4 @@
-<html><head><base href="https://radhil.com/signup?plan=startup"><title>RadHIL - Sign Up for Startup Plan</title>
+<html><head><base href="https://radhil.com/compare-plans"><title>RadHIL - Compare Plans</title>
 <style>
   :root {
     --primary-color: #C9A050;
@@ -6,12 +6,13 @@
     --accent-color: #E0C38C;
     --text-color: #333333;
     --bg-color: #FFFFFF;
-    --card-bg: #F8F8F8;
+    --table-header-bg: #F0F0F0;
+    --table-row-even: #F8F8F8;
+    --table-row-odd: #FFFFFF;
+    --table-border: #CCCCCC;
     --nav-bg: #1E2A3B;
     --footer-bg: #1E2A3B;
     --footer-text: #FFFFFF;
-    --input-bg: #FFFFFF;
-    --input-border: #CCCCCC;
   }
   
   [data-theme="dark"] {
@@ -20,12 +21,13 @@
     --accent-color: #C9A050;
     --text-color: #E6E6FA;
     --bg-color: #1A1A2E;
-    --card-bg: #2D2D44;
+    --table-header-bg: #2C3E50;
+    --table-row-even: #2D2D44;
+    --table-row-odd: #1A1A2E;
+    --table-border: #4A4A6A;
     --nav-bg: #2C3E50;
     --footer-bg: #2C3E50;
     --footer-text: #E6E6FA;
-    --input-bg: #2D2D44;
-    --input-border: #4A4A6A;
   }
 
   * {
@@ -100,97 +102,59 @@
     color: var(--secondary-color);
   }
 
-  .signup-section {
+  .compare-section {
     padding: 8rem 0 4rem;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
   }
 
-  .signup-form {
-    background-color: var(--card-bg);
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  .compare-table {
     width: 100%;
-    max-width: 500px;
+    border-collapse: collapse;
+    margin-top: 2rem;
   }
 
-  .signup-form h2 {
-    text-align: center;
-    margin-bottom: 2rem;
-    color: var(--secondary-color);
+  .compare-table th, .compare-table td {
+    padding: 1rem;
+    text-align: left;
+    border: 1px solid var(--table-border);
   }
 
-  .form-group {
-    margin-bottom: 1.5rem;
-  }
-
-  .form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
+  .compare-table th {
+    background-color: var(--table-header-bg);
     font-weight: bold;
   }
 
-  .form-group input {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid var(--input-border);
-    border-radius: 5px;
-    font-size: 1rem;
-    background-color: var(--input-bg);
-    color: var(--text-color);
+  .compare-table tr:nth-child(even) {
+    background-color: var(--table-row-even);
   }
 
-  .submit-btn {
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
-    padding: 1rem 2rem;
-    border: none;
-    border-radius: 50px;
-    font-size: 1rem;
+  .compare-table tr:nth-child(odd) {
+    background-color: var(--table-row-odd);
+  }
+
+  .feature-name {
     font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    width: 100%;
   }
 
-  .submit-btn:hover {
-    background-color: var(--accent-color);
-    transform: translateY(-3px);
-  }
-
-  .plan-details {
-    background-color: var(--card-bg);
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 300px;
-    margin-left: 2rem;
-  }
-
-  .plan-details h3 {
-    color: var(--secondary-color);
-    margin-bottom: 1rem;
-  }
-
-  .plan-details ul {
-    list-style-type: none;
-    padding-left: 0;
-  }
-
-  .plan-details li {
-    margin-bottom: 0.5rem;
-    display: flex;
-    align-items: center;
-  }
-
-  .plan-details li::before {
-    content: '✓';
+  .check-icon {
     color: var(--primary-color);
     font-size: 1.2rem;
-    margin-right: 0.5rem;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+  }
+
+  .cta-button:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-3px);
   }
 
   .footer {
@@ -263,14 +227,11 @@
     .nav {
       margin-top: 1rem;
     }
-    .signup-section {
-      flex-direction: column;
-      align-items: center;
+    .compare-table {
+      font-size: 0.8rem;
     }
-    .plan-details {
-      margin-left: 0;
-      margin-top: 2rem;
-      max-width: 500px;
+    .compare-table th, .compare-table td {
+      padding: 0.5rem;
     }
   }
 </style>
@@ -288,13 +249,13 @@
     <div class="container">
       <div class="header-content">
         <div class="logo-container">
-          <div class="logo-icon">🦚</div>
+          <div class="logo-icon">🏆</div>
           <div class="logo-text">RadHIL</div>
         </div>
         <nav class="nav">
           <a href="https://radhil.com">Home</a>
           <a href="https://radhil.com/features">Features</a>
-          <a href="https://radhil.com/pricing">Pricing</a>
+          <a href="https://radhil.com/pricing" class="active">Pricing</a>
           <a href="https://radhil.com/request-demo">Demo</a>
           <a href="https://radhil.com/support">Support</a>
         </nav>
@@ -309,45 +270,99 @@
   </header>
   
   <main>
-    <section class="signup-section container">
-      <div class="signup-form">
-        <h2>Sign Up for Startup Plan</h2>
-        <form action="https://radhil.com/process-signup" method="GET">
-          <div class="form-group">
-            <label for="fullname">Full Name</label>
-            <input type="text" id="fullname" name="fullname" required>
-          </div>
-          <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" required>
-          </div>
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required>
-          </div>
-          <div class="form-group">
-            <label for="confirm-password">Confirm Password</label>
-            <input type="password" id="confirm-password" name="confirm-password" required>
-          </div>
-          <div class="form-group">
-            <label for="company">Company Name</label>
-            <input type="text" id="company" name="company">
-          </div>
-          <input type="hidden" name="plan" value="startup">
-          <button type="submit" class="submit-btn">Sign Up</button>
-        </form>
-      </div>
-      <div class="plan-details">
-        <h3>Startup Plan</h3>
-        <p><strong>$99/month</strong></p>
-        <ul>
-          <li>Up to 5 properties</li>
-          <li>Basic AI pricing suggestions</li>
-          <li>Multi-channel listing management</li>
-          <li>Automated guest communication</li>
-          <li>Basic analytics</li>
-          <li>Email support</li>
-        </ul>
+    <section class="compare-section container">
+      <h1>Compare RadHIL Plans</h1>
+      <p>Find the perfect plan for your luxury rental business</p>
+      
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Features</th>
+            <th>Startup</th>
+            <th>Growth</th>
+            <th>Enterprise</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="feature-name">Monthly Price</td>
+            <td>$99</td>
+            <td>$299</td>
+            <td>Custom</td>
+          </tr>
+          <tr>
+            <td class="feature-name">Number of Properties</td>
+            <td>Up to 5</td>
+            <td>Up to 20</td>
+            <td>Unlimited</td>
+          </tr>
+          <tr>
+            <td class="feature-name">AI Pricing Optimization</td>
+            <td>Basic</td>
+            <td>Advanced</td>
+            <td>Custom AI Models</td>
+          </tr>
+          <tr>
+            <td class="feature-name">Multi-channel Listing Management</td>
+            <td><span class="check-icon">✓</span></td>
+            <td><span class="check-icon">✓</span></td>
+            <td><span class="check-icon">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feature-name">Automated Guest Communication</td>
+            <td><span class="check-icon">✓</span></td>
+            <td><span class="check-icon">✓</span></td>
+            <td>Advanced System</td>
+          </tr>
+          <tr>
+            <td class="feature-name">Analytics and Reporting</td>
+            <td>Basic</td>
+            <td>Advanced</td>
+            <td>Custom BI Solutions</td>
+          </tr>
+          <tr>
+            <td class="feature-name">Smart Property Management</td>
+            <td>-</td>
+            <td><span class="check-icon">✓</span></td>
+            <td>Advanced Features</td>
+          </tr>
+          <tr>
+            <td class="feature-name">Financial Management Tools</td>
+            <td>-</td>
+            <td><span class="check-icon">✓</span></td>
+            <td>Comprehensive</td>
+          </tr>
+          <tr>
+            <td class="feature-name">Support</td>
+            <td>Email</td>
+            <td>Priority Email and Chat</td>
+            <td>24/7 Priority + Dedicated Manager</td>
+          </tr>
+          <tr>
+            <td class="feature-name">API Access</td>
+            <td>-</td>
+            <td>Limited</td>
+            <td>Full Access</td>
+          </tr>
+          <tr>
+            <td class="feature-name">Custom Integrations</td>
+            <td>-</td>
+            <td>-</td>
+            <td><span class="check-icon">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feature-name">White-label Solution</td>
+            <td>-</td>
+            <td>-</td>
+            <td><span class="check-icon">✓</span></td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <div style="text-align: center; margin-top: 2rem;">
+        <a href="https://radhil.com/signup?plan=startup" class="cta-button">Start with Startup</a>
+        <a href="https://radhil.com/signup?plan=growth" class="cta-button">Choose Growth</a>
+        <a href="https://radhil.com/contact-sales" class="cta-button">Contact Sales for Enterprise</a>
       </div>
     </section>
   </main>

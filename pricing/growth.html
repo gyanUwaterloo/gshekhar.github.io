@@ -1,4 +1,4 @@
-<html><head><base href="https://radhil.com/signup?plan=startup"><title>RadHIL - Sign Up for Startup Plan</title>
+<html><head><base href="https://radhil.com/signup?plan=growth"><title>RadHIL - Sign Up for Growth Plan</title>
 <style>
   :root {
     --primary-color: #C9A050;
@@ -7,11 +7,11 @@
     --text-color: #333333;
     --bg-color: #FFFFFF;
     --card-bg: #F8F8F8;
+    --input-bg: #FFFFFF;
+    --input-border: #CCCCCC;
     --nav-bg: #1E2A3B;
     --footer-bg: #1E2A3B;
     --footer-text: #FFFFFF;
-    --input-bg: #FFFFFF;
-    --input-border: #CCCCCC;
   }
   
   [data-theme="dark"] {
@@ -21,11 +21,11 @@
     --text-color: #E6E6FA;
     --bg-color: #1A1A2E;
     --card-bg: #2D2D44;
+    --input-bg: #2D2D44;
+    --input-border: #4A4A6A;
     --nav-bg: #2C3E50;
     --footer-bg: #2C3E50;
     --footer-text: #E6E6FA;
-    --input-bg: #2D2D44;
-    --input-border: #4A4A6A;
   }
 
   * {
@@ -132,7 +132,7 @@
     font-weight: bold;
   }
 
-  .form-group input {
+  .form-group input, .form-group select {
     width: 100%;
     padding: 0.75rem;
     border: 1px solid var(--input-border);
@@ -288,7 +288,7 @@
     <div class="container">
       <div class="header-content">
         <div class="logo-container">
-          <div class="logo-icon">🦚</div>
+          <div class="logo-icon">🏆</div>
           <div class="logo-text">RadHIL</div>
         </div>
         <nav class="nav">
@@ -311,7 +311,7 @@
   <main>
     <section class="signup-section container">
       <div class="signup-form">
-        <h2>Sign Up for Startup Plan</h2>
+        <h2>Sign Up for Growth Plan</h2>
         <form action="https://radhil.com/process-signup" method="GET">
           <div class="form-group">
             <label for="fullname">Full Name</label>
@@ -333,20 +333,36 @@
             <label for="company">Company Name</label>
             <input type="text" id="company" name="company">
           </div>
-          <input type="hidden" name="plan" value="startup">
-          <button type="submit" class="submit-btn">Sign Up</button>
+          <div class="form-group">
+            <label for="properties">Number of Properties</label>
+            <select id="properties" name="properties" required>
+              <option value="">Select number of properties</option>
+              <option value="1-5">1-5</option>
+              <option value="6-10">6-10</option>
+              <option value="11-15">11-15</option>
+              <option value="16-20">16-20</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="referral">Referral Code (Optional)</label>
+            <input type="text" id="referral" name="referral">
+          </div>
+          <input type="hidden" name="plan" value="growth">
+          <button type="submit" class="submit-btn">Sign Up for Growth Plan</button>
         </form>
       </div>
       <div class="plan-details">
-        <h3>Startup Plan</h3>
-        <p><strong>$99/month</strong></p>
+        <h3>Growth Plan</h3>
+        <p><strong>$299/month</strong></p>
         <ul>
-          <li>Up to 5 properties</li>
-          <li>Basic AI pricing suggestions</li>
+          <li>Up to 20 properties</li>
+          <li>Advanced AI pricing optimization</li>
           <li>Multi-channel listing management</li>
           <li>Automated guest communication</li>
-          <li>Basic analytics</li>
-          <li>Email support</li>
+          <li>Advanced analytics and reporting</li>
+          <li>Smart property management</li>
+          <li>Financial management tools</li>
+          <li>Priority email and chat support</li>
         </ul>
       </div>
     </section>
