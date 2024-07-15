@@ -1,0 +1,397 @@
+<html><head><base href="https://radhil.com/support/tutorials"><title>RadHIL - Video Tutorials</title>
+<style>
+  :root {
+    --primary-color: #C9A050;
+    --secondary-color: #1E2A3B;
+    --accent-color: #E0C38C;
+    --text-color: #333333;
+    --bg-color: #FFFFFF;
+    --card-bg: #F8F8F8;
+    --nav-bg: #1E2A3B;
+    --footer-bg: #1E2A3B;
+    --footer-text: #FFFFFF;
+    --input-bg: #FFFFFF;
+    --input-border: #CCCCCC;
+  }
+  
+  [data-theme="dark"] {
+    --primary-color: #E0C38C;
+    --secondary-color: #2C3E50;
+    --accent-color: #C9A050;
+    --text-color: #E6E6FA;
+    --bg-color: #1A1A2E;
+    --card-bg: #2D2D44;
+    --nav-bg: #2C3E50;
+    --footer-bg: #2C3E50;
+    --footer-text: #E6E6FA;
+    --input-bg: #2D2D44;
+    --input-border: #4A4A6A;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .header {
+    background-color: var(--nav-bg);
+    color: #FFFFFF;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .nav a:hover, .nav a.active {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+  }
+
+  .tutorials-hero {
+    background-image: url('https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+    background-size: cover;
+    background-position: center;
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #FFFFFF;
+    position: relative;
+  }
+
+  .tutorials-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .tutorials-hero-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .tutorials-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  }
+
+  .tutorials-hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  }
+
+  .tutorials-section {
+    padding: 4rem 0;
+  }
+
+  .tutorials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .tutorial-card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .tutorial-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  .tutorial-thumbnail {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+  }
+
+  .tutorial-thumbnail img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .tutorial-content {
+    padding: 1.5rem;
+  }
+
+  .tutorial-content h3 {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+  }
+
+  .tutorial-content p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .tutorial-link {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+  }
+
+  .tutorial-link:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-3px);
+  }
+
+  .footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 2rem 0;
+  }
+
+  .footer a {
+    color: var(--footer-text);
+    text-decoration: none;
+    margin: 0 0.5rem;
+  }
+
+  .theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+  }
+
+  .theme-switch input {
+    display: none;
+  }
+
+  .slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+  }
+
+  .slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+    border-radius: 50%;
+  }
+
+  input:checked + .slider {
+    background-color: var(--primary-color);
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+  @media (max-width: 768px) {
+    .header-content {
+      flex-direction: column;
+      text-align: center;
+    }
+    .nav {
+      margin-top: 1rem;
+    }
+    .tutorials-hero h1 {
+      font-size: 2.5rem;
+    }
+    .tutorials-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DL3FEPQB57"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DL3FEPQB57');
+</script><meta name="viewport" content="width=device-width"></head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-container">
+          <div class="logo-icon">🦚</div>
+          <div class="logo-text">RadHIL</div>
+        </div>
+        <nav class="nav">
+          <a href="https://radhil.com">Home</a>
+          <a href="https://radhil.com/features">Features</a>
+          <a href="https://radhil.com/pricing">Pricing</a>
+          <a href="https://radhil.com/request-demo">Demo</a>
+          <a href="https://radhil.com/support" class="active">Support</a>
+        </nav>
+        <div class="theme-switch-wrapper">
+          <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider"></div>
+          </label>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <main>
+    <section class="tutorials-hero">
+      <div class="tutorials-hero-content">
+        <h1>Video Tutorials</h1>
+        <p>Learn how to make the most of RadHIL with our step-by-step guides</p>
+      </div>
+    </section>
+    
+    <section class="tutorials-section container">
+      <h2>Getting Started</h2>
+      <div class="tutorials-grid">
+        <div class="tutorial-card">
+          <div class="tutorial-thumbnail">
+            <img src="https://images.unsplash.com/photo-1517808461310-99752354bcd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2210&q=80" alt="RadHIL dashboard overview" width="400" height="225">
+          </div>
+          <div class="tutorial-content">
+            <h3>RadHIL Dashboard Overview</h3>
+            <p>Get familiar with the main features of your RadHIL dashboard.</p>
+            <a href="https://radhil.com/tutorials/dashboard-overview" class="tutorial-link">Watch Now</a>
+          </div>
+        </div>
+        <div class="tutorial-card">
+          <div class="tutorial-thumbnail">
+            <img src="https://images.unsplash.com/photo-1516321165247-4aa89a48be28?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2121&q=80" alt="Setting up your first property" width="400" height="225">
+          </div>
+          <div class="tutorial-content">
+            <h3>Setting Up Your First Property</h3>
+            <p>Learn how to add and configure your first property in RadHIL.</p>
+            <a href="https://radhil.com/tutorials/setup-first-property" class="tutorial-link">Watch Now</a>
+          </div>
+        </div>
+        <div class="tutorial-card">
+          <div class="tutorial-thumbnail">
+            <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Connecting to booking platforms" width="400" height="225">
+          </div>
+          <div class="tutorial-content">
+            <h3>Connecting to Booking Platforms</h3>
+            <p>Set up integrations with major booking platforms for seamless management.</p>
+            <a href="https://radhil.com/tutorials/booking-platform-integration" class="tutorial-link">Watch Now</a>
+          </div>
+        </div>
+      </div>
+      
+      <h2 style="margin-top: 3rem;">Advanced Features</h2>
+      <div class="tutorials-grid">
+        <div class="tutorial-card">
+          <div class="tutorial-thumbnail">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="AI pricing optimization" width="400" height="225">
+          </div>
+          <div class="tutorial-content">
+            <h3>AI Pricing Optimization</h3>
+            <p>Maximize your revenue with RadHIL's AI-powered pricing suggestions.</p>
+            <a href="https://radhil.com/tutorials/ai-pricing-optimization" class="tutorial-link">Watch Now</a>
+          </div>
+        </div>
+        <div class="tutorial-card">
+          <div class="tutorial-thumbnail">
+            <img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2187&q=80" alt="Automated guest communication" width="400" height="225">
+          </div>
+          <div class="tutorial-content">
+            <h3>Automated Guest Communication</h3>
+            <p>Set up automated messages to enhance your guests' experience.</p>
+            <a href="https://radhil.com/tutorials/automated-communication" class="tutorial-link">Watch Now</a>
+          </div>
+        </div>
+        <div class="tutorial-card">
+          <div class="tutorial-thumbnail">
+            <img src="https://images.unsplash.com/photo-1543682704-15adeb008ac4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80" alt="Advanced analytics and reporting" width="400" height="225">
+          </div>
+          <div class="tutorial-content">
+            <h3>Advanced Analytics and Reporting</h3>
+            <p>Dive deep into your property performance with our advanced analytics tools.</p>
+            <a href="https://radhil.com/tutorials/advanced-analytics" class="tutorial-link
