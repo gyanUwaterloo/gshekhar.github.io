@@ -1,0 +1,312 @@
+<html><head><base href="https://radhil.com/terms">
+<title>RadHIL - Terms of Service</title>
+<style>
+  :root {
+    --primary-color: #C9A050;
+    --secondary-color: #1E2A3B;
+    --accent-color: #E0C38C;
+    --text-color: #333333;
+    --bg-color: #FFFFFF;
+    --card-bg: #F8F8F8;
+    --nav-bg: #1E2A3B;
+    --footer-bg: #1E2A3B;
+    --footer-text: #FFFFFF;
+  }
+  
+  [data-theme="dark"] {
+    --primary-color: #E0C38C;
+    --secondary-color: #2C3E50;
+    --accent-color: #C9A050;
+    --text-color: #E6E6FA;
+    --bg-color: #1A1A2E;
+    --card-bg: #2D2D44;
+    --nav-bg: #2C3E50;
+    --footer-bg: #2C3E50;
+    --footer-text: #E6E6FA;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .header {
+    background-color: var(--nav-bg);
+    color: #FFFFFF;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .nav a:hover, .nav a.active {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+  }
+
+  .terms-content {
+    padding: 6rem 0 4rem;
+  }
+
+  .terms-content h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+  }
+
+  .terms-content h2 {
+    font-size: 1.8rem;
+    color: var(--secondary-color);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .terms-content p {
+    margin-bottom: 1rem;
+  }
+
+  .terms-content ul {
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+  }
+
+  .terms-content li {
+    margin-bottom: 0.5rem;
+  }
+
+  .footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 2rem 0;
+  }
+
+  .footer a {
+    color: var(--footer-text);
+    text-decoration: none;
+    margin: 0 0.5rem;
+  }
+
+  .theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+  }
+
+  .theme-switch input {
+    display: none;
+  }
+
+  .slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+  }
+
+  .slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+    border-radius: 50%;
+  }
+
+  input:checked + .slider {
+    background-color: var(--primary-color);
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+  @media (max-width: 768px) {
+    .header-content {
+      flex-direction: column;
+      text-align: center;
+    }
+    .nav {
+      margin-top: 1rem;
+    }
+    .terms-content h1 {
+      font-size: 2rem;
+    }
+    .terms-content h2 {
+      font-size: 1.5rem;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-container">
+          <div class="logo-icon">🏆</div>
+          <div class="logo-text">RadHIL</div>
+        </div>
+        <nav class="nav">
+          <a href="https://radhil.com">Home</a>
+          <a href="https://radhil.com/features">Features</a>
+          <a href="https://radhil.com/pricing">Pricing</a>
+          <a href="https://radhil.com/request-demo">Demo</a>
+          <a href="https://radhil.com/support">Support</a>
+        </nav>
+        <div class="theme-switch-wrapper">
+          <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider"></div>
+          </label>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <main class="terms-content">
+    <div class="container">
+      <h1>Terms of Service</h1>
+      <p>Welcome to RadHIL. By using our luxury rental management platform, you agree to comply with and be bound by the following terms and conditions of use. Please review these terms carefully.</p>
+      
+      <h2>1. Acceptance of Terms</h2>
+      <p>By accessing or using the RadHIL platform, you agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree with any part of these terms, you may not use our services.</p>
+      
+      <h2>2. User Accounts</h2>
+      <p>To access certain features of the platform, you may be required to create an account. You are responsible for maintaining the confidentiality of your account information and for all activities that occur under your account. You agree to notify us immediately of any unauthorized use of your account.</p>
+      
+      <h2>3. Property Listings and Bookings</h2>
+      <p>Property owners and managers are responsible for the accuracy of their listings. Renters are responsible for reviewing listing details and communicating with property owners or managers before making a booking. RadHIL is not responsible for the accuracy of listings or the quality of rentals.</p>
+      
+      <h2>4. Fees and Payments</h2>
+      <p>Our fee structure is outlined on our pricing page. All fees are non-refundable unless otherwise stated. You agree to pay all applicable fees and taxes associated with your use of the platform.</p>
+      
+      <h2>5. Cancellations and Refunds</h2>
+      <p>Cancellation policies are set by property owners and managers. RadHIL is not responsible for processing refunds. Any disputes regarding cancellations or refunds should be resolved between the renter and the property owner or manager.</p>
+      
+      <h2>6. Intellectual Property</h2>
+      <p>The content, organization, graphics, design, and other matters related to the RadHIL platform are protected under applicable copyrights and other proprietary laws. The copying, redistribution, use, or publication of any such matters or any part of the platform is strictly prohibited.</p>
+      
+      <h2>7. Limitation of Liability</h2>
+      <p>RadHIL is not liable for any damages, including but not limited to, direct, indirect, incidental, consequential, or punitive damages arising out of your access to, use of, or inability to use the platform.</p>
+      
+      <h2>8. Indemnification</h2>
+      <p>You agree to indemnify and hold RadHIL harmless from any claim or demand, including reasonable attorneys' fees, made by any third party due to or arising out of your use of the platform, your violation of these Terms of Service, or your violation of any rights of another.</p>
+      
+      <h2>9. Modifications to Terms</h2>
+      <p>RadHIL reserves the right to modify these Terms of Service at any time. We will notify users of any significant changes. Your continued use of the platform after changes are posted constitutes your acceptance of the modified terms.</p>
+      
+      <h2>10. Governing Law</h2>
+      <p>These Terms of Service shall be governed by and construed in accordance with the laws of the jurisdiction in which RadHIL is headquartered, without regard to its conflict of law provisions.</p>
+      
+      <h2>11. Contact Information</h2>
+      <p>If you have any questions about these Terms of Service, please contact us at:</p>
+      <p>Email: legal@radhil.com<br>
+      Address: 260 Wellesley St. East, Toronto, CA M4X 1G6</p>
+    </div>
+  </main>
+  
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2023 RadHIL. All rights reserved.</p>
+      <p>
+        <a href="https://radhil.com/privacy">Privacy Policy</a> | 
+        <a href="https://radhil.com/terms">Terms of Service</a> |
+        <a href="https://radhil.com/contact">Contact Us</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+    const currentTheme = localStorage.getItem('theme');
+
+    if (currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme);
+      
+        if (currentTheme === 'dark') {
+            toggleSwitch.checked = true;
+        }
+    }
+
+    function switchTheme(e) {
+        if (e.target.checked) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        }
+        else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+        }    
+    }
+
+    toggleSwitch.addEventListener('change', switchTheme, false);
+  </script>
+</body>
+</html>
