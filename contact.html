@@ -336,6 +336,8 @@
 
   <script>
     const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+    const hubSpotForm = document.querySelector('.Forms__FormsViralityContainer-sc-11vy283-0');
+    hubSpotForm.style.display = 'none';
     const currentTheme = localStorage.getItem('theme');
 
     if (currentTheme) {
