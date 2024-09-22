@@ -359,7 +359,7 @@
             <div class="support-icon">📞</div>
             <h2 class="support-title">Phone Support</h2>
             <p class="support-description">Speak directly with our expert support staff for personalized help.</p>
-            <a href="https://radhil.com/contact" class="support-link">Call Us</a>
+            <a href="https://radhil.com/contact" class="support-link">Email Us</a>
           </div>
           <div class="support-card">
             <div class="support-icon">📧</div>
@@ -415,7 +415,8 @@
     </div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script>
     const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
     const currentTheme = localStorage.getItem('theme');
 
@@ -426,8 +427,5 @@
             toggleSwitch.checked = true;
         }
     }
+  <script/>
 
-    function switchTheme(e) {
-        if (e.target.checked) {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            localStorage.setItem('theme', 'dark');
