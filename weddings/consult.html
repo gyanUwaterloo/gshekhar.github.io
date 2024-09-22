@@ -1,0 +1,354 @@
+<html><head><base href="https://radhil.com/weddings/consult">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wedding Consultation | RadHIL Luxury Experiences</title>
+<meta name="description" content="Begin your journey to a perfect wedding with RadHIL. Schedule a personalized consultation and let our experts bring your dream wedding to life.">
+<style>
+  :root {
+    --primary-color: #FF6B6B;
+    --secondary-color: #4ECDC4;
+    --accent-color: #FFD93D;
+    --text-color: #333333;
+    --bg-color: #FFFFFF;
+    --section-bg: #F7F7F7;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Cormorant Garamond', serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* Header Styles */
+  .header {
+    background-color: rgba(255, 255, 255, 0.9);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+  }
+
+  .logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+  }
+
+  .nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+  }
+
+  .nav a:hover {
+    color: var(--primary-color);
+  }
+
+  /* Hero Section Styles */
+  .hero {
+    height: 60vh;
+    background-image: url('https://images.unsplash.com/photo-1532712938310-34cb3982ef74?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #FFFFFF;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  }
+
+  .hero p {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  }
+
+  /* Consultation Form Styles */
+  .consultation-form {
+    padding: 5rem 0;
+    background-color: var(--section-bg);
+  }
+
+  .form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #FFFFFF;
+    padding: 3rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .form-container h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: inherit;
+  }
+
+  .form-group textarea {
+    height: 150px;
+    resize: vertical;
+  }
+
+  .submit-btn {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .submit-btn:hover {
+    background-color: var(--accent-color);
+  }
+
+  /* Footer Styles */
+  .footer {
+    background-color: var(--text-color);
+    color: #FFFFFF;
+    padding: 3rem 0;
+    text-align: center;
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    color: #FFFFFF;
+    text-decoration: none;
+    margin: 0 1rem;
+    transition: color 0.3s ease;
+  }
+
+  .footer-links a:hover {
+    color: var(--accent-color);
+  }
+
+  .social-links a {
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    margin: 0 0.5rem;
+    transition: color 0.3s ease;
+  }
+
+  .social-links a:hover {
+    color: var(--accent-color);
+  }
+
+  @media (max-width: 768px) {
+    .header-content {
+      flex-direction: column;
+    }
+    .nav {
+      margin-top: 1rem;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+    .footer-content {
+      flex-direction: column;
+    }
+    .footer-links, .social-links {
+      margin-top: 1rem;
+    }
+  }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">RadHIL</div>
+        <nav class="nav">
+          <a href="https://radhil.com">Home</a>
+          <a href="https://radhil.com/weddings">Weddings</a>
+          <a href="https://radhil.com/venues">Venues</a>
+          <a href="https://radhil.com/services">Services</a>
+          <a href="https://radhil.com/contact">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Wedding Consultation</h1>
+        <p>Let's bring your dream wedding to life</p>
+      </div>
+    </section>
+
+    <section class="consultation-form">
+      <div class="container">
+        <div class="form-container">
+          <h2>Schedule Your Consultation</h2>
+          <form id="weddingConsultationForm" action="https://radhil.com/api/wedding-consultation" method="POST">
+            <div class="form-group">
+              <label for="names">Your Names</label>
+              <input type="text" id="names" name="names" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+              <label for="weddingDate">Preferred Wedding Date</label>
+              <input type="date" id="weddingDate" name="weddingDate" required>
+            </div>
+            <div class="form-group">
+              <label for="guestCount">Estimated Guest Count</label>
+              <select id="guestCount" name="guestCount" required>
+                <option value="">Select an option</option>
+                <option value="0-50">0-50 guests</option>
+                <option value="51-100">51-100 guests</option>
+                <option value="101-150">101-150 guests</option>
+                <option value="151-200">151-200 guests</option>
+                <option value="200+">200+ guests</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="venue">Preferred Venue Type</label>
+              <select id="venue" name="venue" required>
+                <option value="">Select an option</option>
+                <option value="beach">Beach</option>
+                <option value="garden">Garden</option>
+                <option value="ballroom">Ballroom</option>
+                <option value="historic">Historic Site</option>
+                <option value="destination">Destination Wedding</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Tell us about your dream wedding</label>
+              <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Request Consultation</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <h3>RadHIL</h3>
+          <p>Crafting Unforgettable Wedding Experiences</p>
+        </div>
+        <div class="footer-links">
+          <a href="https://radhil.com/about">About Us</a>
+          <a href="https://radhil.com/faq">FAQ</a>
+          <a href="https://radhil.com/privacy">Privacy Policy</a>
+          <a href="https://radhil.com/terms">Terms of Service</a>
+        </div>
+        <div class="social-links">
+          <a href="https://facebook.com/radhil"><i class="fab fa-facebook"></i></a>
+          <a href="https://instagram.com/radhil"><i class="fab fa-instagram"></i></a>
+          <a href="https://pinterest.com/radhil"><i class="fab fa-pinterest"></i></a>
+          <a href="https://twitter.com/radhil"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+      <p>&copy; 2023 RadHIL. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('weddingConsultationForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Here you would typically send the form data to your server
+      // For this example, we'll just log it to the console
+      console.log('Form submitted');
+      
+      // You can add form validation here
+      
+      // After successful submission, you might want to show a thank you message
+      alert('Thank you for your inquiry. We will contact you shortly to schedule your consultation.');
+      
+      // Optionally, reset the form
+      this.reset();
+    });
+  </script>
+</body>
+</html>

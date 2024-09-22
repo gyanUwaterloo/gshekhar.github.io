@@ -1,0 +1,495 @@
+<html><head><base href="https://radhil.com/events/luxury-rental-summit-2023">
+<title>RadHIL - Luxury Rental Summit 2023</title>
+<style>
+  :root {
+    --primary-color: #C9A050;
+    --secondary-color: #1E2A3B;
+    --accent-color: #E0C38C;
+    --text-color: #333333;
+    --bg-color: #FFFFFF;
+    --card-bg: #F8F8F8;
+    --nav-bg: #1E2A3B;
+    --footer-bg: #1E2A3B;
+    --footer-text: #FFFFFF;
+  }
+  
+  [data-theme="dark"] {
+    --primary-color: #E0C38C;
+    --secondary-color: #2C3E50;
+    --accent-color: #C9A050;
+    --text-color: #E6E6FA;
+    --bg-color: #1A1A2E;
+    --card-bg: #2D2D44;
+    --nav-bg: #2C3E50;
+    --footer-bg: #2C3E50;
+    --footer-text: #E6E6FA;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .header {
+    background-color: var(--nav-bg);
+    color: #FFFFFF;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .nav a:hover, .nav a.active {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+  }
+
+  .hero {
+    background-image: url('https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80');
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #FFFFFF;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  }
+
+  .cta-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+  }
+
+  .cta-button:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-3px);
+  }
+
+  .event-details {
+    padding: 4rem 0;
+  }
+
+  .event-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .event-info h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+
+  .event-info p {
+    margin-bottom: 1rem;
+  }
+
+  .event-schedule {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .event-schedule h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+
+  .schedule-item {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--accent-color);
+  }
+
+  .schedule-item:last-child {
+    border-bottom: none;
+  }
+
+  .schedule-time {
+    font-weight: bold;
+    color: var(--secondary-color);
+  }
+
+  .speakers-section {
+    padding: 4rem 0;
+    background-color: var(--card-bg);
+  }
+
+  .speakers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .speaker-card {
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .speaker-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  .speaker-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+  }
+
+  .speaker-info {
+    padding: 1.5rem;
+  }
+
+  .speaker-name {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .speaker-title {
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+  }
+
+  .footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 2rem 0;
+  }
+
+  .footer a {
+    color: var(--footer-text);
+    text-decoration: none;
+    margin: 0 0.5rem;
+  }
+
+  .theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+  }
+
+  .theme-switch input {
+    display: none;
+  }
+
+  .slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+  }
+
+  .slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+    border-radius: 50%;
+  }
+
+  input:checked + .slider {
+    background-color: var(--primary-color);
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+  @media (max-width: 768px) {
+    .header-content {
+      flex-direction: column;
+      text-align: center;
+    }
+    .nav {
+      margin-top: 1rem;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+    .event-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-container">
+          <div class="logo-icon">🦚</div>
+          <div class="logo-text">RadHIL</div>
+        </div>
+        <nav class="nav">
+          <a href="https://radhil.com">Home</a>
+          <a href="https://radhil.com/features">Features</a>
+          <a href="https://radhil.com/pricing">Pricing</a>
+          <a href="https://radhil.com/events" class="active">Events</a>
+          <a href="https://radhil.com/support">Support</a>
+        </nav>
+        <div class="theme-switch-wrapper">
+          <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider"></div>
+          </label>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Luxury Rental Summit 2023</h1>
+        <p>Join industry leaders for a day of insights, networking, and innovation in the luxury rental market</p>
+        <a href="#register" class="cta-button">Register Now</a>
+      </div>
+    </section>
+    
+    <section class="event-details">
+      <div class="container">
+        <div class="event-grid">
+          <div class="event-info">
+            <h2>Event Details</h2>
+            <p><strong>Date:</strong> July 15, 2023</p>
+            <p><strong>Time:</strong> 9:00 AM - 6:00 PM</p>
+            <p><strong>Location:</strong> Grand Luxury Hotel, New York City</p>
+            <p><strong>Price:</strong> $499 (Early Bird: $399 until June 15)</p>
+            <p>The Luxury Rental Summit 2023 brings together the brightest minds in the luxury rental industry. Discover the latest trends, strategies, and technologies that are shaping the future of high-end rentals. Network with fellow professionals, gain invaluable insights from industry experts, and elevate your business to new heights.</p>
+          </div>
+          <div class="event-schedule">
+            <h3>Event Schedule</h3>
+            <div class="schedule-item">
+              <p class="schedule-time">9:00 AM - 10:00 AM</p>
+              <p>Registration and Networking Breakfast</p>
+            </div>
+            <div class="schedule-item">
+              <p class="schedule-time">10:00 AM - 11:30 AM</p>
+              <p>Keynote: The Future of Luxury Rentals</p>
+            </div>
+            <div class="schedule-item">
+              <p class="schedule-time">11:45 AM - 1:00 PM</p>
+              <p>Panel Discussion: Leveraging Technology in Luxury Rentals</p>
+            </div>
+            <div class="schedule-item">
+              <p class="schedule-time">1:00 PM - 2:00 PM</p>
+              <p>Networking Lunch</p>
+            </div>
+            <div class="schedule-item">
+              <p class="schedule-time">2:00 PM - 3:15 PM</p>
+              <p>Workshop: Creating Unforgettable Guest Experiences</p>
+            </div>
+            <div class="schedule-item">
+              <p class="schedule-time">3:30 PM - 4:45 PM</p>
+              <p>Panel Discussion: Sustainability in Luxury Rentals</p>
+            </div>
+            <div class="schedule-item">
+              <p class="schedule-time">5:00 PM - 6:00 PM</p>
+              <p>Closing Remarks and Networking Reception</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="speakers-section">
+      <div class="container">
+        <h2>Featured Speakers</h2>
+        <div class="speakers-grid">
+          <div class="speaker-card">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1976&q=80" alt="Emily Thompson, CEO of LuxStay" class="speaker-image">
+            <div class="speaker-info">
+              <h3 class="speaker-name">Emily Thompson</h3>
+              <p class="speaker-title">CEO, LuxStay</p>
+              <p>Emily will share insights on scaling luxury rental businesses in the digital age.</p>
+            </div>
+          </div>
+          <div class="speaker-card">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Alexander Chen, Hospitality Tech Expert" class="speaker-image">
+            <div class="speaker-info">
+              <h3 class="speaker-name">Alexander Chen</h3>
+              <p class="speaker-title">Hospitality Tech Expert</p>
+              <p>Alexander will discuss the latest tech trends revolutionizing the luxury rental industry.</p>
+            </div>
+          </div>
+          <div class="speaker-card">
+            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Sophia Rodriguez, Sustainability Consultant" class="speaker-image">
+            <div class="speaker-info">
+              <h3 class="speaker-name">Sophia Rodriguez</h3>
+              <p class="speaker-title">Sustainability Consultant</p>
+              <p>Sophia will present strategies for implementing eco-friendly practices in luxury rentals.</p>
+            </div>
+          </div>
+          <div class="speaker-card">
+            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Marcus Lee, Customer Experience Guru" class="speaker-image">
+            <div class="speaker-info">
+              <h3 class="speaker-name">Marcus Lee</h3>
+              <p class="speaker-title">Customer Experience Guru</p>
+              <p>Marcus will lead a workshop on creating unforgettable experiences for luxury rental guests.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section id="register" class="register-section">
+      <div class="container">
+        <h2>Register Now</h2>
+        <p>Secure your spot at the Luxury Rental Summit 2023 and take your business to the next level.</p>
+        <a href="https://radhil.com/events/luxury-rental-summit-2023/register" class="cta-button">Register for the Event</a>
+      </div>
+    </section>
+  </main>
+  
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2023 RadHIL. All rights reserved.</p>
+      <p>
+        <a href="https://radhil.com/privacy">Privacy Policy</a> | 
+        <a href="https://radhil.com/terms">Terms of Service</a> |
+        <a href="https://radhil.com/contact">Contact Us</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+    const currentTheme = localStorage.getItem('theme');
+
+    if (currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme);
+      
+        if (currentTheme === 'dark') {
+            toggleSwitch.checked = true;
+        }
+    }
+
+    function switchTheme(e) {
+        if (e.target.checked) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        }
+        else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+        }    
+    }
+
+    toggleSwitch.addEventListener('change', switchTheme, false);
+  </script>
+</body>
+</html>

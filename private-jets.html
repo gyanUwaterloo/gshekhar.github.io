@@ -1,0 +1,448 @@
+<html><head><base href="https://radhil.com/private-jets,%20make%20a%20page%20similar%20to%20https://www.avico.com/en/offre/private-jet-charter/">
+<title>RadHIL - Private Jet Charter Services</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
+
+  :root {
+    --primary-color: #3498db;
+    --secondary-color: #2c3e50;
+    --accent-color: #e74c3c;
+    --text-color: #333333;
+    --bg-color: #f9f9f9;
+    --card-bg: #ffffff;
+    --nav-bg: #2c3e50;
+    --footer-bg: #2c3e50;
+    --footer-text: #ecf0f1;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  header {
+    background-color: var(--nav-bg);
+    color: #fff;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  nav ul {
+    list-style-type: none;
+    display: flex;
+  }
+
+  nav ul li {
+    margin-left: 20px;
+  }
+
+  nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+  }
+
+  nav ul li a:hover {
+    color: var(--primary-color);
+  }
+
+  .hero {
+    background-image: url('https://images.unsplash.com/photo-1540962351504-03099e0a754b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 0.8rem 2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+
+  .cta-button:hover {
+    background-color: #2980b9;
+  }
+
+  .services {
+    padding: 4rem 0;
+  }
+
+  .services h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .service-card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+
+  .service-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .service-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .service-card-content {
+    padding: 1.5rem;
+  }
+
+  .service-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .fleet {
+    background-color: #f0f0f0;
+    padding: 4rem 0;
+  }
+
+  .fleet h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .fleet-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .fleet-card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .fleet-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .fleet-card-content {
+    padding: 1.5rem;
+  }
+
+  .fleet-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .fleet-card ul {
+    list-style-type: none;
+    margin-top: 1rem;
+  }
+
+  .fleet-card ul li {
+    margin-bottom: 0.5rem;
+  }
+
+  .why-choose-us {
+    padding: 4rem 0;
+  }
+
+  .why-choose-us h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .reasons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .reason-card {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .reason-card i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+  }
+
+  .reason-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    padding: 2rem 0;
+    text-align: center;
+  }
+
+  footer p {
+    margin-bottom: 1rem;
+  }
+
+  .social-links a {
+    color: var(--footer-text);
+    font-size: 1.5rem;
+    margin: 0 10px;
+    text-decoration: none;
+  }
+
+  @media (max-width: 768px) {
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+
+    .hero p {
+      font-size: 1rem;
+    }
+
+    .services h2,
+    .fleet h2,
+    .why-choose-us h2 {
+      font-size: 2rem;
+    }
+
+    .service-card h3,
+    .fleet-card h3,
+    .reason-card h3 {
+      font-size: 1.2rem;
+    }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">RadHIL Private Jets</div>
+        <nav>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#fleet">Our Fleet</a></li>
+            <li><a href="#why-choose-us">Why Choose Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <h1>Experience Luxury in the Sky</h1>
+        <p>Elevate your travel with RadHIL Private Jets</p>
+        <a href="#contact" class="cta-button">Book Your Flight</a>
+      </div>
+    </section>
+
+    <section id="services" class="services">
+      <div class="container">
+        <h2>Our Services</h2>
+        <div class="service-grid">
+          <div class="service-card">
+            <img src="https://images.unsplash.com/photo-1540962351504-03099e0a754b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Private Jet Charter" width="300" height="200">
+            <div class="service-card-content">
+              <h3>Private Jet Charter</h3>
+              <p>Experience the ultimate in luxury travel with our on-demand private jet charter service.</p>
+            </div>
+          </div>
+          <div class="service-card">
+            <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80" alt="Corporate Travel" width="300" height="200">
+            <div class="service-card-content">
+              <h3>Corporate Travel</h3>
+              <p>Efficient and flexible solutions for your business travel needs, enhancing productivity and comfort.</p>
+            </div>
+          </div>
+          <div class="service-card">
+            <img src="https://images.unsplash.com/photo-1523177076694-b9848329af06?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Luxury Vacations" width="300" height="200">
+            <div class="service-card-content">
+              <h3>Luxury Vacations</h3>
+              <p>Curated luxury vacation packages with private jet transportation to exclusive destinations worldwide.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="fleet" class="fleet">
+      <div class="container">
+        <h2>Our Fleet</h2>
+        <div class="fleet-grid">
+          <div class="fleet-card">
+            <img src="https://images.unsplash.com/photo-1524027506357-50078de9569d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Light Jet" width="300" height="200">
+            <div class="fleet-card-content">
+              <h3>Light Jet</h3>
+              <p>Perfect for short trips and small groups.</p>
+              <ul>
+                <li>Seats: Up to 8 passengers</li>
+                <li>Range: Up to 2,000 miles</li>
+                <li>Speed: Up to 500 mph</li>
+              </ul>
+            </div>
+          </div>
+          <div class="fleet-card">
+            <img src="https://images.unsplash.com/photo-1540962351504-03099e0a754b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Midsize Jet" width="300" height="200">
+            <div class="fleet-card-content">
+              <h3>Midsize Jet</h3>
+              <p>Ideal for longer flights and larger groups.</p>
+              <ul>
+                <li>Seats: Up to 10 passengers</li>
+                <li>Range: Up to 3,000 miles</li>
+                <li>Speed: Up to 550 mph</li>
+              </ul>
+            </div>
+          </div>
+          <div class="fleet-card">
+            <img src="https://images.unsplash.com/photo-1621802565702-4e6c2964089e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Heavy Jet" width="300" height="200">
+            <div class="fleet-card-content">
+              <h3>Heavy Jet</h3>
+              <p>Luxurious and spacious for long-haul flights.</p>
+              <ul>
+                <li>Seats: Up to 16 passengers</li>
+                <li>Range: Up to 6,000 miles</li>
+                <li>Speed: Up to 600 mph</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="why-choose-us" class="why-choose-us">
+      <div class="container">
+        <h2>Why Choose RadHIL Private Jets</h2>
+        <div class="reasons-grid">
+          <div class="reason-card">
+            <i class="fas fa-clock"></i>
+            <h3>Time-Saving</h3>
+            <p>Skip long security lines and fly on your schedule.</p>
+          </div>
+          <div class="reason-card">
+            <i class="fas fa-user-tie"></i>
+            <h3>Personalized Service</h3>
+            <p>Tailored experiences to meet your unique needs.</p>
+          </div>
+          <div class="reason-card">
+            <i class="fas fa-shield-alt"></i>
+            <h3>Safety First</h3>
+            <p>Rigorous safety standards and experienced crew.</p>
+          </div>
+          <div class="reason-card">
+            <i class="fas fa-globe"></i>
+            <h3>Global Access</h3>
+            <p>Reach remote destinations and exclusive locations.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2023 RadHIL Private Jets. All rights reserved.</p>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+</body>
+</html>

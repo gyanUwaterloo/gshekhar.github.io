@@ -1,0 +1,368 @@
+<html><head><base href="https://radhil.com/wedings%20make%20a%20beautiful%20page%20to%20attract%20newly%20married%20couples">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enchanting Wedding Celebrations | RadHIL Luxury Experiences</title>
+<meta name="description" content="Begin your happily ever after with RadHIL's exquisite wedding experiences. Luxurious venues, personalized services, and unforgettable moments for your special day.">
+<style>
+  :root {
+    --primary-color: #FF6B6B;
+    --secondary-color: #4ECDC4;
+    --accent-color: #FFD93D;
+    --text-color: #333333;
+    --bg-color: #FFFFFF;
+    --section-bg: #F7F7F7;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Cormorant Garamond', serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* Header Styles */
+  .header {
+    background-color: rgba(255, 255, 255, 0.9);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+  }
+
+  .logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+  }
+
+  .nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+  }
+
+  .nav a:hover {
+    color: var(--primary-color);
+  }
+
+  /* Hero Section Styles */
+  .hero {
+    height: 100vh;
+    background-image: url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #FFFFFF;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  }
+
+  .hero p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  }
+
+  .cta-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: #FFFFFF;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+  }
+
+  .cta-button:hover {
+    background-color: var(--accent-color);
+  }
+
+  /* Features Section Styles */
+  .features {
+    padding: 5rem 0;
+    background-color: var(--section-bg);
+  }
+
+  .features h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--primary-color);
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .feature-card {
+    background-color: #FFFFFF;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-10px);
+  }
+
+  .feature-card i {
+    font-size: 3rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+  }
+
+  .feature-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Testimonials Section Styles */
+  .testimonials {
+    padding: 5rem 0;
+  }
+
+  .testimonials h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--primary-color);
+  }
+
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .testimonial-card {
+    background-color: var(--section-bg);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .testimonial-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+  }
+
+  .testimonial-card p {
+    font-style: italic;
+    margin-bottom: 1rem;
+  }
+
+  .testimonial-card h4 {
+    font-weight: bold;
+  }
+
+  /* Footer Styles */
+  .footer {
+    background-color: var(--text-color);
+    color: #FFFFFF;
+    padding: 3rem 0;
+    text-align: center;
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    color: #FFFFFF;
+    text-decoration: none;
+    margin: 0 1rem;
+    transition: color 0.3s ease;
+  }
+
+  .footer-links a:hover {
+    color: var(--accent-color);
+  }
+
+  .social-links a {
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    margin: 0 0.5rem;
+    transition: color 0.3s ease;
+  }
+
+  .social-links a:hover {
+    color: var(--accent-color);
+  }
+
+  @media (max-width: 768px) {
+    .header-content {
+      flex-direction: column;
+    }
+    .nav {
+      margin-top: 1rem;
+    }
+    .hero h1 {
+      font-size: 3rem;
+    }
+    .footer-content {
+      flex-direction: column;
+    }
+    .footer-links, .social-links {
+      margin-top: 1rem;
+    }
+  }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">RadHIL</div>
+        <nav class="nav">
+          <a href="https://radhil.com">Home</a>
+          <a href="https://radhil.com/weddings">Weddings</a>
+          <a href="https://radhil.com/venues">Venues</a>
+          <a href="https://radhil.com/services">Services</a>
+          <a href="https://radhil.com/contact">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Your Dream Wedding Awaits</h1>
+        <p>Exquisite celebrations tailored for your perfect day</p>
+        <a href="https://radhil.com/weddings/consult" class="cta-button">Start Planning Your Wedding</a>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="container">
+        <h2>Why Choose RadHIL for Your Special Day</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <i class="fas fa-ring"></i>
+            <h3>Breathtaking Venues</h3>
+            <p>From beachfront paradises to elegant ballrooms, we offer stunning locations for your perfect wedding.</p>
+          </div>
+          <div class="feature-card">
+            <i class="fas fa-magic"></i>
+            <h3>Personalized Planning</h3>
+            <p>Our expert wedding planners ensure every detail of your day is tailored to your unique vision.</p>
+          </div>
+          <div class="feature-card">
+            <i class="fas fa-utensils"></i>
+            <h3>Gourmet Catering</h3>
+            <p>Delight your guests with exquisite cuisine crafted by our world-class chefs.</p>
+          </div>
+          <div class="feature-card">
+            <i class="fas fa-camera-retro"></i>
+            <h3>Memories Forever</h3>
+            <p>Capture every magical moment with our professional photography and videography services.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials">
+      <div class="container">
+        <h2>Love Stories from Our Couples</h2>
+        <div class="testimonial-grid">
+          <div class="testimonial-card">
+            <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Happy couple on their wedding day">
+            <p>"RadHIL made our dream wedding a reality. The attention to detail and personalized service exceeded all our expectations."</p>
+            <h4>Emily & James</h4>
+          </div>
+          <div class="testimonial-card">
+            <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" alt="Newlyweds sharing a romantic moment">
+            <p>"From the stunning venue to the impeccable service, our RadHIL wedding was absolutely magical. We couldn't have asked for more!"</p>
+            <h4>Sophie & Alexander</h4>
+          </div>
+          <div class="testimonial-card">
+            <img src="https://images.unsplash.com/photo-1525735765456-7f67273a9d93?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1180&q=80" alt="Couple exchanging vows">
+            <p>"RadHIL's team went above and beyond to create the wedding of our dreams. Every moment was perfect, and our guests are still talking about it!"</p>
+            <h4>Olivia & Ethan</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <h3>RadHIL</h3>
+          <p>Crafting Unforgettable Wedding Experiences</p>
+        </div>
+        <div class="footer-links">
+          <a href="https://radhil.com/about">About Us</a>
+          <a href="https://radhil.com/faq">FAQ</a>
+          <a href="https://radhil.com/privacy">Privacy Policy</a>
+          <a href="https://radhil.com/terms">Terms of Service</a>
+        </div>
+        <div class="social-links">
+          <a href="https://facebook.com/radhil"><i class="fab fa-facebook"></i></a>
+          <a href="https://instagram.com/radhil"><i class="fab fa-instagram"></i></a>
+          <a href="https://pinterest.com/radhil"><i class="fab fa-pinterest"></i></a>
+          <a href="https://twitter.com/radhil"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+      <p>&copy; 2023 RadHIL. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

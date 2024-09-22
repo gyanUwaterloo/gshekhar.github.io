@@ -1,4 +1,5 @@
-<html><head><base href="https://radhil.com/support"><title>RadHIL - Support Center</title>
+<html><head><base href="https://radhil.com/support/community">
+<title>RadHIL - Community Forum</title>
 <style>
   :root {
     --primary-color: #C9A050;
@@ -97,10 +98,10 @@
   }
 
   .hero {
-    background-image: url('./images/hero.avif?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+    background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
     background-size: cover;
     background-position: center;
-    height: 50vh;
+    height: 40vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -130,48 +131,54 @@
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
   }
 
-  .support-section {
-    padding: 6rem 0;
-    background-color: var(--card-bg);
+  .hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
   }
 
-  .support-grid {
+  .forum-section {
+    padding: 4rem 0;
+  }
+
+  .forum-categories {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+    margin-bottom: 4rem;
   }
 
-  .support-card {
-    background-color: var(--bg-color);
+  .category-card {
+    background-color: var(--card-bg);
     border-radius: 10px;
     padding: 2rem;
     text-align: center;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
   }
 
-  .support-card:hover {
+  .category-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
   }
 
-  .support-icon {
+  .category-icon {
     font-size: 3rem;
     color: var(--primary-color);
     margin-bottom: 1rem;
   }
 
-  .support-title {
+  .category-title {
     font-size: 1.5rem;
     margin-bottom: 1rem;
     color: var(--secondary-color);
   }
 
-  .support-description {
+  .category-description {
     margin-bottom: 1.5rem;
   }
 
-  .support-link {
+  .category-link {
     display: inline-block;
     background-color: var(--primary-color);
     color: var(--secondary-color);
@@ -180,43 +187,45 @@
     text-decoration: none;
     font-weight: bold;
     transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 1px;
   }
 
-  .support-link:hover {
+  .category-link:hover {
     background-color: var(--accent-color);
     transform: translateY(-3px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   }
 
-  .faq-section {
-    padding: 4rem 0;
-    background-color: var(--bg-color);
+  .recent-posts {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 2rem;
   }
 
-  .faq-title {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-    color: var(--primary-color);
-  }
-
-  .faq-item {
+  .recent-posts h2 {
     margin-bottom: 1.5rem;
-    border-bottom: 1px solid var(--accent-color);
-    padding-bottom: 1.5rem;
-  }
-
-  .faq-question {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
     color: var(--secondary-color);
   }
 
-  .faq-answer {
-    color: var(--text-color);
+  .post-list {
+    list-style-type: none;
+  }
+
+  .post-item {
+    border-bottom: 1px solid var(--accent-color);
+    padding: 1rem 0;
+  }
+
+  .post-item:last-child {
+    border-bottom: none;
+  }
+
+  .post-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .post-meta {
+    font-size: 0.9rem;
+    color: var(--secondary-color);
   }
 
   .footer {
@@ -293,15 +302,7 @@
     }
   }
 </style>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DL3FEPQB57"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-DL3FEPQB57');
-</script><meta name="viewport" content="width=device-width"></head>
+</head>
 <body>
   <header class="header">
     <div class="container">
@@ -315,7 +316,8 @@
           <a href="https://radhil.com/features">Features</a>
           <a href="https://radhil.com/pricing">Pricing</a>
           <a href="https://radhil.com/request-demo">Demo</a>
-          <a href="https://radhil.com/support" class="active">Support</a>
+          <a href="https://radhil.com/support">Support</a>
+          <a href="https://radhil.com/support/community" class="active">Community</a>
         </nav>
         <div class="theme-switch-wrapper">
           <label class="theme-switch" for="checkbox">
@@ -330,75 +332,81 @@
   <main>
     <section class="hero">
       <div class="hero-content">
-        <h1>RadHIL Support Center</h1>
+        <h1>RadHIL Community Forum</h1>
+        <p>Connect, Share, and Learn with Fellow Luxury Property Managers</p>
       </div>
     </section>
     
-    <section class="support-section">
+    <section class="forum-section">
       <div class="container">
-        <div class="support-grid">
-          <div class="support-card">
-            <div class="support-icon">📚</div>
-            <h2 class="support-title">Knowledge Base</h2>
-            <p class="support-description">Explore our comprehensive guides and tutorials to make the most of RadHIL.</p>
-            <a href="https://radhil.com/knowledge-base" class="support-link">Browse Articles</a>
+        <div class="forum-categories">
+          <div class="category-card">
+            <div class="category-icon">🏠</div>
+            <h2 class="category-title">Property Management</h2>
+            <p class="category-description">Discuss best practices, challenges, and innovations in luxury property management.</p>
+            <a href="https://radhil.com/support/community/property-management" class="category-link">Join Discussion</a>
           </div>
-          <div class="support-card">
-            <div class="support-icon">🎥</div>
-            <h2 class="support-title">Video Tutorials</h2>
-            <p class="support-description">Watch step-by-step video guides on how to use RadHIL's features effectively.</p>
-            <a href="https://radhil.com/video-tutorials" class="support-link">Watch Videos</a>
+          
+          <div class="category-card">
+            <div class="category-icon">📊</div>
+            <h2 class="category-title">Marketing Strategies</h2>
+            <p class="category-description">Share and learn about effective marketing techniques for high-end rentals.</p>
+            <a href="https://radhil.com/support/community/marketing-strategies" class="category-link">Explore Ideas</a>
           </div>
-          <div class="support-card">
-            <div class="support-icon">💬</div>
-            <h2 class="support-title">Live Chat</h2>
-            <p class="support-description">Get real-time assistance from our support team during business hours.</p>
-            <a href="https://radhil.com/live-chat" class="support-link">Start Chat</a>
+          
+          <div class="category-card">
+            <div class="category-icon">💼</div>
+            <h2 class="category-title">Business Growth</h2>
+            <p class="category-description">Exchange tips on scaling your luxury rental business and maximizing profits.</p>
+            <a href="https://radhil.com/support/community/business-growth" class="category-link">Share Insights</a>
           </div>
-          <div class="support-card">
-            <div class="support-icon">📞</div>
-            <h2 class="support-title">Phone Support</h2>
-            <p class="support-description">Speak directly with our expert support staff for personalized help.</p>
-            <a href="https://radhil.com/contact" class="support-link">Call Us</a>
+          
+          <div class="category-card">
+            <div class="category-icon">🛠️</div>
+            <h2 class="category-title">Tech Solutions</h2>
+            <p class="category-description">Discuss the latest tech tools and integrations for streamlined property management.</p>
+            <a href="https://radhil.com/support/community/tech-solutions" class="category-link">Talk Tech</a>
           </div>
-          <div class="support-card">
-            <div class="support-icon">📧</div>
-            <h2 class="support-title">Email Support</h2>
-            <p class="support-description">Send us your questions or concerns, and we'll respond promptly.</p>
-            <a href="https://radhil.com/contact" class="support-link">Email Us</a>
+          
+          <div class="category-card">
+            <div class="category-icon">📝</div>
+            <h2 class="category-title">Legal & Compliance</h2>
+            <p class="category-description">Stay updated on regulations and legal considerations in luxury rentals.</p>
+            <a href="https://radhil.com/support/community/legal-compliance" class="category-link">Get Informed</a>
           </div>
-          <div class="support-card">
-            <div class="support-icon">🤝</div>
-            <h2 class="support-title">Community Forum</h2>
-            <p class="support-description">Connect with other RadHIL users, share tips, and get advice.</p>
-            <a href="https://radhil.com/community" class="support-link">Join Forum</a>
+          
+          <div class="category-card">
+            <div class="category-icon">🌟</div>
+            <h2 class="category-title">Guest Experience</h2>
+            <p class="category-description">Share ideas on creating unforgettable experiences for high-end guests.</p>
+            <a href="https://radhil.com/support/community/guest-experience" class="category-link">Elevate Experiences</a>
           </div>
         </div>
-      </div>
-    </section>
-    
-    <section class="faq-section">
-      <div class="container">
-        <h2 class="faq-title">Frequently Asked Questions</h2>
-        <div class="faq-item">
-          <h3 class="faq-question">How does RadHIL's AI-driven pricing work?</h3>
-          <p class="faq-answer">Our AI-driven pricing system analyzes market trends, seasonal demand, local events, and competitor pricing in real-time. It then adjusts your property's rates automatically to maximize occupancy and revenue.</p>
-        </div>
-        <div class="faq-item">
-          <h3 class="faq-question">Can I integrate RadHIL with my existing property management software?</h3>
-          <p class="faq-answer">Yes, RadHIL offers seamless integration with most popular property management software. Our team can assist you with the integration process to ensure smooth data flow between systems.</p>
-        </div>
-        <div class="faq-item">
-          <h3 class="faq-question">How secure is my data on RadHIL's platform?</h3>
-          <p class="faq-answer">We take data security very seriously. RadHIL uses bank-level encryption to protect your data, and we comply with all relevant data protection regulations, including GDPR.</p>
-        </div>
-        <div class="faq-item">
-          <h3 class="faq-question">What kind of support is available for Enterprise users?</h3>
-          <p class="faq-answer">Enterprise users receive 24/7 premium support, including a dedicated account manager, priority email and phone support, and quarterly business reviews to ensure you're getting the most out of RadHIL.</p>
-        </div>
-        <div class="faq-item">
-          <h3 class="faq-question">Can RadHIL help me manage guest communication across multiple booking platforms?</h3>
-          <p class="faq-answer">Absolutely! Our unified inbox feature centralizes all guest communications from various booking platforms, allowing you to manage all interactions efficiently from a single dashboard.</p>
+        
+        <div class="recent-posts">
+          <h2>Recent Discussions</h2>
+          <ul class="post-list">
+            <li class="post-item">
+              <h3 class="post-title"><a href="https://radhil.com/support/community/thread/1">Maximizing Off-Season Bookings for Luxury Properties</a></h3>
+              <p class="post-meta">Posted by JohnDoe123 | 2 hours ago | 15 replies</p>
+            </li>
+            <li class="post-item">
+              <h3 class="post-title"><a href="https://radhil.com/support/community/thread/2">Implementing Sustainable Practices in High-End Rentals</a></h3>
+              <p class="post-meta">Posted by EcoLuxe | 1 day ago | 32 replies</p>
+            </li>
+            <li class="post-item">
+              <h3 class="post-title"><a href="https://radhil.com/support/community/thread/3">Navigating Local Regulations for Short-Term Luxury Rentals</a></h3>
+              <p class="post-meta">Posted by LegalEagle | 3 days ago | 28 replies</p>
+            </li>
+            <li class="post-item">
+              <h3 class="post-title"><a href="https://radhil.com/support/community/thread/4">Leveraging Social Media Influencers for Property Marketing</a></h3>
+              <p class="post-meta">Posted by MarketingGuru | 5 days ago | 45 replies</p>
+            </li>
+            <li class="post-item">
+              <h3 class="post-title"><a href="https://radhil.com/support/community/thread/5">Creating a Seamless Check-in Experience for VIP Guests</a></h3>
+              <p class="post-meta">Posted by HospitalityPro | 1 week ago | 37 replies</p>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
@@ -415,7 +423,7 @@
     </div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
     const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
     const currentTheme = localStorage.getItem('theme');
 
@@ -431,3 +439,14 @@
         if (e.target.checked) {
             document.documentElement.setAttribute('data-theme', 'dark');
             localStorage.setItem('theme', 'dark');
+        }
+        else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+        }    
+    }
+
+    toggleSwitch.addEventListener('change', switchTheme, false);
+  </script>
+</body>
+</html>

@@ -1,0 +1,580 @@
+<html><head><base href="https://radhil.com/rentals%20include%20filters%20for%20selecting%20from%20%5BBarbados,%20Saint%20Martin,%20Mexico,%20Saint%20Barths%20%5D,%20use%20https://www.pacaso.com/%20as%20page%20inspiration">
+<title>RadHIL - Luxury Rentals</title>
+<style>
+  :root {
+    --primary-color: #C9A050;
+    --secondary-color: #1E2A3B;
+    --accent-color: #E0C38C;
+    --text-color: #333333;
+    --bg-color: #FFFFFF;
+    --card-bg: #F8F8F8;
+    --nav-bg: #1E2A3B;
+    --footer-bg: #1E2A3B;
+    --footer-text: #FFFFFF;
+  }
+  
+  [data-theme="dark"] {
+    --primary-color: #E0C38C;
+    --secondary-color: #2C3E50;
+    --accent-color: #C9A050;
+    --text-color: #E6E6FA;
+    --bg-color: #1A1A2E;
+    --card-bg: #2D2D44;
+    --nav-bg: #2C3E50;
+    --footer-bg: #2C3E50;
+    --footer-text: #E6E6FA;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .header {
+    background-color: var(--nav-bg);
+    color: #FFFFFF;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .nav a:hover, .nav a.active {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+  }
+
+  .hero {
+    background-image: url('https://images.unsplash.com/photo-1615571022219-eb45cf7faa9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #FFFFFF;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  }
+
+  .filter-section {
+    background-color: var(--card-bg);
+    padding: 2rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .filter-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .filter-group {
+    margin-bottom: 1rem;
+  }
+
+  .filter-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+  }
+
+  .filter-group select {
+    padding: 0.5rem;
+    border: 1px solid var(--accent-color);
+    border-radius: 4px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-size: 1rem;
+    min-width: 200px;
+  }
+
+  .rentals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 4rem 0;
+  }
+
+  .rental-card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .rental-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  .rental-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .rental-content {
+    padding: 1.5rem;
+  }
+
+  .rental-location {
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+  }
+
+  .rental-title {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+  }
+
+  .rental-details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  .rental-price {
+    font-weight: bold;
+    color: var(--primary-color);
+  }
+
+  .rental-link {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+
+  .rental-link:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-3px);
+  }
+
+  .footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 2rem 0;
+  }
+
+  .footer a {
+    color: var(--footer-text);
+    text-decoration: none;
+    margin: 0 0.5rem;
+  }
+
+  .theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+  }
+
+  .theme-switch input {
+    display: none;
+  }
+
+  .slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+  }
+
+  .slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+    border-radius: 50%;
+  }
+
+  input:checked + .slider {
+    background-color: var(--primary-color);
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+  @media (max-width: 768px) {
+    .header-content {
+      flex-direction: column;
+      text-align: center;
+    }
+    .nav {
+      margin-top: 1rem;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+    .filter-container {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .filter-group {
+      width: 100%;
+    }
+    .rentals-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-container">
+          <div class="logo-icon">🦚</div>
+          <div class="logo-text">RadHIL</div>
+        </div>
+        <nav class="nav">
+          <a href="https://radhil.com">Home</a>
+          <a href="https://radhil.com/features">Features</a>
+          <a href="https://radhil.com/rentals" class="active">Rentals</a>
+          <a href="https://radhil.com/pricing">Pricing</a>
+          <a href="https://radhil.com/support">Support</a>
+        </nav>
+        <div class="theme-switch-wrapper">
+          <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider"></div>
+          </label>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Discover Luxury Rentals</h1>
+        <p>Explore our curated selection of high-end properties in stunning locations</p>
+      </div>
+    </section>
+    
+    <section class="filter-section">
+      <div class="container">
+        <div class="filter-container">
+          <div class="filter-group">
+            <label for="location">Location</label>
+            <select id="location">
+              <option value="">All Locations</option>
+              <option value="barbados">Barbados</option>
+              <option value="saint-martin">Saint Martin</option>
+              <option value="mexico">Mexico</option>
+              <option value="saint-barths">Saint Barths</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="bedrooms">Bedrooms</label>
+            <select id="bedrooms">
+              <option value="">Any</option>
+              <option value="1">1+</option>
+              <option value="2">2+</option>
+              <option value="3">3+</option>
+              <option value="4">4+</option>
+              <option value="5">5+</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="price">Price Range</label>
+            <select id="price">
+              <option value="">Any</option>
+              <option value="1000-5000">$1,000 - $5,000</option>
+              <option value="5000-10000">$5,000 - $10,000</option>
+              <option value="10000-20000">$10,000 - $20,000</option>
+              <option value="20000+">$20,000+</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="amenities">Amenities</label>
+            <select id="amenities">
+              <option value="">All Amenities</option>
+              <option value="pool">Pool</option>
+              <option value="beach-access">Beach Access</option>
+              <option value="spa">Spa</option>
+              <option value="gym">Gym</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="rentals-section">
+      <div class="container">
+        <div class="rentals-grid">
+          <div class="rental-card">
+            <div class="rental-image" style="background-image: url('https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
+            <div class="rental-content">
+              <div class="rental-location">Barbados</div>
+              <h2 class="rental-title">Oceanfront Paradise Villa</h2>
+              <div class="rental-details">
+                <span>4 Bedrooms</span>
+                <span class="rental-price">$5,000/night</span>
+              </div>
+              <a href="https://radhil.com/rentals/oceanfront-paradise-villa" class="rental-link">View Details</a>
+            </div>
+          </div>
+          
+          <div class="rental-card">
+            <div class="rental-image" style="background-image: url('https://images.unsplash.com/photo-1582610116397-edb318620f90?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
+            <div class="rental-content">
+              <div class="rental-location">Saint Martin</div>
+              <h2 class="rental-title">Luxe Beachfront Retreat</h2>
+              <div class="rental-details">
+                <span>3 Bedrooms</span>
+                <span class="rental-price">$3,500/night</span>
+              </div>
+              <a href="https://radhil.com/rentals/luxe-beachfront-retreat" class="rental-link">View Details</a>
+            </div>
+          </div>
+          
+          <div class="rental-card">
+            <div class="rental-image" style="background-image: url('https://images.unsplash.com/photo-1575517111478-7f6afd0973db?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
+            <div class="rental-content">
+              <div class="rental-location">Mexico</div>
+              <h2 class="rental-title">Riviera Maya Oasis</h2>
+              <div class="rental-details">
+                <span>5 Bedrooms</span>
+                <span class="rental-price">$7,000/night</span>
+              </div>
+              <a href="https://radhil.com/rentals/riviera-maya-oasis" class="rental-link">View Details</a>
+            </div>
+          </div>
+          
+          <div class="rental-card">
+            <div class="rental-image" style="background-image: url('https://images.unsplash.com/photo-1610641818989-c2051b5e2cfd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
+            <div class="rental-content">
+              <div class="rental-location">Saint Barths</div>
+              <h2 class="rental-title">Chic Island Hideaway</h2>
+              <div class="rental-details">
+                <span>2 Bedrooms</span>
+                <span class="rental-price">$4,500/night</span>
+              </div>
+              <a href="https://radhil.com/rentals/chic-island-hideaway" class="rental-link">View Details</a>
+            </div>
+          </div>
+          
+          <div class="rental-card">
+            <div class="rental-image" style="background-image: url('https://images.unsplash.com/photo-1540541338287-41700207dee6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"></div>
+            <div class="rental-content">
+              <div class="rental-location">Barbados</div>
+              <h2 class="rental-title">Tropical Elegance Estate</h2>
+              <div class="rental-details">
+                <span>6 Bedrooms</span>
+                <span class="rental-price">$8,500/night</span>
+              </div>
+              <a href="https://radhil.com/rentals/tropical-elegance-estate" class="rental-link">View Details</a>
+            </div>
+          </div>
+          
+          <div class="rental-card">
+            <div class="rental-image" style="background-image: url('https://images.unsplash.com/photo-1602343168117-bb8ffe3e2e9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2025&q=80');"></div>
+            <div class="rental-content">
+              <div class="rental-location">Mexico</div>
+              <h2 class="rental-title">Cabo San Lucas Villa</h2>
+              <div class="rental-details">
+                <span>4 Bedrooms</span>
+                <span class="rental-price">$6,000/night</span>
+              </div>
+              <a href="https://radhil.com/rentals/cabo-san-lucas-villa" class="rental-link">View Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2023 RadHIL. All rights reserved.</p>
+      <p>
+        <a href="https://radhil.com/privacy">Privacy Policy</a> | 
+        <a href="https://radhil.com/terms">Terms of Service</a> |
+        <a href="https://radhil.com/contact">Contact Us</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+    const currentTheme = localStorage.getItem('theme');
+
+    if (currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme);
+      
+        if (currentTheme === 'dark') {
+            toggleSwitch.checked = true;
+        }
+    }
+
+    function switchTheme(e) {
+        if (e.target.checked) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        }
+        else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+        }    
+    }
+
+    toggleSwitch.addEventListener('change', switchTheme, false);
+
+    // Simple filter functionality (for demonstration purposes)
+    const locationSelect = document.getElementById('location');
+    const bedroomsSelect = document.getElementById('bedrooms');
+    const priceSelect = document.getElementById('price');
+    const amenitiesSelect = document.getElementById('amenities');
+    const rentalCards = document.querySelectorAll('.rental-card');
+
+    function filterRentals() {
+      const selectedLocation = locationSelect.value.toLowerCase();
+      const selectedBedrooms = bedroomsSelect.value;
+      const selectedPrice = priceSelect.value;
+      const selectedAmenities = amenitiesSelect.value.toLowerCase();
+
+      rentalCards.forEach(card => {
+        const location = card.querySelector('.rental-location').textContent.toLowerCase();
+        const bedrooms = card.querySelector('.rental-details span').textContent.split(' ')[0];
+        const price = card.querySelector('.rental-price').textContent.replace('$', '').replace(',', '').replace('/night', '');
+
+        let shouldShow = true;
+
+        if (selectedLocation && !location.includes(selectedLocation)) {
+          shouldShow = false;
+        }
+
+        if (selectedBedrooms && parseInt(bedrooms) < parseInt(selectedBedrooms)) {
+          shouldShow = false;
+        }
+
+        if (selectedPrice) {
+          const [minPrice, maxPrice] = selectedPrice.split('-').map(p => parseInt(p.replace('+', '')));
+          const rentPrice = parseInt(price);
+          if (maxPrice && (rentPrice < minPrice || rentPrice > maxPrice)) {
+            shouldShow = false;
+          } else if (!maxPrice && rentPrice < minPrice) {
+            shouldShow = false;
+          }
+        }
+
+        // Note: For this demo, we're not filtering by amenities as it would require more detailed data
+
+        card.style.display = shouldShow ? 'block' : 'none';
+      });
+    }
+
+    locationSelect.addEventListener('change', filterRentals);
+    bedroomsSelect.addEventListener('change', filterRentals);
+    priceSelect.addEventListener('change', filterRentals);
+    amenitiesSelect.addEventListener('change', filterRentals);
+  </script>
+</body>
+</html>

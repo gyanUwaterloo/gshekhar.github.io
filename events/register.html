@@ -1,0 +1,638 @@
+<html><head><base href="https://radhil.com/events/luxury-rental-summit-2023/register">
+<title>RadHIL - Register for Luxury Rental Summit 2023</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
+
+  :root {
+    --primary-color: #3498db;
+    --secondary-color: #2c3e50;
+    --accent-color: #e74c3c;
+    --text-color: #333333;
+    --bg-color: #f9f9f9;
+    --card-bg: #ffffff;
+    --nav-bg: #2c3e50;
+    --footer-bg: #2c3e50;
+    --footer-text: #ecf0f1;
+    --input-bg: #ffffff;
+    --input-border: #bdc3c7;
+    --input-focus: #3498db;
+    --success-color: #2ecc71;
+    --error-color: #e74c3c;
+  }
+  
+  [data-theme="dark"] {
+    --primary-color: #3498db;
+    --secondary-color: #34495e;
+    --accent-color: #e74c3c;
+    --text-color: #ecf0f1;
+    --bg-color: #2c3e50;
+    --card-bg: #34495e;
+    --nav-bg: #2c3e50;
+    --footer-bg: #2c3e50;
+    --footer-text: #ecf0f1;
+    --input-bg: #34495e;
+    --input-border: #7f8c8d;
+    --input-focus: #3498db;
+    --success-color: #2ecc71;
+    --error-color: #e74c3c;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.8;
+    font-size: 16px;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .header {
+    background-color: var(--nav-bg);
+    color: #FFFFFF;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-icon {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+  }
+
+  .logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .nav a:hover, .nav a.active {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+  }
+
+  .hero {
+    background-image: url('https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80');
+    background-size: cover;
+    background-position: center;
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #FFFFFF;
+    position: relative;
+    margin-top: 60px;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  }
+
+  .main-content {
+    display: flex;
+    gap: 2rem;
+    margin-top: 4rem;
+  }
+
+  .registration-form {
+    flex: 2;
+    margin: 0;
+  }
+
+  .promo-section {
+    flex: 1;
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-out;
+  }
+
+  .promo-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+  }
+
+  .promo-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+
+  .promo-process {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .promo-process li {
+    margin-bottom: 0.5rem;
+  }
+
+  .promo-cta {
+    font-weight: bold;
+    color: var(--accent-color);
+  }
+
+  .form-group {
+    margin-bottom: 2rem;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus {
+    transform: translateY(-2px);
+    outline: none;
+    border-color: var(--input-focus);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .submit-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .submit-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    text-align: center;
+    padding: 2rem 0;
+  }
+
+  .footer a {
+    color: var(--footer-text);
+    text-decoration: none;
+    margin: 0 0.5rem;
+  }
+
+  .theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+  }
+
+  .theme-switch input {
+    display: none;
+  }
+
+  .slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+  }
+
+  .slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+    border-radius: 50%;
+  }
+
+  input:checked + .slider {
+    background-color: var(--primary-color);
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+  .payment-options {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    gap: 1rem;
+  }
+
+  .payment-option {
+    flex: 1;
+    padding: 1.5rem;
+    border: 1px solid var(--input-border);
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .payment-option:hover,
+  .payment-option.selected {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .payment-option img {
+    max-width: 60px;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+  }
+
+  .payment-option:hover img {
+    transform: scale(1.1);
+  }
+
+  .credit-card-form {
+    margin-top: 2rem;
+  }
+
+  .credit-card-form .form-row {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .credit-card-form .form-group {
+    flex: 1;
+  }
+
+  .success-message,
+  .error-message {
+    padding: 1rem;
+    border-radius: 5px;
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  .success-message {
+    background-color: var(--success-color);
+    color: white;
+  }
+
+  .error-message {
+    background-color: var(--error-color);
+    color: white;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 768px) {
+    .header-content {
+      flex-direction: column;
+      text-align: center;
+    }
+    .nav {
+      margin-top: 1rem;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+    .registration-form {
+      padding: 2rem;
+    }
+    .payment-options {
+      flex-direction: row;
+      overflow-x: auto;
+      padding-bottom: 1rem;
+    }
+    .payment-option {
+      flex: 0 0 auto;
+      width: 120px;
+    }
+    .credit-card-form .form-row {
+      flex-direction: column;
+    }
+    .main-content {
+      flex-direction: column;
+    }
+    .promo-section {
+      order: -1;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .main-content {
+      flex-direction: column;
+    }
+    
+    .promo-section {
+      order: -1;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-container">
+          <div class="logo-icon">🦚</div>
+          <div class="logo-text">RadHIL</div>
+        </div>
+        <nav class="nav">
+          <a href="https://radhil.com">Home</a>
+          <a href="https://radhil.com/features">Features</a>
+          <a href="https://radhil.com/pricing">Pricing</a>
+          <a href="https://radhil.com/events" class="active">Events</a>
+          <a href="https://radhil.com/support">Support</a>
+        </nav>
+        <div class="theme-switch-wrapper">
+          <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider"></div>
+          </label>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Register for Luxury Rental Summit 2023</h1>
+        <p>Secure your spot at the premier event for luxury rental professionals</p>
+      </div>
+    </section>
+    
+    <div class="container main-content">
+      <section class="registration-form">
+        <form id="summit-registration">
+          <div class="form-group">
+            <label for="full-name">Full Name</label>
+            <input type="text" id="full-name" name="full-name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="company">Company</label>
+            <input type="text" id="company" name="company" required>
+          </div>
+          <div class="form-group">
+            <label for="job-title">Job Title</label>
+            <input type="text" id="job-title" name="job-title" required>
+          </div>
+          <div class="form-group">
+            <label for="ticket-type">Ticket Type</label>
+            <select id="ticket-type" name="ticket-type" required>
+              <option value="">Select a ticket type</option>
+              <option value="early-bird">Early Bird ($399)</option>
+              <option value="regular">Regular ($499)</option>
+              <option value="vip">VIP ($699)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="dietary-restrictions">Dietary Restrictions</label>
+            <input type="text" id="dietary-restrictions" name="dietary-restrictions">
+          </div>
+          
+          <h3>Payment Information</h3>
+          <div class="payment-options">
+            <div class="payment-option" data-payment="credit-card">
+              <img src="https://cdn-icons-png.flaticon.com/512/179/179457.png" alt="Credit Card" width="80" height="80">
+              <p>Credit Card</p>
+            </div>
+            <div class="payment-option" data-payment="paypal">
+              <img src="https://cdn-icons-png.flaticon.com/512/174/174861.png" alt="PayPal" width="80" height="80">
+              <p>PayPal</p>
+            </div>
+            <div class="payment-option" data-payment="bank-transfer">
+              <img src="https://cdn-icons-png.flaticon.com/512/1019/1019709.png" alt="Bank Transfer" width="80" height="80">
+              <p>Bank Transfer</p>
+            </div>
+          </div>
+          
+          <div class="credit-card-form" style="display: none;">
+            <div class="form-group">
+              <label for="card-number">Card Number</label>
+              <input type="text" id="card-number" name="card-number" placeholder="1234 5678 9012 3456">
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="expiry-date">Expiry Date</label>
+                <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YY">
+              </div>
+              <div class="form-group">
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" name="cvv" placeholder="123">
+              </div>
+            </div>
+          </div>
+          
+          <button type="submit" class="submit-button">Complete Registration</button>
+        </form>
+        <div id="success-message" class="success-message" style="display: none;">
+          Registration successful! We look forward to seeing you at the summit.
+        </div>
+        <div id="error-message" class="error-message" style="display: none;">
+          There was an error processing your registration. Please try again.
+        </div>
+      </section>
+      
+      <section class="promo-section">
+        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1073&q=80" alt="Luxury rental property" class="promo-image">
+        <h2>Why Register Now?</h2>
+        <ol class="promo-process">
+          <li>Early Bird Discounts</li>
+          <li>Exclusive Networking Opportunities</li>
+          <li>Access to Industry-Leading Speakers</li>
+          <li>Hands-on Workshops</li>
+        </ol>
+        <p class="promo-cta">Don't miss out on this incredible opportunity to elevate your luxury rental business!</p>
+      </section>
+    </div>
+  </main>
+  
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2023 RadHIL. All rights reserved.</p>
+      <p>
+        <a href="https://radhil.com/privacy">Privacy Policy</a> | 
+        <a href="https://radhil.com/terms">Terms of Service</a> |
+        <a href="https://radhil.com/contact">Contact Us</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+    const currentTheme = localStorage.getItem('theme');
+
+    if (currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme);
+      
+        if (currentTheme === 'dark') {
+            toggleSwitch.checked = true;
+        }
+    }
+
+    function switchTheme(e) {
+        if (e.target.checked) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        }
+        else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+        }    
+    }
+
+    toggleSwitch.addEventListener('change', switchTheme, false);
+
+    // Payment option selection
+    const paymentOptions = document.querySelectorAll('.payment-option');
+    const creditCardForm = document.querySelector('.credit-card-form');
+
+    paymentOptions.forEach(option => {
+      option.addEventListener('click', function() {
+        paymentOptions.forEach(opt => opt.classList.remove('selected'));
+        this.classList.add('selected');
+        
+        if (this.dataset.payment === 'credit-card') {
+          creditCardForm.style.display = 'block';
+        } else {
+          creditCardForm.style.display = 'none';
+        }
+      });
+    });
+
+    // Form submission handling
+    document.getElementById('summit-registration').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Collect form data
+      const formData = new FormData(this);
+      const data = Object.fromEntries(formData.entries());
+
+      // Here you would typically send this data to your server
+      console.log('Form submitted with data:', data);
+
+      // Simulate a server response
+      setTimeout(() => {
+        const success = Math.random() > 0.5; // 50% chance of success for demonstration
+        
+        if (success) {
+          document.getElementById('success-message').style.display = 'block';
+          document.getElementById('error-message').style.display = 'none';
+        } else {
+          document.getElementById('success-message').style.display = 'none';
+          document.getElementById('error-message').style.display = 'block';
+        }
+      }, 1500);
+
+      // Reset the form
+      this.reset();
+      paymentOptions.forEach(opt => opt.classList.remove('selected'));
+      creditCardForm.style.display = 'none';
+    });
+  </script>
+</body>
+</html>
